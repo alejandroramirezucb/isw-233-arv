@@ -8,12 +8,46 @@
         
         <title>Portafolio | Alejandro Ramirez</title>
         <link rel="stylesheet" href="css/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header>
+        <header class="encabezado">
+            <nav aria-label="navegacion" class="navegacion">
+                <ul class="navegacion__lista">
+                    <li class="navegacion__elemento"><a href="#sobre-mi" class="navegacion__link">Sobre mi</a></li>
+                    <li class="navegacion__elemento"><a href="#proyectos" class="navegacion__link">Proyectos</a></li>
+                    <li class="navegacion__elemento"><a href="#blog" class="navegacion__link">Habilidades</a></li>
+                    <li class="navegacion__elemento"><a href="#contacto" class="navegacion__link">Contacto</a></li>
+                </ul>
+            </nav>
         </header>
-        
+
         <main>
+            <section id="introduccion" class="introduccion">
+                <figure class="introduccion__figura">
+                    <img src="assets/foto-perfil.png" alt="Foto de Alejandro Ramirez"
+                         title="Foto de Alejandro Ramirez" class="introduccion__imagen">
+                </figure>
+                <article class="introduccion__contenido">
+                    <h1 class="introduccion__titulo">Alejandro Ramirez</h1>
+                    <p class="introduccion__texto">Soy estudiante de Ingeniería de Software en la Universidad Católica Boliviana. Participo en programación competitiva, desarrollo aplicaciones web y contribuyo en proyectos de código abierto.</p>
+                    <div class="introduccion__redes">
+                        <a href="mailto:alejandro.ramirez.v@ucb.edu.bo" target="_blank" rel="noopener noreferrer" class="introduccion__link">
+                            <img src="assets/icon-mail.svg" alt="Icono del Mail" title="Link del Mail">
+                        </a>
+                        <a href="https://www.linkedin.com/in/alejandro-ramirez-vallejos/" target="_blank" rel="noopener noreferrer" class="introduccion__link">
+                            <img src="assets/icon-linkedin.svg" alt="Icono de LinkedIn" title="Link de LinkedIn">
+                        </a>
+                        <a href="https://github.com/alejandroramirezvallejos/" target="_blank" rel="noopener noreferrer" class="introduccion__link">
+                            <img src="assets/icon-github.svg" alt="Icono de Github" title="Link de Github">
+                        </a>
+                        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="introduccion__link">
+                            <img src="assets/icon-x.svg" alt="Icono de X" title="Link de X">
+                        </a>
+                    </div>
+                    <button class="boton boton--primario" onclick="location.href='#contacto'">Contactame</button>
+                </article>
+            </section>
         </main>
         
         <footer>
