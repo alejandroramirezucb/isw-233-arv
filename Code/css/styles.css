@@ -372,7 +372,8 @@ body {
     margin-top: 6px;
 }
 
-.contacto__datos-personales, .contacto__formulario {
+.contacto__datos-personales, 
+.contacto__formulario {
     justify-content: center;
 }
 
@@ -398,8 +399,9 @@ footer {
     align-items: center;
 }
 
-.educacion__titulo-principal {
-    margin-bottom: 24px;
+.educacion__titulo-principal,
+.educacion__titulo--principal {
+    margin-bottom: 0px;
     font-size: 1.5rem;
     text-align: center;
 }
@@ -415,21 +417,15 @@ footer {
     box-sizing: border-box;
 }
 
-.sobre-mi__titulo--principal {
-    margin-bottom: 24px;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
 .educacion__tarjeta {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 8px;
+    gap: 16px; 
     width: 100%;
     max-width: 600px;
-    margin: 0 auto 16px;
+    margin: 8px auto 16px; 
     padding: 20px 16px;
 }
 
@@ -439,6 +435,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0; 
 }
 
 .educacion__imagen {
@@ -461,6 +458,61 @@ footer {
 
 .educacion__descripcion {
     margin-top: 8px;
+}
+
+.hobbies {
+    width: 100%;
+    margin: 0 auto 48px; 
+    padding: 0 48px;
+    box-sizing: border-box;
+}
+
+.hobbies__titulo-principal {
+    text-align: center;
+    margin-bottom: 40px; 
+    font-size: 1.5rem; 
+}
+
+.hobbies__lista {
+    display: flex;
+    gap: 32px; 
+    justify-content: center;
+    align-items: flex-start;
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0; 
+    flex-wrap: wrap; 
+}
+
+.hobbies__item {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start;
+    width: 96px; 
+    min-width: 72px;
+}
+
+.hobbies__figura {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px; 
+}
+
+.hobbies__icono {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.hobbies__nombre {
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: center;
 }
 
 @media (max-width: 640px) {
@@ -498,7 +550,8 @@ footer {
         align-items: stretch;
     }
     
-    .contacto__datos-personales, .contacto__formulario {
+    .contacto__datos-personales, 
+    .contacto__formulario {
         width: 100%;
         justify-content: flex-start;
     }
@@ -506,5 +559,23 @@ footer {
     .educacion__tarjeta {
         width: 100%;
         padding: 14px 12px;
+    }
+    
+    .hobbies {
+        padding: 0 16px;
+    }
+    
+    .hobbies__lista {
+        gap: 16px;
+    }
+    
+    .hobbies__item {
+        width: 80px;
+        min-width: 64px;
+    }
+    
+    .hobbies__figura {
+        width: 48px;
+        height: 48px;
     }
 }
