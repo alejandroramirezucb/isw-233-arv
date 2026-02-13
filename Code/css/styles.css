@@ -376,6 +376,18 @@ body {
     justify-content: center;
 }
 
+footer {
+    text-align: center;       
+    padding: 30px 16px 30px; 
+    box-sizing: border-box;
+    margin-top: 40px;         
+}
+
+#footer__contenido {
+    margin: 0;               
+    color: var(--color-texto);
+}
+
 @media (max-width: 640px) {
     .proyectos {
         padding: 0 16px;
