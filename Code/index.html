@@ -33,7 +33,7 @@
                     <p class="introduccion__texto">Soy estudiante de Ingeniería de Software en la Universidad Católica Boliviana. Participo en programación competitiva, desarrollo aplicaciones web y contribuyo en proyectos de código abierto.</p>
                     <div class="introduccion__redes">
                         <a href="mailto:alejandro.ramirez.v@ucb.edu.bo" target="_blank" rel="noopener noreferrer" class="introduccion__link">
-                            <img src="assets/icon-mail.svg" alt="Icono del Mail" title="Link del Mail">
+                            <img src="assets/icon-email.svg" alt="Icono del Email" title="Link del Email">
                         </a>
                         <a href="https://www.linkedin.com/in/alejandro-ramirez-vallejos/" target="_blank" rel="noopener noreferrer" class="introduccion__link">
                             <img src="assets/icon-linkedin.svg" alt="Icono de LinkedIn" title="Link de LinkedIn">
@@ -142,9 +142,61 @@
                     </article>                    
                 </div>
             </section>
+            
+            <section id="contacto" class="contacto">
+                <h2 class="contacto__titulo">Contáctame</h2>
+
+                <div class="contacto__contenedor">
+                    <address class="contacto__datos-personales" aria-label="Información de contacto">
+                        <h3 class="contacto__subtitulo">Mi información</h3>
+
+                        <article class="contacto__informacion">
+                            <figure class="contacto__figura">
+                                <img src="assets/icon-contenedor-direccion.svg" alt="Icono de dirección"
+                                     title="Icono de dirección" class="contacto__icono">
+                            </figure>
+                            <p class="contacto__texto">Santa Cruz de la Sierra, Bolivia</p>
+                        </article>
+                        <article class="contacto__informacion">
+                            <figure class="contacto__figura">
+                                <img src="assets/icon-contenedor-telefono.svg" alt="Icono de teléfono"
+                                     title="Icono de teléfono" class="contacto__icono">
+                            </figure>
+                            <p class="contacto__texto">+1235 2355 98</p>
+                        </article>
+                        <article class="contacto__informacion">
+                            <figure class="contacto__figura">
+                                <img src="assets/icon-contenedor-email.svg" alt="Icono de Email"
+                                     title="Icono de Email" class="contacto__icono">
+                            </figure>
+                            <p class="contacto__texto">info@alejandroramirez.com</p>
+                        </article>
+                        <article class="contacto__informacion">
+                            <figure class="contacto__figura">
+                                <img src="assets/icon-contenedor-web.svg" alt="Icono de mi Web"
+                                     title="Icono de mi Web" class="contacto__icono">
+                            </figure>
+                            <p class="contacto__texto">www.alejandroramirez.com</p>
+                        </article>
+                    </address>
+
+                    <form class="contacto__formulario" aria-label="Formulario de contacto">
+                        <label for="contacto__mensaje" class="contacto__etiqueta">Mensaje</label>
+                        <textarea id="contacto__mensaje" name="mensaje" required placeholder="Mensaje..." class="contacto__campo-mensaje"></textarea>
+
+                        <label for="contacto__nombre" class="contacto__etiqueta">Nombre</label>
+                        <input type="text" id="contacto__nombre" name="nombre" required placeholder="Nombre" class="contacto__campo-texto">
+
+                        <label for="contacto__email" class="contacto__etiqueta">Correo</label>
+                        <input type="email" id="contacto__email" name="correo" required placeholder="Correo" class="contacto__campo-texto">
+
+                        <button type="submit" class="boton boton--primario contacto__boton">Enviar</button>
+                    </form>
+                </div>
+            </section>
         </main>
         
-        <footer>
-        </footer>
+        <footer> 
+        </footer> 
     </body>
 </html>
