@@ -388,6 +388,81 @@ footer {
     color: var(--color-texto);
 }
 
+.educacion {
+    width: 100%;
+    margin: 0 auto 48px;
+    padding: 0 48px;
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.educacion__titulo-principal {
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.educacion__contenedor,
+.educacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto 48px;
+    padding: 0 48px;
+    box-sizing: border-box;
+}
+
+.sobre-mi__titulo--principal {
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.educacion__tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 16px;
+    padding: 20px 16px;
+}
+
+.educacion__figura {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.educacion__imagen {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.educacion__carrera {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.educacion__institucion,
+.educacion__fecha {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.educacion__descripcion {
+    margin-top: 8px;
+}
+
 @media (max-width: 640px) {
     .proyectos {
         padding: 0 16px;
@@ -426,5 +501,10 @@ footer {
     .contacto__datos-personales, .contacto__formulario {
         width: 100%;
         justify-content: flex-start;
+    }
+    
+    .educacion__tarjeta {
+        width: 100%;
+        padding: 14px 12px;
     }
 }
