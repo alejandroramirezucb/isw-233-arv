@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func StartServer(puerto string) {
-	direccion := ":" + puerto
-	fmt.Print("Direccion del servidor: ", direccion, "\n")
+func IniciarServidor(puerto string) {
+	direccionEscucha := ":" + puerto
+	fmt.Println("Dirección del servidor:", direccionEscucha)
 }
