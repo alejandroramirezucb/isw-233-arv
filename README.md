@@ -19,7 +19,7 @@ Code/
 ## ¿Qué se hace?
 
 - **Introducción**: Tiene mi foto de perfil, una breve descripción de quién soy y enlaces a mis redes sociales.
-- **Sobre mí**: En esta sección está mi formación académica y mis hobbies (programar, diseño UX/UI, viajar, leer).
+- **Sobre mí**: En esta sección está mi formación académica, skills, experiencia y mis hobbies (programar, diseño UX/UI, viajar, leer).
 - **Proyectos**: Aqui muestro mis proyectos más importantes, como el sistema de inventario "UCB Hold", el "Simulador de Arquitectura x86" y la aplicación de transporte "Pasa App".
 - **Blog**: Aquí tengo los artículos de mi blog.
 - **Contacto**: En esta sección esta el formulario de contacto y mis datos de contacto.

@@ -1,253 +1,669 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Portafolio de Alejandro Ramirez">
-        <meta name="robots" content="index, follow">
-        
-        <title>Portafolio | Alejandro Ramirez</title>
-        <link rel="stylesheet" href="css/styles.css">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <header class="encabezado">
-            <nav aria-label="navegacion" class="navegacion">
-                <ul class="navegacion__lista">
-                    <li class="navegacion__elemento"><a href="#sobre-mi" class="navegacion__link">Sobre mi</a></li>
-                    <li class="navegacion__elemento"><a href="#proyectos" class="navegacion__link">Proyectos</a></li>
-                    <li class="navegacion__elemento"><a href="#blog" class="navegacion__link">Blog</a></li>
-                    <li class="navegacion__elemento"><a href="#contacto" class="navegacion__link">Contacto</a></li>
-                </ul>
-            </nav>
-        </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portafolio de Alejandro Ramirez" />
+    <meta
+      name="robots"
+      content="index, follow" />
 
-        <main>
-            <section id="introduccion" class="introduccion">
-                <figure class="introduccion__figura">
-                    <img src="assets/foto-perfil.png" alt="Foto de Alejandro Ramirez"
-                         title="Foto de Alejandro Ramirez" class="introduccion__imagen">
-                </figure>
-                <article class="introduccion__contenido">
-                    <h1 class="introduccion__titulo">Alejandro Ramirez</h1>
-                    <p class="introduccion__texto">Soy estudiante de Ingeniería de Software en la Universidad Católica Boliviana. Participo en programación competitiva, 
-                        desarrollo aplicaciones web y contribuyo en proyectos de código abierto.</p>
-                    <div class="introduccion__redes">
-                        <a href="mailto:alejandro.ramirez.v@ucb.edu.bo" target="_blank" rel="noopener noreferrer" class="introduccion__link">
-                            <img src="assets/icon-email.svg" alt="Icono del Email" title="Link del Email">
-                        </a>
-                        <a href="https://www.linkedin.com/in/alejandro-ramirez-vallejos/" target="_blank" rel="noopener noreferrer" class="introduccion__link">
-                            <img src="assets/icon-linkedin.svg" alt="Icono de LinkedIn" title="Link de LinkedIn">
-                        </a>
-                        <a href="https://github.com/alejandroramirezvallejos/" target="_blank" rel="noopener noreferrer" class="introduccion__link">
-                            <img src="assets/icon-github.svg" alt="Icono de Github" title="Link de Github">
-                        </a>
-                        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="introduccion__link">
-                            <img src="assets/icon-x.svg" alt="Icono de X" title="Link de X">
-                        </a>
-                    </div>
-                    <button class="boton boton--primario" onclick="location.href='#contacto'">Contactame</button>
-                </article>
-            </section>
-            
-            <section id="sobre-mi" class="sobre-mi">
-                <section class="educacion__contenedor">
-                    <h2 class="educacion__titulo--principal">Educación</h2>
-                    <article class="educacion__tarjeta">
-                        <figure class="educacion__figura">
-                            <img src="assets/icon-education.svg" alt="Icono educación" title="Educación" class="educacion__imagen">
-                        </figure>
-                        <h3 class="educacion__carrera">Ingeniería de Software</h3>
-                        <h4 class="educacion__institucion">Universidad Católica Boliviana</h4>
-                        <p class="educacion__fecha">
-                            <time datetime="2024">2024</time> - Presente
-                        </p>
-                        <p class="educacion__descripcion">Actualmente curso el quinto semestre, habiendo avanzando estructuras de datos, análisis de algoritmos, 
-                            gestión de bases de datos y desarrollo full-stack.</p>
-                    </article>
-                </section>
-  
-                <section id="hobbies" class="hobbies" aria-labelledby="hobbies-titulo">
-                    <h2 id="hobbies-titulo" class="hobbies__titulo-principal">Hobbies</h2>
-                    <ul class="hobbies__lista" role="list">
-                        <li class="hobbies__item">
-                            <figure class="hobbies__figura">
-                                <img src="assets/icon-programar.svg" alt="Icono Programar" title="Programar" class="hobbies__icono">
-                            </figure>
-                            <h3 class="hobbies__nombre">Programar</h3>
-                        </li>
-                        <li class="hobbies__item">
-                            <figure class="hobbies__figura">
-                                <img src="assets/icon-diseñar.svg" alt="Icono UX/UI" title="UX/UI" class="hobbies__icono">
-                            </figure>
-                            <h3 class="hobbies__nombre">UX/UI</h3>
-                        </li>
-                        <li class="hobbies__item">
-                            <figure class="hobbies__figura">
-                                <img src="assets/icon-viajar.svg" alt="Icono Viajar" title="Viajar" class="hobbies__icono">
-                            </figure>
-                            <h3 class="hobbies__nombre">Viajar</h3>
-                        </li>
-                        <li class="hobbies__item">
-                            <figure class="hobbies__figura">
-                                <img src="assets/icon-leer.svg" alt="Icono Leer" title="Leer" class="hobbies__icono">
-                            </figure>
-                            <h3 class="hobbies__nombre">Leer</h3>
-                        </li>
-                    </ul>
-                </section>
-                
-            </section>
-            
-            <section id="proyectos" class="proyectos">
-                <h2 class="proyectos__titulo-principal">Proyectos</h2>
-                
-                <div class="proyectos__contenedor">
-                    <article class="proyectos__tarjeta">
-                        <figure class="proyectos__figura">
-                            <img src="assets/proyecto-ucb-hold.png" alt="UCB Hold" title="UCB Hold" class="proyectos__imagen">
-                        </figure>
-                        <div class="proyectos__cuerpo">
-                            <p class="proyectos__fecha">
-                                <time datetime="2025">2025</time> - Presente
-                            </p>
-                            <h3 class="proyectos__titulo">UCB Hold</h3>
-                            <p class="proyectos__descripcion">Web de gestión de inventario y préstamos para los laboratorios de
-                                Mecatrónica (UCB). Sustituye los registros manuales por una plataforma que permite gestionar
-                                eficientemente y sin errores de papel.</p>
-                        </div>
-                    </article>
+    <title>Portafolio | Alejandro Ramirez</title>
+    <link
+      rel="stylesheet"
+      href="css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="icon"
+      href="assets/icon-education.svg"
+      type="image/svg" />
+  </head>
+  <body>
+    <header class="encabezado">
+      <nav
+        aria-label="navegacion"
+        class="navegacion">
+        <ul class="navegacion__lista">
+          <li class="navegacion__elemento">
+            <a
+              href="#sobre-mi"
+              class="navegacion__link"
+              >Sobre mi</a
+            >
+          </li>
+          <li class="navegacion__elemento">
+            <a
+              href="#proyectos"
+              class="navegacion__link"
+              >Proyectos</a
+            >
+          </li>
+          <li class="navegacion__elemento">
+            <a
+              href="#blog"
+              class="navegacion__link"
+              >Blog</a
+            >
+          </li>
+          <li class="navegacion__elemento">
+            <a
+              href="#contacto"
+              class="navegacion__link"
+              >Contacto</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-                    <article class="proyectos__tarjeta">
-                        <figure class="proyectos__figura">
-                            <img src="assets/proyecto-simulador-arquitectura-x86.png" alt="Simulador de Arquitectura x86" title="Simulador de Arquitectura x86"
-                                 class="proyectos__imagen">
-                        </figure>
-                        <div class="proyectos__cuerpo">
-                            <p class="proyectos__fecha">
-                                <time datetime="2025">2025</time>
-                            </p>
-                            <h3 class="proyectos__titulo">Simulador de Arquitectura x86</h3>
-                            <p class="proyectos__descripcion">Simulador de un procesador x86. Permite visualizar la ejecución de
-                                instrucciones, el manejo de registros y el flujo de memoria, facilitando el aprendizaje práctico
-                                de la arquitectura de computadores.</p>
-                        </div>
-                    </article>
+    <main>
+      <section
+        id="introduccion"
+        class="introduccion">
+        <figure class="introduccion__figura">
+          <img
+            src="assets/foto-perfil.png"
+            alt="Foto de Alejandro Ramirez"
+            title="Foto de Alejandro Ramirez"
+            class="introduccion__imagen" />
+        </figure>
+        <article class="introduccion__contenido">
+          <h1 class="introduccion__titulo">Alejandro Ramirez</h1>
+          <p class="introduccion__texto">
+            Soy estudiante de Ingeniería de Software en la Universidad Católica
+            Boliviana. Participo en programación competitiva, desarrollo
+            aplicaciones web y contribuyo en proyectos de código abierto.
+          </p>
+          <div class="introduccion__redes">
+            <a
+              href="mailto:alejandro.ramirez.v@ucb.edu.bo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="introduccion__link">
+              <img
+                src="assets/icon-email.svg"
+                alt="Icono del Email"
+                title="Link del Email" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/alejandro-ramirez-vallejos/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="introduccion__link">
+              <img
+                src="assets/icon-linkedin.svg"
+                alt="Icono de LinkedIn"
+                title="Link de LinkedIn" />
+            </a>
+            <a
+              href="https://github.com/alejandroramirezvallejos/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="introduccion__link">
+              <img
+                src="assets/icon-github.svg"
+                alt="Icono de Github"
+                title="Link de Github" />
+            </a>
+            <a
+              href="https://x.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="introduccion__link">
+              <img
+                src="assets/icon-x.svg"
+                alt="Icono de X"
+                title="Link de X" />
+            </a>
+          </div>
+          <button
+            class="boton boton--primario"
+            onclick="location.href = '#contacto'">
+            Contactame
+          </button>
+        </article>
+      </section>
 
-                    <article class="proyectos__tarjeta">
-                        <figure class="proyectos__figura">
-                            <img src="assets/proyecto-pasa.png" alt="Pasa App" title="Pasa App"
-                                 class="proyectos__imagen">
-                        </figure>
-                        <div class="proyectos__cuerpo">
-                            <p class="proyectos__fecha">
-                                <time datetime="2024">2024</time> - <time datetime="2025">2025</time>
-                            </p>
-                            <h3 class="proyectos__titulo">Pasa App</h3>
-                            <p class="proyectos__descripcion">Aplicación diseñada para la administración y reserva de asientos en
-                                buses. Soluciona la logística de transporte mediante una interfaz que centraliza la gestión de pasajes
-                                y rutas.</p>
-                        </div>
-                    </article>
-                </div>
-            </section>
+      <section
+        id="sobre-mi"
+        class="sobre-mi">
+        <section class="educacion__contenedor">
+          <h2 class="educacion__titulo--principal">Educación</h2>
+          <article class="educacion__tarjeta">
+            <figure class="educacion__figura">
+              <img
+                src="assets/icon-education.svg"
+                alt="Icono educación"
+                title="Educación"
+                class="educacion__imagen" />
+            </figure>
+            <h3 class="educacion__carrera">Ingeniería de Software</h3>
+            <h4 class="educacion__institucion">
+              Universidad Católica Boliviana
+            </h4>
+            <p class="educacion__fecha">
+              <time datetime="2024">2024</time> - Presente
+            </p>
+            <p class="educacion__descripcion">
+              Actualmente curso el quinto semestre, habiendo avanzando
+              estructuras de datos, análisis de algoritmos, gestión de bases de
+              datos y desarrollo full-stack.
+            </p>
+          </article>
+        </section>
+        <section class="experiencia__contenedor">
+          <h2 class="experiencia__titulo--principal">Experiencia</h2>
+          <article class="experiencia__tarjeta">
+            <figure class="experiencia__figura">
+              <img
+                src="assets/icon-experiencia.svg"
+                alt="Icono experiencia"
+                title="Experiencia"
+                class="experiencia__imagen" />
+            </figure>
+            <h3 class="experiencia__puesto">
+              Ayudantía de Introducción a la Programación
+            </h3>
+            <h4 class="experiencia__institucion">
+              Universidad Católica Boliviana
+            </h4>
+            <p class="experiencia__fecha">
+              <time datetime="2025">2025</time>
+            </p>
+            <p class="experiencia__descripcion">
+              Guié a estudiantes en ejercicios prácticos y exámenes simulados de
+              Introducción a la Programación, reforzando fundamentos y
+              fomentando el pensamiento analítico para la resolución de
+              problemas complejos.
+            </p>
+          </article>
+        </section>
+        <section
+          id="hobbies"
+          class="hobbies"
+          aria-labelledby="hobbies-titulo">
+          <h2
+            id="hobbies-titulo"
+            class="hobbies__titulo-principal">
+            Hobbies
+          </h2>
+          <ul
+            class="hobbies__lista"
+            role="list">
+            <li class="hobbies__item">
+              <figure class="hobbies__figura">
+                <img
+                  src="assets/icon-programar.svg"
+                  alt="Icono Programar"
+                  title="Programar"
+                  class="hobbies__icono" />
+              </figure>
+              <h3 class="hobbies__nombre">Programar</h3>
+            </li>
+            <li class="hobbies__item">
+              <figure class="hobbies__figura">
+                <img
+                  src="assets/icon-diseñar.svg"
+                  alt="Icono UX/UI"
+                  title="UX/UI"
+                  class="hobbies__icono" />
+              </figure>
+              <h3 class="hobbies__nombre">UX/UI</h3>
+            </li>
+            <li class="hobbies__item">
+              <figure class="hobbies__figura">
+                <img
+                  src="assets/icon-viajar.svg"
+                  alt="Icono Viajar"
+                  title="Viajar"
+                  class="hobbies__icono" />
+              </figure>
+              <h3 class="hobbies__nombre">Viajar</h3>
+            </li>
+            <li class="hobbies__item">
+              <figure class="hobbies__figura">
+                <img
+                  src="assets/icon-leer.svg"
+                  alt="Icono Leer"
+                  title="Leer"
+                  class="hobbies__icono" />
+              </figure>
+              <h3 class="hobbies__nombre">Leer</h3>
+            </li>
+          </ul>
+        </section>
+        <section
+          id="skills"
+          class="skills"
+          aria-labelledby="skills-titulo">
+          <h2
+            id="skills-titulo"
+            class="skills__titulo-principal">
+            Skills
+          </h2>
 
-            <section id="blog" class="blog">
-                <h2 class="blog__titulo-principal">Blog</h2>
+          <div class="skills__grupo">
+            <h3 class="skills__subtitulo">Lenguajes de Programación</h3>
+            <ul
+              class="skills__lista"
+              role="list">
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=c"
+                  alt="C"
+                  class="skills__icono"
+                  title="C" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=cpp"
+                  alt="C++"
+                  class="skills__icono"
+                  title="C++" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=cs"
+                  alt="C#"
+                  class="skills__icono"
+                  title="C#" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=js"
+                  alt="JavaScript"
+                  class="skills__icono"
+                  title="JavaScript" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=ts"
+                  alt="TypeScript"
+                  class="skills__icono"
+                  title="TypeScript" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=java"
+                  alt="Java"
+                  class="skills__icono"
+                  title="Java" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=r"
+                  alt="R"
+                  class="skills__icono"
+                  title="R" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=py"
+                  alt="Python"
+                  class="skills__icono"
+                  title="Python" />
+              </li>
+            </ul>
+          </div>
 
-                <div class="blog__contenedor">
-                    <article class="blog__tarjeta">
-                        <div class="blog__cuerpo">
-                            <p class="blog__fecha">
-                                <time datetime="2026">2026</time>
-                            </p>
-                            <h3 class="blog__titulo">DeepSeek-V3.1 en una Quipus de 8GB: Guía práctica para freír huevos</h3>
-                            <p class="blog__descripcion">Este artículo analizará el experimento termodinámico de intentar cargar un modelo 
-                                de 670B en 8GB de RAM, un proceso que transforma instantáneamente el chasis de plástico en una plancha de 
-                                cocina de grado profesional.</p>
-                        </div>
-                    </article>
-                    <article class="blog__tarjeta">
-                        <div class="blog__cuerpo">
-                            <p class="blog__fecha">
-                                <time datetime="2025">2025</time>
-                            </p>
-                            <h3 class="blog__titulo">Análisis Integral de la Inteligencia Artificial en Salud</h3>
-                            <p class="blog__descripcion">Esta investigación tiene como propósito fundamental examinar la implementación de
-                                la inteligencia artificial (IA) en el ámbito sanitario, tomando como eje el principio de confiabilidad
-                                (reliability) establecido por la norma ISO 24028.</p>
-                        </div>
-                    </article>
-                    <article class="blog__tarjeta">
-                        <div class="blog__cuerpo">
-                            <p class="blog__fecha">
-                                <time datetime="2025">2025</time>
-                            </p>
-                            <h3 class="blog__titulo">Estándar DDR5: ¿Memoria Volátil o Nueva Reserva de Valor Macroeconómica?</h3>
-                            <p class="blog__descripcion">Ante la volatilidad de los mercados, este estudio propone tratar los módulos RAM
-                                no como hardware, sino como el nuevo "patrón oro" digital. Analizamos cómo la RAM ha superado a los bonos del 
-                                Tesoro en estabilidad financiera, permitiendo a los ingenieros considerar sus bancos de memoria como activos 
-                                de refugio.</p>
-                        </div>
-                    </article>                    
-                </div>
-            </section>
-            
-            <section id="contacto" class="contacto">
-                <h2 class="contacto__titulo">Contáctame</h2>
+          <div class="skills__grupo">
+            <h3 class="skills__subtitulo">Desarrollo Frontend</h3>
+            <ul
+              class="skills__lista"
+              role="list">
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=html"
+                  alt="HTML5"
+                  class="skills__icono"
+                  title="HTML5" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=css"
+                  alt="CSS3"
+                  class="skills__icono"
+                  title="CSS3" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=js"
+                  alt="JavaScript"
+                  class="skills__icono"
+                  title="JavaScript" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=ts"
+                  alt="TypeScript"
+                  class="skills__icono"
+                  title="TypeScript" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=angular"
+                  alt="Angular"
+                  class="skills__icono"
+                  title="Angular" />
+              </li>
+            </ul>
+          </div>
 
-                <div class="contacto__contenedor">
-                    <address class="contacto__datos-personales" aria-label="Información de contacto">
-                        <h3 class="contacto__subtitulo">Mi información</h3>
+          <div class="skills__grupo">
+            <h3 class="skills__subtitulo">Desarrollo Backend</h3>
+            <ul
+              class="skills__lista"
+              role="list">
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=cs"
+                  alt="C#"
+                  class="skills__icono"
+                  title="C#" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=dotnet"
+                  alt=".NET"
+                  class="skills__icono"
+                  title=".NET" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=mongodb"
+                  alt="MongoDB"
+                  class="skills__icono"
+                  title="MongoDB" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=postgres"
+                  alt="PostgreSQL"
+                  class="skills__icono"
+                  title="PostgreSQL" />
+              </li>
+            </ul>
+          </div>
 
-                        <article class="contacto__informacion">
-                            <figure class="contacto__figura">
-                                <img src="assets/icon-contenedor-direccion.svg" alt="Icono de dirección"
-                                     title="Icono de dirección" class="contacto__icono">
-                            </figure>
-                            <p class="contacto__texto">Santa Cruz de la Sierra, Bolivia</p>
-                        </article>
-                        <article class="contacto__informacion">
-                            <figure class="contacto__figura">
-                                <img src="assets/icon-contenedor-telefono.svg" alt="Icono de teléfono"
-                                     title="Icono de teléfono" class="contacto__icono">
-                            </figure>
-                            <p class="contacto__texto">+1235 2355 98</p>
-                        </article>
-                        <article class="contacto__informacion">
-                            <figure class="contacto__figura">
-                                <img src="assets/icon-contenedor-email.svg" alt="Icono de Email"
-                                     title="Icono de Email" class="contacto__icono">
-                            </figure>
-                            <p class="contacto__texto">info@alejandroramirez.com</p>
-                        </article>
-                        <article class="contacto__informacion">
-                            <figure class="contacto__figura">
-                                <img src="assets/icon-contenedor-web.svg" alt="Icono de mi Web"
-                                     title="Icono de mi Web" class="contacto__icono">
-                            </figure>
-                            <p class="contacto__texto">www.alejandroramirez.com</p>
-                        </article>
-                    </address>
+          <div class="skills__grupo">
+            <h3 class="skills__subtitulo">Herramientas</h3>
+            <ul
+              class="skills__lista"
+              role="list">
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=git"
+                  alt="Git"
+                  class="skills__icono"
+                  title="Git" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=figma"
+                  alt="Figma"
+                  class="skills__icono"
+                  title="Figma" />
+              </li>
+              <li class="skills__item">
+                <img
+                  src="https://skillicons.dev/icons?i=latex"
+                  alt="LaTeX"
+                  class="skills__icono"
+                  title="LaTeX" />
+              </li>
+            </ul>
+          </div>
+        </section>
+      </section>
 
-                    <form class="contacto__formulario" aria-label="Formulario de contacto">
-                        <label for="contacto__mensaje" class="contacto__etiqueta">Mensaje</label>
-                        <textarea id="contacto__mensaje" name="mensaje" required placeholder="Mensaje..." class="contacto__campo-mensaje"></textarea>
+      <section
+        id="proyectos"
+        class="proyectos">
+        <h2 class="proyectos__titulo-principal">Proyectos</h2>
 
-                        <label for="contacto__nombre" class="contacto__etiqueta">Nombre</label>
-                        <input type="text" id="contacto__nombre" name="nombre" required placeholder="Nombre" class="contacto__campo-texto">
+        <div class="proyectos__contenedor">
+          <article class="proyectos__tarjeta">
+            <figure class="proyectos__figura">
+              <img
+                src="assets/proyecto-ucb-hold.png"
+                alt="UCB Hold"
+                title="UCB Hold"
+                class="proyectos__imagen" />
+            </figure>
+            <div class="proyectos__cuerpo">
+              <p class="proyectos__fecha">
+                <time datetime="2025">2025</time> - Presente
+              </p>
+              <h3 class="proyectos__titulo">UCB Hold</h3>
+              <p class="proyectos__descripcion">
+                Web de gestión de inventario y préstamos para los laboratorios
+                de Mecatrónica (UCB). Sustituye los registros manuales por una
+                plataforma que permite gestionar eficientemente y sin errores de
+                papel.
+              </p>
+            </div>
+          </article>
 
-                        <label for="contacto__email" class="contacto__etiqueta">Correo</label>
-                        <input type="email" id="contacto__email" name="correo" required placeholder="Correo" class="contacto__campo-texto">
+          <article class="proyectos__tarjeta">
+            <figure class="proyectos__figura">
+              <img
+                src="assets/proyecto-simulador-arquitectura-x86.png"
+                alt="Simulador de Arquitectura x86"
+                title="Simulador de Arquitectura x86"
+                class="proyectos__imagen" />
+            </figure>
+            <div class="proyectos__cuerpo">
+              <p class="proyectos__fecha">
+                <time datetime="2025">2025</time>
+              </p>
+              <h3 class="proyectos__titulo">Simulador de Arquitectura x86</h3>
+              <p class="proyectos__descripcion">
+                Simulador de un procesador x86. Permite visualizar la ejecución
+                de instrucciones, el manejo de registros y el flujo de memoria,
+                facilitando el aprendizaje práctico de la arquitectura de
+                computadores.
+              </p>
+            </div>
+          </article>
 
-                        <button type="submit" class="boton boton--primario contacto__boton">Enviar</button>
-                    </form>
-                </div>
-            </section>
-        </main>
-        
-        <footer>
-            <p id="footer__contenido">&copy; 2026 Alejandro Ramirez. Todos los derechos reservados.</p>
-        </footer> 
-    </body>
+          <article class="proyectos__tarjeta">
+            <figure class="proyectos__figura">
+              <img
+                src="assets/proyecto-pasa.png"
+                alt="Pasa App"
+                title="Pasa App"
+                class="proyectos__imagen" />
+            </figure>
+            <div class="proyectos__cuerpo">
+              <p class="proyectos__fecha">
+                <time datetime="2024">2024</time> -
+                <time datetime="2025">2025</time>
+              </p>
+              <h3 class="proyectos__titulo">Pasa App</h3>
+              <p class="proyectos__descripcion">
+                Aplicación diseñada para la administración y reserva de asientos
+                en buses. Soluciona la logística de transporte mediante una
+                interfaz que centraliza la gestión de pasajes y rutas.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="blog"
+        class="blog">
+        <h2 class="blog__titulo-principal">Blog</h2>
+
+        <div class="blog__contenedor">
+          <article class="blog__tarjeta">
+            <div class="blog__cuerpo">
+              <p class="blog__fecha">
+                <time datetime="2026">2026</time>
+              </p>
+              <h3 class="blog__titulo">
+                DeepSeek-V3.1 en una Quipus de 8GB: Guía práctica para freír
+                huevos
+              </h3>
+              <p class="blog__descripcion">
+                Este artículo analizará el experimento termodinámico de intentar
+                cargar un modelo de 670B en 8GB de RAM, un proceso que
+                transforma instantáneamente el chasis de plástico en una plancha
+                de cocina de grado profesional.
+              </p>
+            </div>
+          </article>
+          <article class="blog__tarjeta">
+            <div class="blog__cuerpo">
+              <p class="blog__fecha">
+                <time datetime="2025">2025</time>
+              </p>
+              <h3 class="blog__titulo">
+                Análisis Integral de la Inteligencia Artificial en Salud
+              </h3>
+              <p class="blog__descripcion">
+                Esta investigación tiene como propósito fundamental examinar la
+                implementación de la inteligencia artificial (IA) en el ámbito
+                sanitario, tomando como eje el principio de confiabilidad
+                (reliability) establecido por la norma ISO 24028.
+              </p>
+            </div>
+          </article>
+          <article class="blog__tarjeta">
+            <div class="blog__cuerpo">
+              <p class="blog__fecha">
+                <time datetime="2025">2025</time>
+              </p>
+              <h3 class="blog__titulo">
+                Estándar DDR5: ¿Memoria Volátil o Nueva Reserva de Valor
+                Macroeconómica?
+              </h3>
+              <p class="blog__descripcion">
+                Ante la volatilidad de los mercados, este estudio propone tratar
+                los módulos RAM no como hardware, sino como el nuevo "patrón
+                oro" digital. Analizamos cómo la RAM ha superado a los bonos del
+                Tesoro en estabilidad financiera, permitiendo a los ingenieros
+                considerar sus bancos de memoria como activos de refugio.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="contacto"
+        class="contacto">
+        <h2 class="contacto__titulo">Contáctame</h2>
+
+        <div class="contacto__contenedor">
+          <address
+            class="contacto__datos-personales"
+            aria-label="Información de contacto">
+            <h3 class="contacto__subtitulo">Mi información</h3>
+
+            <article class="contacto__informacion">
+              <figure class="contacto__figura">
+                <img
+                  src="assets/icon-contenedor-direccion.svg"
+                  alt="Icono de dirección"
+                  title="Icono de dirección"
+                  class="contacto__icono" />
+              </figure>
+              <p class="contacto__texto">Santa Cruz de la Sierra, Bolivia</p>
+            </article>
+            <article class="contacto__informacion">
+              <figure class="contacto__figura">
+                <img
+                  src="assets/icon-contenedor-telefono.svg"
+                  alt="Icono de teléfono"
+                  title="Icono de teléfono"
+                  class="contacto__icono" />
+              </figure>
+              <p class="contacto__texto">+1235 2355 98</p>
+            </article>
+            <article class="contacto__informacion">
+              <figure class="contacto__figura">
+                <img
+                  src="assets/icon-contenedor-email.svg"
+                  alt="Icono de Email"
+                  title="Icono de Email"
+                  class="contacto__icono" />
+              </figure>
+              <p class="contacto__texto">info@alejandroramirez.com</p>
+            </article>
+            <article class="contacto__informacion">
+              <figure class="contacto__figura">
+                <img
+                  src="assets/icon-contenedor-web.svg"
+                  alt="Icono de mi Web"
+                  title="Icono de mi Web"
+                  class="contacto__icono" />
+              </figure>
+              <p class="contacto__texto">www.alejandroramirez.com</p>
+            </article>
+          </address>
+
+          <form
+            class="contacto__formulario"
+            aria-label="Formulario de contacto">
+            <label
+              for="contacto__mensaje"
+              class="contacto__etiqueta"
+              >Mensaje</label
+            >
+            <textarea
+              id="contacto__mensaje"
+              name="mensaje"
+              required
+              placeholder="Mensaje..."
+              class="contacto__campo-mensaje"></textarea>
+
+            <label
+              for="contacto__nombre"
+              class="contacto__etiqueta"
+              >Nombre</label
+            >
+            <input
+              type="text"
+              id="contacto__nombre"
+              name="nombre"
+              required
+              placeholder="Nombre"
+              class="contacto__campo-texto" />
+
+            <label
+              for="contacto__email"
+              class="contacto__etiqueta"
+              >Correo</label
+            >
+            <input
+              type="email"
+              id="contacto__email"
+              name="correo"
+              required
+              placeholder="Correo"
+              class="contacto__campo-texto" />
+
+            <button
+              type="submit"
+              class="boton boton--primario contacto__boton">
+              Enviar
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p id="footer__contenido">
+        &copy; 2026 Alejandro Ramirez. Todos los derechos reservados.
+      </p>
+    </footer>
+  </body>
 </html>
