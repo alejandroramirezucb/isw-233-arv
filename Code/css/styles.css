@@ -533,8 +533,8 @@ footer {
 
 .skills {
   width: 100%;
-  margin: 0 auto 38px;
-  padding: 0 48px 52px;
+  margin: 0 auto 20px;
+  padding: 0 48px 20px;
   box-sizing: border-box;
 }
 
@@ -582,71 +582,156 @@ footer {
   display: block;
 }
 
-@media (max-width: 640px) {
-  .proyectos {
-    padding: 0 16px;
+@media (max-width: 1200px) {
+  .introduccion__imagen {
+    max-width: 260px;
   }
-
-  .proyectos__tarjeta {
-    flex: 0 0 100%;
-    min-width: 100%;
-    min-height: auto;
-  }
-
   .proyectos__figura {
-    height: 180px;
+    height: 220px;
   }
+  .proyectos__tarjeta {
+    min-width: 300px;
+    flex: 0 0 300px;
+  }
+  .blog__tarjeta {
+    min-width: 300px;
+    flex: 0 0 300px;
+  }
+}
 
-  .blog {
+@media (max-width: 900px) {
+  .introduccion {
+    gap: 16px;
+    padding: 0 20px;
+  }
+  .introduccion__imagen {
+    max-width: 220px;
+  }
+  .proyectos__contenedor {
+    gap: 16px;
+  }
+  .proyectos__tarjeta,
+  .blog__tarjeta {
+    flex: 0 0 calc(50% - 20px);
+    min-width: calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+  .skills__icono {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .introduccion {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     padding: 0 16px;
   }
-
+  .introduccion__contenido {
+    align-items: center;
+    text-align: center;
+  }
+  .introduccion__imagen {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  .introduccion__redes {
+    justify-content: center;
+    width: 100%;
+  }
+  .boton {
+    align-self: center;
+  }
+  .navegacion {
+    padding: 12px 0;
+  }
+  .proyectos__contenedor,
+  .blog__contenedor {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .proyectos__tarjeta,
   .blog__tarjeta {
     flex: 0 0 100%;
     min-width: 100%;
-    min-height: auto;
   }
-
-  .contacto {
-    padding: 0 16px;
+  .proyectos__figura {
+    height: 200px;
   }
-
   .contacto__contenedor {
     flex-direction: column;
     gap: 16px;
     align-items: stretch;
   }
+}
 
-  .contacto__datos-personales,
-  .contacto__formulario {
+@media (max-width: 480px) {
+  .introduccion {
+    align-items: center;
+    text-align: center;
+  }
+  .introduccion__imagen {
+    max-width: 160px;
+  }
+  .introduccion__titulo {
+    font-size: 1.3rem;
+  }
+  .introduccion__redes {
+    justify-content: center;
     width: 100%;
-    justify-content: flex-start;
   }
-
-  .educacion__tarjeta {
-    width: 100%;
-    padding: 14px 12px;
+  .boton {
+    align-self: center;
   }
-
-  .hobbies {
-    padding: 0 16px 32px;
+  .proyectos__figura {
+    height: 160px;
   }
-
-  .skills {
-    padding: 0 16px 32px;
+  .proyectos__tarjeta {
+    min-height: auto;
+    padding: 12px;
   }
-
-  .hobbies__lista {
-    gap: 16px;
-  }
-
-  .hobbies__item {
-    width: 80px;
-    min-width: 64px;
-  }
-
   .hobbies__figura {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
+  }
+  .skills__icono {
+    width: 40px;
+    height: 40px;
+  }
+  .skills {
+    padding: 0 16px 20px;
+  }
+  .contacto__campo-mensaje {
+    min-height: 120px;
+  }
+  body {
+    padding-top: 68px;
+  }
+}
+
+@media (max-width: 360px) {
+  .introduccion {
+    align-items: center;
+    text-align: center;
+  }
+  .introduccion__imagen {
+    max-width: 140px;
+  }
+  .introduccion__titulo {
+    font-size: 1.15rem;
+  }
+  .navegacion__lista {
+    gap: 8px;
+  }
+  .introduccion__redes {
+    justify-content: center;
+    width: 100%;
+  }
+  .boton {
+    padding: 8px 14px;
+    font-size: 14px;
+    align-self: center;
   }
 }
