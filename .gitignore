@@ -1,0 +1,13 @@
+Code/
+*.exe
+*.exe~
+*.test
+/bin/
+/build/
+/out/
+/vendor/
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
