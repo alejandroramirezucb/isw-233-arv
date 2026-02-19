@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/gen2brain/malgo"
 	"net"
+
+	"github.com/gen2brain/malgo"
 )
 
 func IniciarServidor(puerto string) {
@@ -35,8 +36,8 @@ func IniciarServidor(puerto string) {
 
 	defer configuracionAudio.Uninit()
 
-	reproductorCfg := ConfigurarDispositivoReproduccion()
-	dispositivo, err := malgo.InitDevice(configuracionAudio.Context, reproductorCfg, malgo.DeviceCallbacks{Data: ReproducirAudio})
+	configuracionReproductor := ConfigurarDispositivoReproduccion()
+	dispositivo, err := malgo.InitDevice(configuracionAudio.Context, configuracionReproductor, malgo.DeviceCallbacks{Data: ReproducirAudio})
 
 	if err != nil {
 		fmt.Println("ERROR al inicializar dispositivo de reproducción:", err)
