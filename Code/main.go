@@ -7,7 +7,7 @@ import (
 
 func main() {
 	if len(os.Args) < 3 {
-		fmt.Print("ERROR: usa go run main.go [servidor|cliente|detener] [puerto]\n")
+		fmt.Print("ERROR: usa go run main.go [server|client|stop] [puerto]\n")
 		return
 	}
 
@@ -15,11 +15,11 @@ func main() {
 	puerto := os.Args[2]
 
 	switch modo {
-	case "servidor":
-		IniciarServidor(puerto)
-	case "cliente":
-		IniciarCliente(puerto)
-	case "detener":
+	case "server":
+		StartServer(puerto)
+	case "client":
+		StartClient(puerto)
+	case "stop":
 		var ip string
 		if len(os.Args) >= 4 {
 			ip = os.Args[3]
@@ -30,6 +30,6 @@ func main() {
 			fmt.Println("ERROR:", err)
 		}
 	default:
-		fmt.Print("ERROR: usa go run main.go [servidor|cliente|detener] [puerto]\n")
+		fmt.Print("ERROR: usa go run main.go [server|client|stop] [puerto]\n")
 	}
 }

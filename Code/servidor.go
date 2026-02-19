@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/gen2brain/malgo"
 	"net"
+
+	"github.com/gen2brain/malgo"
 )
 
-func IniciarServidor(puerto string) {
+func StartServer(puerto string) {
 	direccionEscucha := ":" + puerto
 	fmt.Println("Dirección del servidor:", direccionEscucha)
 
@@ -54,7 +55,7 @@ func IniciarServidor(puerto string) {
 
 func escucharConexiones(conexion *net.UDPConn) {
 	buffer := make([]byte, 65000)
-	clientes := make(map[string]*net.UDPAddr)
+	capacidadFrame := 1
 
 	for {
 		n, direccionRemota, err := conexion.ReadFromUDP(buffer)
@@ -66,26 +67,13 @@ func escucharConexiones(conexion *net.UDPConn) {
 
 		mensaje := string(buffer[:n])
 
-		clientes[direccionRemota.String()] = direccionRemota
-
 		if mensaje == "CMD:STOP" {
 			fmt.Println("Comando remoto 'CMD:STOP' recibido — deteniendo servidor")
-
-			for llave, direccion := range clientes {
-				if direccion == nil {
-					continue
-				}
-				if _, err := conexion.WriteToUDP([]byte("CMD:STOP"), direccion); err != nil {
-					fmt.Println("ERROR al notificar a cliente", llave, ":", err)
-				} else {
-					fmt.Println("Notificado 'CMD:STOP' a", direccion.String())
-				}
-			}
-
 			return
 		}
 
 		fmt.Println("Recibidos", n, "bytes de", direccionRemota.String())
-		AgregarDatosParaReproduccion(buffer[:n])
+		framesAReproducir := n / capacidadFrame
+		AgregarDatosParaReproduccion(buffer[:framesAReproducir])
 	}
 }

@@ -27,29 +27,32 @@ func EnviarBuffer(conexion *net.UDPConn, direccion string, datos []byte) {
 		return
 	}
 
-	n := len(datos)
+	capacidadFrame := 1
+	totalFrames := len(datos)
+	bytesAEnviar := totalFrames * capacidadFrame
 
-	if n > 65000 {
-		n = 65000
+	if bytesAEnviar > 65000 {
+		bytesAEnviar = 65000
 	}
-	if _, err := conexion.Write(datos[:n]); err != nil {
+
+	if _, err := conexion.Write(datos[:bytesAEnviar]); err != nil {
 		fmt.Println("error al enviar:", err)
 	} else {
-		fmt.Println("Enviados", n, "bytes a", direccion)
+		fmt.Println("Enviados", bytesAEnviar, "bytes a", direccion)
 	}
 }
 
 func EnviarComandoDetener(ip, puerto string) error {
 	direccion := ip + ":" + puerto
-	conn, err := net.Dial("udp", direccion)
+	conexion, err := net.Dial("udp", direccion)
 
 	if err != nil {
 		return errors.New("no se pudo conectar: " + err.Error())
 	}
 
-	defer conn.Close()
+	defer conexion.Close()
 
-	if _, err := conn.Write([]byte("CMD:STOP")); err != nil {
+	if _, err := conexion.Write([]byte("CMD:STOP")); err != nil {
 		return errors.New("error al enviar comando: " + err.Error())
 	}
 
