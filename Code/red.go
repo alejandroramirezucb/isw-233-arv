@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"net"
+	"strconv"
+	"time"
 )
 
 func ObtenerConexion(direccion string) (*net.UDPConn, error) {
@@ -21,6 +23,7 @@ func ObtenerConexion(direccion string) (*net.UDPConn, error) {
 
 	return conexion, nil
 }
+
 
 func EnviarBuffer(conexion *net.UDPConn, direccion string, datos []byte) {
 	if len(datos) == 0 {
@@ -57,6 +60,45 @@ func EnviarComandoDetener(ip, puerto string) error {
 	}
 
 	fmt.Println("Comando 'CMD:STOP' enviado a", direccion)
+
+	return nil
+}
+
+func VerificarComandoDetener(receptor *net.UDPConn) bool {
+	buffer := make([]byte, 16)
+	receptor.SetReadDeadline(time.Now().Add(50 * time.Millisecond))
+	n, _, err := receptor.ReadFromUDP(buffer)
+	receptor.SetReadDeadline(time.Time{})
+
+	if err != nil {
+		return false
+	}
+
+	return string(buffer[:n]) == "CMD:STOP"
+}
+
+func EnviarComandoDetenerAmbos(ipServidor, ipCliente, puerto string) error {
+	puertoInt, err := strconv.Atoi(puerto)
+
+	if err != nil {
+		return errors.New("puerto inválido: " + err.Error())
+	}
+
+	puertoControlCliente := strconv.Itoa(puertoInt + 1)
+	errServidor := EnviarComandoDetener(ipServidor, puerto)
+	errCliente := EnviarComandoDetener(ipCliente, puertoControlCliente)
+
+	if errServidor != nil && errCliente != nil {
+		return errors.New("error al detener servidor: " + errServidor.Error() + "; error al detener cliente: " + errCliente.Error())
+	}
+
+	if errServidor != nil {
+		return errors.New("error al detener servidor: " + errServidor.Error())
+	}
+
+	if errCliente != nil {
+		return errors.New("error al detener cliente: " + errCliente.Error())
+	}
 
 	return nil
 }

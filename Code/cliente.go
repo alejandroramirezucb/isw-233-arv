@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"net"
+	"strconv"
 	"time"
 	"github.com/gen2brain/malgo"
 )
@@ -16,11 +18,36 @@ func StartClient(puerto string) {
 
 	defer configuracionAudio.Uninit()
 
+	puertoInt, err := strconv.Atoi(puerto)
+
+	if err != nil {
+		fmt.Println("ERROR: puerto inválido:", err)
+		return
+	}
+	
+	puertoControl := strconv.Itoa(puertoInt + 1)
+
+	direccionControl, err := net.ResolveUDPAddr("udp", ":"+puertoControl)
+
+	if err != nil {
+		fmt.Println("ERROR al resolver dirección de control:", err)
+		return
+	}
+
+	receptorControl, err := net.ListenUDP("udp", direccionControl)
+
+	if err != nil {
+		fmt.Println("ERROR al abrir socket de control (puerto ", puertoControl, "):", err)
+		return
+	}
+
+	defer receptorControl.Close()
+
 	configuracionDispositivo := ConfigurarDispositivoAudio()
-	ejecutarMicrofono(configuracionAudio, configuracionDispositivo, puerto)
+	ejecutarMicrofono(configuracionAudio, configuracionDispositivo, puerto, receptorControl)
 }
 
-func ejecutarMicrofono(configuracionAudio *malgo.AllocatedContext, configuracionDispositivo malgo.DeviceConfig, puerto string) {
+func ejecutarMicrofono(configuracionAudio *malgo.AllocatedContext, configuracionDispositivo malgo.DeviceConfig, puerto string, receptorControl *net.UDPConn) {
 	servicio, err := malgo.InitDevice(configuracionAudio.Context, configuracionDispositivo, malgo.DeviceCallbacks{Data: RecibirAudio})
 
 	if err != nil {
@@ -31,7 +58,14 @@ func ejecutarMicrofono(configuracionAudio *malgo.AllocatedContext, configuracion
 	defer servicio.Uninit()
 
 	for {
-		EsperarParaGrabar()
+		if VerificarComandoDetener(receptorControl) {
+			fmt.Println("Comando 'CMD:STOP' recibido — deteniendo cliente")
+			return
+		}
+
+		if !EsperarParaGrabar(receptorControl) {
+			return
+		}
 
 		ip := SolicitarDireccionIP()
 		direccion := ip + ":" + puerto
@@ -51,7 +85,16 @@ func ejecutarMicrofono(configuracionAudio *malgo.AllocatedContext, configuracion
 			continue
 		}
 
-		GrabarPorDuracion(1500 * time.Millisecond)
+		completado := GrabarPorDuracion(1500 * time.Millisecond, receptorControl)
+
+		if !completado {
+			if err := DetenerServicioMicrofono(servicio.Stop); err != nil {
+				fmt.Println(err)
+			}
+			
+			conexion.Close()
+			return
+		}
 
 		if err := DetenerServicioMicrofono(servicio.Stop); err != nil {
 			fmt.Println(err)

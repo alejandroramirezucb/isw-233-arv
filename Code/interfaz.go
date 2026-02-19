@@ -1,16 +1,39 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net"
+	"time"
+)
 
-func EsperarParaGrabar() {
-	fmt.Println("\nPresiona ENTER para grabar (1.5s)...")
-	var entrada string
-	fmt.Scanln(&entrada)
+func EsperarParaGrabar(receptorControl *net.UDPConn) bool {
+	const cuentaSegundos = 3
+	fmt.Println()
+	for i := cuentaSegundos; i > 0; i-- {
+		fmt.Println("Iniciando grabación en", i)
+		time.Sleep(1 * time.Second)
+		
+		if VerificarComandoDetener(receptorControl) {
+			fmt.Println("\nComando 'CMD:STOP' recibido — deteniendo cliente")
+			return false
+		}
+	}
+
+	fmt.Println()
+	return true
 }
 
 func SolicitarDireccionIP() string {
 	var ip string
 	fmt.Print("Ingrese la dirección IP del servidor: ")
+	fmt.Scanln(&ip)
+
+	return ip
+}
+
+func SolicitarDireccionIPCliente() string {
+	var ip string
+	fmt.Print("Ingrese la dirección IP del cliente: ")
 	fmt.Scanln(&ip)
 
 	return ip

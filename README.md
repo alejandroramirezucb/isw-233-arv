@@ -28,6 +28,12 @@ go get github.com/gen2brain/malgo
 
 ## Prompts y respuestas
 
+### Prompt 1:
+
+"Explicame que estructura, tecnologias deberia usar para completar esta tarea"
+
+#### Respuesta:
+
 - **Modo de Operación:** El programa debe funcionar como **Cliente** o **Servidor** basándose en un argumento de línea de comandos.
 
 - **Configuración de Puerto:** El usuario debe especificar el puerto de conexión a través de la línea de comandos.
@@ -44,7 +50,7 @@ go get github.com/gen2brain/malgo
 
 - Solo recibe datos, no envía respuestas al cliente.
 
-### 2. Detalles Técnicos (Lógica en Go)
+## Detalles técnicos
 
 Para cumplir con la robustez solicitada, debes manejar los buffers cuidadosamente:
 
@@ -56,7 +62,7 @@ Para cumplir con la robustez solicitada, debes manejar los buffers cuidadosament
 
 - _Nota:_ Aunque el tamaño del frame sea 1 byte, tu lógica debe ser agnóstica al tamaño para ser robusta.
 
-### 3. Tecnologías y Librerías (Ecosistema Go)
+### Tecnologías y librerías (Ecosistema Go)
 
 Dado que Go no tiene grabación/reproducción de audio avanzada en su librería estándar, necesitarás una librería externa, además de los paquetes nativos de red.
 
@@ -72,7 +78,7 @@ Dado que Go no tiene grabación/reproducción de audio avanzada en su librería 
 - **PortAudio:** (`github.com/gordonklaus/portaudio`) Un clásico wrapper para I/O de audio.
 - _Nota:_ Asegúrate de configurar la librería para capturar/reproducir en formato `Unsigned Int 8-bit` (mono) como pide la tarea.
 
-### 4. Estructura de Archivos Sugerida
+## Estructura del proyecto
 
 Para mantener el código organizado según las funciones principales sugeridas, te recomiendo esta estructura:
 
@@ -94,7 +100,7 @@ Para mantener el código organizado según las funciones principales sugeridas, 
 
 ```
 
-### 5. Pasos de Implementación Clave
+## Pasos de implementación clave
 
 1. **Validar Argumentos:** En `main.go`, verifica que se pasen "client" o "server" y el puerto.
 2. **Lógica de Red:** Implementa el envío y recepción de paquetes UDP usando el paquete `net`.
@@ -139,10 +145,10 @@ func StartClient(port string) {
     // El recorder devuelve el buffer y cuántos frames capturó
     audioBuffer, framesCaptured := recorder.Read()
 
-    [cite_start]// 2. Calcular bytes a enviar [cite: 22]
+    // 2. Calcular bytes a enviar
     bytesToSend := framesCaptured * 1 // 1 byte por frame (8-bit mono)
 
-    [cite_start]// 3. Enviar por UDP [cite: 10]
+    // 3. Enviar por UDP
     connection.Write(audioBuffer[:bytesToSend])
 }
 
@@ -163,16 +169,16 @@ En `StartServer`, el servidor debe estar en un bucle constante:
 func StartServer(port string) {
     // ... (Lógica net.ListenPacket para abrir el puerto) ...
 
-    [cite_start]buffer := make([]byte, 65000) // Buffer para recibir el datagrama [cite: 9]
+    buffer := make([]byte, 65000) // Buffer para recibir el datagrama
 
     for {
         // 1. Recibir datos por UDP
         n, _, _ := connection.ReadFrom(buffer)
 
-        [cite_start]// 2. Calcular frames a reproducir [cite: 23]
+        // 2. Calcular frames a reproducir
         framesToPlay := n / 1 // Tamaño recibido / tamaño de frame (1 byte)
 
-        [cite_start]// 3. Reproducir inmediatamente [cite: 12]
+        // 3. Reproducir inmediatamente
         player.Write(buffer[:n], framesToPlay)
     }
 }

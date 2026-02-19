@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net"
-
 	"github.com/gen2brain/malgo"
 )
 

@@ -20,13 +20,20 @@ func main() {
 	case "client":
 		StartClient(puerto)
 	case "stop":
-		var ip string
-		if len(os.Args) >= 4 {
-			ip = os.Args[3]
+		var ipServidor, ipCliente string
+		
+		if len(os.Args) >= 5 {
+			ipServidor = os.Args[3]
+			ipCliente = os.Args[4]
+		} else if len(os.Args) >= 4 {
+			ipServidor = os.Args[3]
+			ipCliente = ipServidor
 		} else {
-			ip = SolicitarDireccionIP()
+			ipServidor = SolicitarDireccionIP()
+			ipCliente = ipServidor
 		}
-		if err := EnviarComandoDetener(ip, puerto); err != nil {
+
+		if err := EnviarComandoDetenerAmbos(ipServidor, ipCliente, puerto); err != nil {
 			fmt.Println("ERROR:", err)
 		}
 	default:

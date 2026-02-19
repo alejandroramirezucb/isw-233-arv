@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"net"
 	"sync"
 	"time"
 	"github.com/gen2brain/malgo"
@@ -100,9 +101,23 @@ func DetenerServicioMicrofono(detener func() error) error {
 	return nil
 }
 
-func GrabarPorDuracion(duracion time.Duration) {
+func GrabarPorDuracion(duracion time.Duration, receptorControl *net.UDPConn) bool {
 	fmt.Print("Grabando... ")
-	time.Sleep(duracion)
+	const paso = 50 * time.Millisecond
+	transcurrido := time.Duration(0)
+
+	for transcurrido < duracion {
+		time.Sleep(paso)
+		transcurrido += paso
+		
+		if receptorControl != nil {
+			if VerificarComandoDetener(receptorControl) {
+				fmt.Println("\nComando 'CMD:STOP' recibido — deteniendo grabación")
+				return false
+			}
+		}
+	}
+	return true
 }
 
 func ObtenerBufferAudio() []byte {
