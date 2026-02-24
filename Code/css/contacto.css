@@ -1,0 +1,119 @@
+.contacto__etiqueta {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.contacto {
+  width: 100%;
+  margin: 0 auto 48px;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.contacto__titulo {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.contacto__contenedor {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+}
+
+.contacto__datos-personales {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  font-style: normal;
+}
+
+.contacto__subtitulo {
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.contacto__informacion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contacto__figura {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacto__icono {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.contacto__texto {
+  font-style: normal;
+  margin: 0;
+}
+
+.contacto__formulario {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.contacto__campo-texto,
+.contacto__campo-mensaje {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.contacto__campo-mensaje {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contacto__boton {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.contacto__datos-personales,
+.contacto__formulario {
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .contacto__contenedor {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacto__campo-mensaje {
+    min-height: 120px;
+  }
+}
