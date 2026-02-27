@@ -9,29 +9,4 @@
 @import url('blocks/contacto.css');
 @import url('blocks/boton.css');
 @import url('blocks/footer.css');
-
-:root {
-  --color-primario: #2f71e5;
-  --color-texto: #000000;
-  --color-fondo: #ffffff;
-  --fuente-principal: 'Inter', sans-serif;
-  --ancho-maximo: 800px;
-  --espaciado-base: 20px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: var(--fuente-principal), sans-serif;
-  color: var(--color-texto);
-}
-
-@media (max-width: 480px) {
-  body {
-    padding-top: 68px;
-  }
-}
+@import url('blocks/base.css');
