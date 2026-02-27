@@ -9,12 +9,35 @@ El siguiente portafolio tiene mi perfil, mi formación académica, mis hobbies, 
 ```
 Code/
 ├── index.html
-├── css/
-│   └── styles.css
-├── js/
-│   └── main.js
-└── assets/
+├── index.css
+├── index.js
+├── blocks/
+│   ├── base.css
+│   ├── boton.css
+│   ├── blog.css
+│   ├── contacto.css
+│   ├── educacion.css
+│   ├── experiencia.css
+│   ├── hobbies.css
+│   ├── introduccion.css
+│   ├── navegacion.css
+│   ├── proyectos.css
+│   ├── skills.css
+│   └── footer.css
+└── images/
 ```
+
+## Bloques Identificados
+
+- **contacto** (`contacto.css`)
+- **educacion** (`educacion.css`)
+- **experiencia** (`experiencia.css`)
+- **hobbies** (`hobbies.css`)
+- **introduccion** (`introduccion.css`)
+- **navegacion** (`navegacion.css`)
+- **proyectos** (`proyectos.css`)
+- **skills** (`skills.css`)
+- **footer** (`footer.css`)
 
 ## ¿Qué se hace?
 
@@ -193,7 +216,7 @@ Esta sombra ya está aplicada en las tarjetas de proyectos y blog:
     <article class="educacion__tarjeta">
       <figure class="educacion__figura">
         <img
-          src="assets/icon-education.svg"
+          src="images/icon-education.svg"
           alt="Icono educación"
           class="educacion__imagen" />
       </figure>
