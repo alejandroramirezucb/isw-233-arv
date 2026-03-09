@@ -9,9 +9,9 @@ pub enum Resultado {
     Kill,
 }
 
-pub fn iniciar_juego(){
-    let mut matriz_cliente = crear_tablero();
-    let mut matriz_servidor = crear_tablero();
+pub fn iniciar_juego(semilla_cliente: u64, semilla_servidor: u64){
+    let mut matriz_cliente = crear_tablero(semilla_cliente);
+    let mut matriz_servidor = crear_tablero(semilla_servidor);
     let mut resultado : Resultado;
     let mut turno = 0;
 

@@ -1,3 +1,4 @@
+use std::io::Write;
 use crate::tablero::Estado;
 
 pub fn visualizar_tablero(matriz : &[[Estado; 8]; 8]){
@@ -22,4 +23,6 @@ pub fn visualizar_tablero(matriz : &[[Estado; 8]; 8]){
 
         println!();
     }
+
+    std::io::stdout().flush().unwrap();
 }

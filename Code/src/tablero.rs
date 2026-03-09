@@ -1,5 +1,6 @@
 use std::cmp::PartialEq;
-use rand::{thread_rng, Rng};
+use rand::{Rng, SeedableRng};
+use rand_chacha::ChaCha8Rng;
 
 enum Orientacion {
     Horizontal,
@@ -14,14 +15,14 @@ pub enum Estado {
     Agua,
 }
 
-pub fn crear_tablero() -> [[Estado; 8]; 8] {
+pub fn crear_tablero(semilla: u64) -> [[Estado; 8]; 8] {
     let mut matriz = [[Estado::Agua; 8]; 8];
     let barcos = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
-    let mut rng = thread_rng();
+    let mut rng = ChaCha8Rng::seed_from_u64(semilla);
 
     for barco in barcos {
-        let mut x = 0;
-        let mut y = 0;
+        let mut x = rng.gen_range(0..8);
+        let mut y = rng.gen_range(0..8);
         let mut orientacion = Orientacion::Horizontal;
 
         while !colocar_barcos(&mut matriz, barco, &orientacion, x, y) {
