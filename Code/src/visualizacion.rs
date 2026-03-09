@@ -9,10 +9,10 @@ pub fn visualizar_tablero(matriz : &[[Estado; 8]; 8]){
         for j in 0..8{
             match matriz[i][j]{
                 Estado::Impactado => {
-                    print!("# ")
+                    print!("# ");
                 }
                 Estado::Hundido => {
-                    print!("x ")
+                    print!("x ");
                 }
                 Estado::Intacto | Estado::Agua => {
                     print!("~ ");

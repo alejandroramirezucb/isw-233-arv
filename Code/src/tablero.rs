@@ -51,6 +51,18 @@ fn colocar_barcos(matriz: &mut [[Estado; 8]; 8], barco: i32, orientacion: &Orien
             if y+barco < 8 && matriz[x as usize][(y+barco) as usize] == Estado::Intacto {
                 return false;
             }
+            if x-1 >= 0 && y-1>=0 && matriz[(x-1) as usize][(y-1) as usize] == Estado::Intacto {
+                return false;
+            }
+            if x+1 < 8 && y-1>=0 && matriz[(x+1) as usize][(y-1) as usize] == Estado::Intacto {
+                return false;
+            }
+            if x-1 >= 0 && y+barco < 8 && matriz[(x-1) as usize][(y+barco) as usize] == Estado::Intacto {
+                return false;
+            }
+            if x+1 < 8 && y+barco < 8 && matriz[(x+1) as usize][(y+barco) as usize] == Estado::Intacto {
+                return false;
+            }
 
             for i in 0..barco {
                 if matriz[x as usize][(y + i) as usize] == Estado::Intacto {
@@ -67,6 +79,7 @@ fn colocar_barcos(matriz: &mut [[Estado; 8]; 8], barco: i32, orientacion: &Orien
             for i in 0..barco {
                 matriz[x as usize][(y + i) as usize] = Estado::Intacto;
             }
+
         }
         Orientacion::Vertical => {
             if x + barco > 8 {
@@ -76,6 +89,18 @@ fn colocar_barcos(matriz: &mut [[Estado; 8]; 8], barco: i32, orientacion: &Orien
                 return false;
             }
             if x+barco < 8 && matriz[(x+barco) as usize][y as usize] == Estado::Intacto {
+                return false;
+            }
+            if x-1 >= 0 && y-1 >= 0 && matriz[(x-1) as usize][(y-1) as usize] == Estado::Intacto {
+                return false;
+            }
+            if x-1 >= 0 && y+1 < 8 && matriz[(x-1) as usize][(y+1) as usize] == Estado::Intacto {
+                return false;
+            }
+            if x+barco < 8 && y-1 >= 0 && matriz[(x+barco) as usize][(y-1) as usize] == Estado::Intacto {
+                return false;
+            }
+            if x+barco < 8 && y+1 < 8 && matriz[(x+barco) as usize][(y+1) as usize] == Estado::Intacto {
                 return false;
             }
 
