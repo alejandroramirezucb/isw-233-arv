@@ -1,15 +1,40 @@
-use crate::tablero::Estado;
+use crate::entrada::leer_movimiento;
+use crate::tablero::{crear_tablero, Estado};
+use crate::visualizacion::visualizar_tablero;
 
 #[derive(Debug)]
 pub enum Resultado {
-    Unknown,
     Empty,
     Hit,
     Kill,
-    Ship,
 }
 
-pub fn realizar_movimiento(matriz: &mut [[Estado; 8]; 8], x:i32, y:i32) -> Resultado {
+pub fn iniciar_juego(){
+    let mut matriz_cliente = crear_tablero();
+    let mut matriz_servidor = crear_tablero();
+    let mut resultado : Resultado;
+    let mut turno = 0;
+
+    while !(ha_perdido(&mut matriz_cliente) || ha_perdido(&mut matriz_servidor)){
+        if turno % 2 == 0 {
+            println!("-------Cliente-------");
+            visualizar_tablero(&matriz_servidor);
+            let (x, y) = leer_movimiento();
+            resultado = realizar_movimiento(&mut matriz_servidor, x, y);
+        }
+        else {
+            println!("-------Servidor-------");
+            visualizar_tablero(&matriz_cliente);
+            let (x, y) = leer_movimiento();
+            resultado = realizar_movimiento(&mut matriz_cliente, x, y);
+        }
+
+        println!("{resultado:#?}");
+        turno += 1;
+    }
+}
+
+fn realizar_movimiento(matriz: &mut [[Estado; 8]; 8], x:i32, y:i32) -> Resultado {
     if matriz[x as usize][y as usize] == Estado::Agua{
         return Resultado::Empty;
     }
@@ -72,4 +97,14 @@ fn esta_hundido(matriz: &mut [[Estado; 8]; 8], x: i32, y: i32) -> bool {
     hundido
 }
 
+pub fn ha_perdido(matriz: &mut [[Estado; 8]; 8]) -> bool {
+    for i in 0..8{
+        for j in 0..8{
+            if matriz[i][j] == Estado::Intacto{
+                return false;
+            }
+        }
+    }
 
+    true
+}
