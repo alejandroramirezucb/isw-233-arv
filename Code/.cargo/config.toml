@@ -1,0 +1,11 @@
+[build]
+# Usar el toolchain GNU en lugar de MSVC para evitar problemas con espacios en rutas
+target = "x86_64-pc-windows-gnu"
+# Directorio de salida sin espacios para evitar problemas con dlltool
+target-dir = "C:/cargo_build"
+
+[target.x86_64-pc-windows-gnu]
+# Asegurar que se usa el linker correcto de MinGW
+linker = "x86_64-w64-mingw32-gcc"
+ar = "x86_64-w64-mingw32-ar"
+
