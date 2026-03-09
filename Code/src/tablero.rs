@@ -1,3 +1,4 @@
+use std::cmp::PartialEq;
 use rand::{thread_rng, Rng};
 
 enum Orientacion {
@@ -5,8 +6,16 @@ enum Orientacion {
     Vertical,
 }
 
-pub fn crear_tablero() -> [[bool; 8]; 8] {
-    let mut matriz = [[false; 8]; 8];
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
+pub enum Estado {
+    Intacto,
+    Impactado,
+    Hundido,
+    Agua,
+}
+
+pub fn crear_tablero() -> [[Estado; 8]; 8] {
+    let mut matriz = [[Estado::Agua; 8]; 8];
     let barcos = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
     let mut rng = thread_rng();
 
@@ -15,7 +24,7 @@ pub fn crear_tablero() -> [[bool; 8]; 8] {
         let mut y = 0;
         let mut orientacion = Orientacion::Horizontal;
 
-        while !colocar_barco(&mut matriz, barco, &orientacion, x, y) {
+        while !colocar_barcos(&mut matriz, barco, &orientacion, x, y) {
             x = rng.gen_range(0..8);
             y = rng.gen_range(0..8);
 
@@ -30,36 +39,60 @@ pub fn crear_tablero() -> [[bool; 8]; 8] {
     matriz
 }
 
-fn colocar_barco(matriz: &mut [[bool; 8]; 8], barco: i32, orientacion: &Orientacion, x: i32, y: i32) -> bool {
+fn colocar_barcos(matriz: &mut [[Estado; 8]; 8], barco: i32, orientacion: &Orientacion, x: i32, y: i32) -> bool {
     match orientacion {
         Orientacion::Horizontal => {
             if y + barco > 8 {
                 return false;
             }
+            if y-1 >= 0 && matriz[x as usize][(y-1) as usize] == Estado::Intacto {
+                return false;
+            }
+            if y+barco < 8 && matriz[x as usize][(y+barco) as usize] == Estado::Intacto {
+                return false;
+            }
 
             for i in 0..barco {
-                if matriz[x as usize][(y + i) as usize] {
+                if matriz[x as usize][(y + i) as usize] == Estado::Intacto {
+                    return false;
+                }
+                if x-1 >= 0 && matriz[(x-1) as usize][(y + i) as usize] == Estado::Intacto {
+                    return false;
+                }
+                if x+1 < 8 && matriz[(x+1) as usize][(y + i) as usize] == Estado::Intacto {
                     return false;
                 }
             }
 
             for i in 0..barco {
-                matriz[x as usize][(y + i) as usize] = true;
+                matriz[x as usize][(y + i) as usize] = Estado::Intacto;
             }
         }
         Orientacion::Vertical => {
             if x + barco > 8 {
                 return false;
             }
+            if x-1 >= 0 && matriz[(x-1) as usize][y as usize] == Estado::Intacto {
+                return false;
+            }
+            if x+barco < 8 && matriz[(x+barco) as usize][y as usize] == Estado::Intacto {
+                return false;
+            }
 
             for i in 0..barco {
-                if matriz[(x + i) as usize][y as usize] {
+                if matriz[(x + i) as usize][y as usize] == Estado::Intacto{
+                    return false;
+                }
+                if y-1 >= 0 && matriz[(x+i) as usize][(y-1) as usize] == Estado::Intacto {
+                    return false;
+                }
+                if y+1 < 8 && matriz[(x+i) as usize][(y+1) as usize] == Estado::Intacto {
                     return false;
                 }
             }
 
             for i in 0..barco {
-                matriz[(x + i) as usize][y as usize] = true;
+                matriz[(x + i) as usize][y as usize] = Estado::Intacto;
             }
         }
     }
