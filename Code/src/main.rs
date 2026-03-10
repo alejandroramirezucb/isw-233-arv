@@ -1,6 +1,6 @@
 use crate::entrada::leer_entrada;
 use crate::juego::iniciar_juego;
-use crate::tcp::Usuarios;
+use crate::tcp::{conectar_cliente, conectar_servidor, Usuarios};
 
 mod tablero;
 mod juego;
@@ -17,20 +17,16 @@ fn main() {
         }
     };
 
-    let mut semilla_servidor = 0;
-    let mut semilla_cliente = 0;
-    
     match usuario {
         Usuarios::Servidor(servidor) => {
-            semilla_servidor = servidor.semilla;
-            let puerto = servidor.puerto;
+            println!("Esperando conexion en puerto {}...", servidor.puerto);
+            let stream = conectar_servidor(servidor.puerto);
+            iniciar_juego(stream, servidor.semilla, false);
         },
         Usuarios::Cliente(cliente) => {
-            semilla_cliente = cliente.servidor.semilla;
-            let puerto = cliente.servidor.puerto;
-            let ip = cliente.ip;
+            println!("Conectando a {}:{}...", cliente.ip, cliente.servidor.puerto);
+            let stream = conectar_cliente(cliente.ip, cliente.servidor.puerto);
+            iniciar_juego(stream, cliente.servidor.semilla, true);
         },
     }
-    
-    iniciar_juego(semilla_cliente, semilla_servidor);
 }

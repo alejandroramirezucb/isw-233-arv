@@ -1,3 +1,4 @@
+use std::net::TcpStream;
 use crate::entrada::leer_movimiento;
 use crate::tablero::{crear_tablero, Estado};
 use crate::visualizacion::visualizar_tablero;
@@ -9,29 +10,25 @@ pub enum Resultado {
     Kill,
 }
 
-pub fn iniciar_juego(semilla_cliente: u64, semilla_servidor: u64){
-    let mut matriz_cliente = crear_tablero(semilla_cliente);
-    let mut matriz_servidor = crear_tablero(semilla_servidor);
+pub fn iniciar_juego(mut stream: TcpStream, semilla: u64, es_cliente: bool){
+    let mut matriz = crear_tablero(semilla);
     let mut resultado : Resultado;
-    let mut turno = 0;
+    let mut turno_cliente = es_cliente;
 
-    while !(ha_perdido(&mut matriz_cliente) || ha_perdido(&mut matriz_servidor)){
-        if turno % 2 == 0 {
+    /*while !ha_perdido(&mut matriz){
+        if turno_cliente {
             println!("-------Cliente-------");
             visualizar_tablero(&matriz_servidor);
-            let (x, y) = leer_movimiento();
-            resultado = realizar_movimiento(&mut matriz_servidor, x, y);
+
         }
         else {
             println!("-------Servidor-------");
             visualizar_tablero(&matriz_cliente);
-            let (x, y) = leer_movimiento();
-            resultado = realizar_movimiento(&mut matriz_cliente, x, y);
+
         }
 
         println!("{resultado:#?}");
-        turno += 1;
-    }
+    }*/
 }
 
 fn realizar_movimiento(matriz: &mut [[Estado; 8]; 8], x:i32, y:i32) -> Resultado {
