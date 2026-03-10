@@ -1,6 +1,7 @@
 use std::net::TcpStream;
-use crate::entrada::leer_movimiento;
+use crate::entrada::{leer_movimiento, parsear_movimiento};
 use crate::tablero::{crear_tablero, Estado};
+use crate::tcp::{enviar, recibir_movimiento, recibir_resultado};
 use crate::visualizacion::visualizar_tablero;
 
 #[derive(Debug)]
@@ -10,25 +11,58 @@ pub enum Resultado {
     Kill,
 }
 
-pub fn iniciar_juego(mut stream: TcpStream, semilla: u64, es_cliente: bool){
+pub fn iniciar_juego(mut stream: TcpStream, semilla: u64, es_cliente: bool) {
     let mut matriz = crear_tablero(semilla);
-    let mut resultado : Resultado;
     let mut turno_cliente = es_cliente;
+    let mut kills = 0;
 
-    /*while !ha_perdido(&mut matriz){
+    while !ha_perdido(&mut matriz) && kills < 10 {
         if turno_cliente {
             println!("-------Cliente-------");
-            visualizar_tablero(&matriz_servidor);
 
+            visualizar_tablero(&matriz);
+            let movimiento = leer_movimiento();
+            enviar(&mut stream, movimiento.as_bytes());
+
+            match recibir_resultado(&mut stream) {
+                0 => {
+                    println!("Agua");
+                    turno_cliente = false;
+                },
+                1 => println!("Impacto!"),
+                _ => {
+                    println!("Hundido!");
+                    kills += 1;
+                }
+            }
         }
         else {
             println!("-------Servidor-------");
-            visualizar_tablero(&matriz_cliente);
 
+            visualizar_tablero(&matriz);
+            let movimiento = recibir_movimiento(&mut stream);
+            let (x, y) = parsear_movimiento(&movimiento);
+            let resultado = realizar_movimiento(&mut matriz, x, y);
+
+            let byte = match resultado {
+                Resultado::Empty => {
+                    turno_cliente = true;
+                    0
+                },
+                Resultado::Hit => 1,
+                Resultado::Kill => 2
+            };
+
+            enviar(&mut stream, &[byte]);
         }
+    }
 
-        println!("{resultado:#?}");
-    }*/
+    if kills == 10 {
+        println!("Ganaste!");
+    }
+    else {
+        println!("Perdiste :(");
+    }
 }
 
 fn realizar_movimiento(matriz: &mut [[Estado; 8]; 8], x:i32, y:i32) -> Resultado {

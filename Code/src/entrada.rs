@@ -2,22 +2,22 @@ use std::collections::HashMap;
 use std::{env, io};
 use crate::tcp::{Cliente, Servidor, Usuarios};
 
-pub fn leer_movimiento() -> (i32, i32, String) {
+pub fn parsear_movimiento(movimiento: &str) -> (i32, i32) {
     let columna_a_posicion = HashMap::from([("A", 0), ("B", 1), ("C", 2), ("D", 3), ("E", 4), ("F", 5), ("G", 6), ("H", 7)]);
-    let mut linea = String::new();
-
-    io::stdin().read_line(&mut linea).expect("Error al leer la linea");
-
-    let movimiento = linea.trim().to_string();
     let (columna, fila) = movimiento.split_at(1);
 
     let y = columna_a_posicion[columna];
-    let x = fila.parse::<i32>().expect("Error en la conversion") - 1;
+    let x = fila.parse::<i32>().unwrap() - 1;
 
-    (x, y, movimiento)
+    (x, y)
+}
+pub fn leer_movimiento() -> String {
+    let mut linea = String::new();
+    io::stdin().read_line(&mut linea).expect("Error al leer la linea");
+    linea.trim().to_string()
 }
 
-pub fn leer_entrada() -> Result<Usuarios, String> {
+pub fn leer_conexion() -> Result<Usuarios, String> {
     let args: Vec<String> = env::args().collect();
 
     if args.len() == 3 {

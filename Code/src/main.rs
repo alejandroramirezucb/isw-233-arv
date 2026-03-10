@@ -1,4 +1,4 @@
-use crate::entrada::leer_entrada;
+use crate::entrada::leer_conexion;
 use crate::juego::iniciar_juego;
 use crate::tcp::{conectar_cliente, conectar_servidor, Usuarios};
 
@@ -9,7 +9,7 @@ mod visualizacion;
 mod tcp;
 
 fn main() {
-    let usuario = match leer_entrada() {
+    let usuario = match leer_conexion() {
         Ok(resultado) => resultado,
         Err(error) => {
             println!("{}", error);
