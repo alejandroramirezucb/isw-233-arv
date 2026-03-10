@@ -1,14 +1,14 @@
 use std::io::Write;
 use crate::tablero::Estado;
 
-pub fn visualizar_tablero(matriz : &[[Estado; 8]; 8]){
+pub fn visualizar_tablero(tablero : &[[Estado; 8]; 8]){
     println!("  A B C D E F G H");
 
     for i in 0..8{
         print!("{} ", i+1);
 
         for j in 0..8{
-            match matriz[i][j]{
+            match tablero[i][j]{
                 Estado::Impactado => {
                     print!("# ");
                 }
