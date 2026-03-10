@@ -61,17 +61,15 @@ isw_233_arv 42 127.0.0.1 8080
 
 ### Prompt 1
 
-**Explicame la tarea, no quiero codigo, quiero una explicacion de como hacerlo, y que librerias tengo que usar para programarlo en rust?**
+**Pregunta:** Explicame la tarea, no quiero codigo, quiero una explicacion de como hacerlo, y que librerias tengo que usar para programarlo en rust?
 
 #### Respuesta
 
-## ¿Qué hay que hacer?
+##### ¿Qué hay que hacer?
 
 Implementar el juego de Batalla Naval donde **dos jugadores compiten a través de una conexión TCP**. Uno actúa como servidor y otro como cliente. El cliente siempre dispara primero.
 
----
-
-## El Tablero
+##### El Tablero
 
 Es una cuadrícula de **8×8**. Las columnas van de la **A a la H** y las filas del **1 al 8**. Cada celda puede estar en uno de estos estados:
 
@@ -81,9 +79,7 @@ Es una cuadrícula de **8×8**. Las columnas van de la **A a la H** y las filas 
 - **KILL** — Destruiste un barco completo
 - **SHIP** — Parte de tu propio barco (solo visible en tu campo)
 
----
-
-## Los Barcos (10 en total)
+##### Los Barcos (10 en total)
 
 | Tipo       | Tamaño   | Cantidad |
 | ---------- | -------- | -------- |
@@ -92,9 +88,7 @@ Es una cuadrícula de **8×8**. Las columnas van de la **A a la H** y las filas 
 | Destructor | 2 celdas | 3        |
 | Submarino  | 1 celda  | 4        |
 
----
-
-## Cómo Colocar los Barcos
+##### Cómo Colocar los Barcos
 
 La colocación es **aleatoria pero reproducible**, usando una **semilla (seed)** que recibes como argumento. Con la misma semilla, siempre obtienes la misma distribución, lo que permite depurar y testear.
 
@@ -105,9 +99,7 @@ Las reglas de colocación son:
 
 Entonces al colocar cada barco debes verificar que ninguna celda adyacente (incluyendo diagonales) esté ocupada por otro barco.
 
----
-
-## Flujo del Juego
+##### Flujo del Juego
 
 1. Cada jugador genera su campo con sus barcos usando la semilla
 2. El cliente dispara primero
@@ -118,16 +110,12 @@ Entonces al colocar cada barco debes verificar que ninguna celda adyacente (incl
    - `2` = Hundido (el que disparó vuelve a disparar)
 5. El juego termina cuando todos los barcos de un jugador están destruidos
 
----
-
-## Argumentos de Línea de Comandos
+##### Argumentos de Línea de Comandos
 
 - **Servidor:** `programa semilla puerto`
 - **Cliente:** `programa semilla ip_servidor puerto`
 
----
-
-## Lo que debes implementar en Rust
+##### Lo que debes implementar en Rust
 
 Básicamente dos grandes piezas:
 
@@ -137,9 +125,11 @@ Básicamente dos grandes piezas:
 
 La parte más delicada es el **networking con TCP**, ya que es un protocolo de stream y puede que los datos lleguen fragmentados, así que debes asegurarte de leer exactamente los bytes que esperas.
 
+---
+
 ### Prompt 2
 
-**¿Como coloco los barcos aleatoriamente en rust?**
+**Pregunta:** ¿Como coloco los barcos aleatoriamente en rust?
 
 #### Respuesta
 
@@ -147,43 +137,21 @@ Un generador de números pseudoaleatorios (PRNG) con la misma semilla **siempre 
 
 En Rust, la librería estándar no incluye un PRNG, pero el crate más común es **`rand`**. Específicamente usarías `rand::SeedableRng` con algún generador como `rand_chacha::ChaCha8Rng` o el más simple `rand::rngs::SmallRng`.
 
----
+##### El flujo lógico para colocar barcos
 
-## El flujo lógico para colocar barcos
+1. **Inicializar el generador con la semilla.** Recibes la semilla como argumento (un número entero). Con ese número inicializas el PRNG. A partir de ahí, cada número "aleatorio" que generes será siempre el mismo para esa semilla.
+2. **Orden de colocación importa.** Debes colocar los barcos **en orden de mayor a menor** (primero el de 4, luego los de 3, etc.). Esto es importante porque si cambias el orden, los números aleatorios se consumen en distinto orden y el resultado cambia.
+3. **Generar una posición candidata.** Para cada barco necesitas generar:
+   - Una **columna** (0 a 7)
+   - Una **fila** (0 a 7)
+   - Una **orientación** (horizontal o vertical)
+4. **Validar la posición.** Antes de colocar el barco, verificas que:
+   - El barco **cabe** dentro del tablero (no se sale de los límites)
+   - Ninguna celda que ocuparía está **ya ocupada**
+   - Ninguna celda **adyacente** (incluyendo diagonales) está ocupada por otro barco
+5. **Reintentar si no es válida.** Si la posición no es válida, **generas otra** con el PRNG y vuelves a validar. Repites hasta encontrar una posición válida.
 
-### Paso 1 — Inicializar el generador con la semilla
-
-Recibes la semilla como argumento (un número entero). Con ese número inicializas el PRNG. A partir de ahí, cada número "aleatorio" que generes será siempre el mismo para esa semilla.
-
-### Paso 2 — Orden de colocación importa
-
-Debes colocar los barcos **en orden de mayor a menor** (primero el de 4, luego los de 3, etc.). Esto es importante porque si cambias el orden, los números aleatorios se consumen en distinto orden y el resultado cambia.
-
-### Paso 3 — Generar una posición candidata
-
-Para cada barco necesitas generar:
-
-- Una **columna** (0 a 7)
-- Una **fila** (0 a 7)
-- Una **orientación** (horizontal o vertical)
-
-Cada uno de esos valores lo sacas del PRNG.
-
-### Paso 4 — Validar la posición
-
-Antes de colocar el barco, verificas que:
-
-- El barco **cabe** dentro del tablero (no se sale de los límites)
-- Ninguna celda que ocuparía está **ya ocupada**
-- Ninguna celda **adyacente** (incluyendo diagonales) está ocupada por otro barco
-
-### Paso 5 — Reintentar si no es válida
-
-Si la posición no es válida, **generas otra** con el PRNG y vuelves a validar. Repites hasta encontrar una posición válida.
-
----
-
-## La parte de las adyacencias (la más delicada)
+##### La parte de las adyacencias (la más delicada)
 
 Para verificar que un barco no toca a otro, por cada celda que va a ocupar el barco nuevo, revisas todas las 8 celdas alrededor (un cuadrado de 3×3 centrado en esa celda). Si cualquiera de esas celdas ya tiene un barco, la posición no es válida.
 
@@ -195,9 +163,7 @@ Para verificar que un barco no toca a otro, por cada celda que va a ocupar el ba
 
 Solo tienes que tener cuidado con los **bordes del tablero** — una celda en la columna 0 no tiene vecinos a la izquierda, así que debes hacer clamp o chequear que los índices no sean negativos (en Rust esto es importante porque los índices son `usize`).
 
----
-
-## Crates que necesitarías
+##### Crates que necesitarías
 
 En tu `Cargo.toml`:
 
@@ -208,9 +174,7 @@ rand_chacha = "0.3"   ← recomendado porque es estable entre plataformas
 
 `ChaCha8Rng` es mejor que `SmallRng` para este caso porque `SmallRng` **no garantiza** el mismo resultado en todas las plataformas, lo que rompería la reproducibilidad cuando el cliente y servidor corren en máquinas distintas.
 
----
-
-## Resumen del flujo
+##### Resumen del flujo
 
 ```
 semilla → SeedableRng::seed_from_u64(semilla)
@@ -226,11 +190,11 @@ para cada barco (de grande a pequeño):
             break
 ```
 
-¿Quieres que te explique alguna parte en más detalle, como el manejo de los bordes o cómo representar el tablero en memoria?
+---
 
 ### Prompt 3
 
-**Todo funcionaba bien, pero desde que agregue `let mut rng = ChaCha8Rng::seed_from_u64(semilla)` ya no funciona, como lo arreglo?**
+**Pregunta:** Todo funcionaba bien, pero desde que agregue `let mut rng = ChaCha8Rng::seed_from_u64(semilla)` ya no funciona, como lo arreglo?
 
 #### Respuesta
 
@@ -253,44 +217,44 @@ let mut y = rng.gen_range(0..8);
 
 Así la primera posición también es aleatoria y no bloquea las posiciones siguientes.
 
+---
+
 ### Prompt 4
 
-**Dime los requerimientos que necesito para usar TCP, no codigo directamente**
+**Pregunta:** Dime los requerimientos que necesito para usar TCP, no codigo directamente
 
 #### Respuesta
 
 Basándome en la tarea, los requerimientos son:
 
-## Argumentos
+##### Argumentos
 
 - **Servidor:** recibe `seed` y `puerto`
 - **Cliente:** recibe `seed`, `ip` y `puerto`
 - Detectas si eres cliente o servidor por la cantidad de argumentos (3 = servidor, 4 = cliente)
 
-## Conexión
+##### Conexión
 
 - El servidor crea un socket, escucha en el puerto y espera que el cliente se conecte
 - El cliente crea un socket y se conecta a la IP y puerto del servidor
 - Una vez conectados ambos tienen un stream para comunicarse
 
-## Protocolo de comunicación
+##### Protocolo de comunicación
 
 - **Disparo** → se envían **2 bytes** con el texto de las coordenadas, ej: `B6`
 - **Respuesta** → se envía **1 byte** con el resultado: `0`=miss, `1`=hit, `2`=kill
 
-## Turno
+##### Turno
 
 - El **cliente siempre dispara primero**
 - Si es miss → cambia el turno
 - Si es hit o kill → el mismo jugador vuelve a disparar
 
-## Flujo por turno
+##### Flujo por turno
 
 - **Tu turno:** lees input del usuario → envías 2 bytes al oponente → recibes 1 byte de resultado → actualizas tu tablero enemigo
 - **Turno enemigo:** recibes 2 bytes → procesas el disparo en tu tablero → envías 1 byte de resultado
 
-## Fin del juego
+##### Fin del juego
 
 - El juego termina cuando todos los barcos de un jugador están hundidos (`ha_perdido` retorna true)
-
-¿Quieres que empecemos con el código de `tcp.rs`?
