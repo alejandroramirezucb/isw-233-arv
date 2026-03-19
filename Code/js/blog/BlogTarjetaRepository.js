@@ -1,4 +1,4 @@
-import { TarjetaRepository } from '../TarjetaRepository.js';
+import { TarjetaRepository } from '../tarjetas/TarjetaRepository.js';
 import { BlogTarjetaFactory } from './BlogTarjetaFactory.js';
 
 export class BlogTarjetaRepository extends TarjetaRepository {
@@ -28,7 +28,7 @@ export class BlogTarjetaRepository extends TarjetaRepository {
     }),
   ];
 
-    static getInstancia() {
+  static getInstancia() {
     if (!BlogTarjetaRepository.instancia) {
       BlogTarjetaRepository.instancia = new BlogTarjetaRepository();
     }

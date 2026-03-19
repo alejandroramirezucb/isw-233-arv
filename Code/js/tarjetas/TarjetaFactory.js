@@ -1,4 +1,4 @@
-import { Tarjeta } from './tarjetas/Tarjeta.js';
+import { Tarjeta } from './Tarjeta.js';
 
 export class TarjetaFactory {
   static crearTarjeta(config) {

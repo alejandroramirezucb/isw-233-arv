@@ -1,10 +1,10 @@
-import { TarjetaRepository } from '../TarjetaRepository.js';
+import { TarjetaRepository } from '../tarjetas/TarjetaRepository.js';
 import { ProyectosTarjetaFactory } from './ProyectosTarjetaFactory.js';
 
 export class ProyectosTarjetaRepository extends TarjetaRepository {
   static instancia = null;
   contenedor = document.querySelector('.proyectos__contenedor');
-  
+
   tarjetas = [
     ProyectosTarjetaFactory.crearTarjeta({
       fecha: '2025',
@@ -29,7 +29,6 @@ export class ProyectosTarjetaRepository extends TarjetaRepository {
     }),
   ];
 
-  
   static getInstancia() {
     if (!ProyectosTarjetaRepository.instancia) {
       ProyectosTarjetaRepository.instancia = new ProyectosTarjetaRepository();
@@ -37,5 +36,4 @@ export class ProyectosTarjetaRepository extends TarjetaRepository {
 
     return ProyectosTarjetaRepository.instancia;
   }
-
 }

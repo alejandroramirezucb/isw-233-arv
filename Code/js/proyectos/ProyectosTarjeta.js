@@ -1,4 +1,4 @@
-import { Tarjeta } from '../Tarjeta.js';
+import { Tarjeta } from '../tarjetas/Tarjeta.js';
 
 export class ProyectosTarjeta extends Tarjeta {
   constructor(config) {

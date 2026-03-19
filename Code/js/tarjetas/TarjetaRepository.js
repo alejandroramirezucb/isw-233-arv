@@ -1,3 +1,5 @@
+import { TarjetaRender } from './TarjetaRender.js';
+
 export class TarjetaRepository {
   tarjetas = [];
   contenedor = undefined;
@@ -8,7 +10,7 @@ export class TarjetaRepository {
     }
 
     this.tarjetas.push(tarjeta);
-    this.renderTarjeta(tarjeta);
+    TarjetaRender.render(this.contenedor, tarjeta.getElemento());
   }
 
   eliminarTarjeta(tarjeta) {
@@ -33,21 +35,12 @@ export class TarjetaRepository {
     this.tarjetas[index] = tarjeta;
   }
 
+  getContenedor() {
+    return this.contenedor;
+  }
+
   limpiarTarjetas() {
     this.tarjetas = [];
     this.contenedor.replaceChildren();
-  }
-
-  renderTarjetas() {
-    this.contenedor.replaceChildren();
-
-    for (let tarjeta of this.tarjetas) {
-      this.renderTarjeta(tarjeta);
-    }
-  }
-
-  renderTarjeta(tarjeta) {
-    let elemento = tarjeta.getElemento();
-    this.contenedor.append(elemento);
   }
 }

@@ -1,4 +1,4 @@
-import { TarjetaFactory } from '../TarjetaFactory.js';
+import { TarjetaFactory } from '../tarjetas/TarjetaFactory.js';
 import { BlogTarjeta } from './BlogTarjeta.js';
 
 export class BlogTarjetaFactory extends TarjetaFactory {
