@@ -23,6 +23,6 @@ export class ProyectosTarjeta extends Tarjeta {
         title="${this.titulo}"
         class="${this.name}__imagen" />
     </figure>
-${super.getContenido()}`;
+    ${super.getContenido()}`;
   }
 }

@@ -12,6 +12,39 @@
   text-align: center;
 }
 
+.blog__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 8px 16px;
+}
+
+.blog__fecha {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-primario);
+}
+
+.favorito__boton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorito__boton:hover img {
+  content: url('../images/star.svg');
+}
+
+.favorito__imagen {
+  width: 20px;
+  height: 20px;
+}
+
 .blog__contenedor {
   display: flex;
   gap: 20px;
@@ -44,14 +77,26 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
+.favorito__boton {
+  background: none;
+  border: none;
+  padding: 16px 0 0 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
 .blog__cuerpo {
-  padding: 16px;
+  padding: 2px 16px 16px 24px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 .blog__fecha {
+  margin: 0;
   font-size: 0.875rem;
   color: var(--color-primario);
 }
