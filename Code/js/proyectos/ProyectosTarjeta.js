@@ -4,7 +4,7 @@ export class ProyectosTarjeta extends Tarjeta {
   constructor(config) {
     super(config);
     this.imagenUrl = config.imagenUrl;
-    this.name = 'proyectos';
+    this.nombre = 'proyectos';
   }
 
   getImagenUrl() {
@@ -16,12 +16,12 @@ export class ProyectosTarjeta extends Tarjeta {
   }
 
   getContenido() {
-    return `<figure class="${this.name}__figura">
+    return `<figure class="${this.nombre}__figura">
       <img
         src="${this.imagenUrl}"
         alt="${this.titulo}"
         title="${this.titulo}"
-        class="${this.name}__imagen" />
+        class="${this.nombre}__imagen" />
     </figure>
     ${super.getContenido()}`;
   }

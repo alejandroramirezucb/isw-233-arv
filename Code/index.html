@@ -437,6 +437,44 @@
         id="blog"
         class="blog">
         <h2 class="blog__titulo-principal">Blog</h2>
+        <ul id="blog__categorias">
+          <li class="blog__categoria">
+            <button
+              type="submit"
+              class="blog__boton-categoria"
+              data-categoria="Todos"
+              onclick="renderizarCategoria('Todos')">
+              Todos
+            </button>
+          </li>
+          <li class="blog__categoria">
+            <button
+              type="submit"
+              class="blog__boton-categoria"
+              data-categoria="Tecnología"
+              onclick="renderizarCategoria('Tecnología')">
+              Tecnología
+            </button>
+          </li>
+          <li class="blog__categoria">
+            <button
+              type="submit"
+              class="blog__boton-categoria"
+              data-categoria="Inteligencia Artificial"
+              onclick="renderizarCategoria('Inteligencia Artificial')">
+              Inteligencia Artificial
+            </button>
+          </li>
+          <li class="blog__categoria">
+            <button
+              type="submit"
+              class="blog__boton-categoria"
+              data-categoria="Favoritos"
+              onclick="renderizarCategoria('Favoritos')">
+              Favoritos
+            </button>
+          </li>
+        </ul>
         <div class="blog__contenedor"></div>
       </section>
 

@@ -1,5 +1,5 @@
 export class Tarjeta {
-  name = '';
+  nombre = '';
   elemento = null;
 
   constructor({ fecha, titulo, descripcion }) {
@@ -40,7 +40,7 @@ export class Tarjeta {
     if (!this.elemento) {
       let elemento = document.createElement('article');
 
-      elemento.classList.add(`${this.name}__tarjeta`);
+      elemento.classList.add(`${this.nombre}__tarjeta`);
       elemento.innerHTML = this.getContenido();
       this.elemento = elemento;
     }
@@ -49,12 +49,12 @@ export class Tarjeta {
   }
 
   getContenido() {
-    return `<div class="${this.name}__cuerpo">
-          <p class="${this.name}__fecha">
+    return `<div class="${this.nombre}__cuerpo">
+          <p class="${this.nombre}__fecha">
             <time datetime="${this.fecha}">${this.fecha}</time>
           </p>
-          <h3 class="${this.name}__titulo">${this.titulo}</h3>
-          <p class="${this.name}__descripcion">${this.descripcion}</p>
+          <h3 class="${this.nombre}__titulo">${this.titulo}</h3>
+          <p class="${this.nombre}__descripcion">${this.descripcion}</p>
       </div>`;
   }
 }
