@@ -7,6 +7,8 @@ import { Router } from './js/Router.js';
 window.renderizarCategoria =
   TarjetaRender.renderizarCategoria.bind(TarjetaRender);
 
+window.navegarA = Router.navegarA.bind(Router);
+
 function renderTarjetasRepositorios() {
   let repositorioBlog = BlogTarjetaRepository.getInstancia();
   let repositorioProyectos = ProyectosTarjetaRepository.getInstancia();
@@ -16,3 +18,4 @@ function renderTarjetasRepositorios() {
 }
 
 renderTarjetasRepositorios();
+Router.iniciar();

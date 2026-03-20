@@ -1,8 +1,8 @@
 footer {
   text-align: center;
-  padding: 30px 16px 30px;
+  padding: 50px 16px;
   box-sizing: border-box;
-  margin-top: 40px;
+  background-color: #ffffff;
 }
 
 #footer__contenido {

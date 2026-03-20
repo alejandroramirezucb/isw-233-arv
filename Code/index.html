@@ -36,29 +36,41 @@
         <ul class="navegacion__lista">
           <li class="navegacion__elemento">
             <a
-              href="#sobre-mi"
+              href="/"
               class="navegacion__link"
+              onclick="event.preventDefault(); navegarA('introduccion')"
+              >Home</a
+            >
+          </li>
+          <li class="navegacion__elemento">
+            <a
+              href="/sobre-mi"
+              class="navegacion__link"
+              onclick="event.preventDefault(); navegarA('sobre-mi')"
               >Sobre mi</a
             >
           </li>
           <li class="navegacion__elemento">
             <a
-              href="#proyectos"
+              href="/proyectos"
               class="navegacion__link"
+              onclick="event.preventDefault(); navegarA('proyectos')"
               >Proyectos</a
             >
           </li>
           <li class="navegacion__elemento">
             <a
-              href="#blog"
+              href="/blog"
               class="navegacion__link"
+              onclick="event.preventDefault(); navegarA('blog')"
               >Blog</a
             >
           </li>
           <li class="navegacion__elemento">
             <a
-              href="#contacto"
+              href="/contacto"
               class="navegacion__link"
+              onclick="event.preventDefault(); navegarA('contacto')"
               >Contacto</a
             >
           </li>

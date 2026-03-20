@@ -16,10 +16,32 @@
 body {
   font-family: var(--fuente-principal), sans-serif;
   color: var(--color-texto);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 30px;
 }
 
 @media (max-width: 480px) {
   body {
     padding-top: 68px;
   }
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  padding: 0 16px;
+}
+
+footer {
+  margin-top: auto;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+main > section {
+  width: 100%;
 }

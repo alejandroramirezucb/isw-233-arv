@@ -4,6 +4,14 @@ export class Tarjeta {
   nombre = '';
   elemento = null;
 
+  static template = Handlebars.compile(`<div class="{{nombre}}__cuerpo">
+    <p class="{{nombre}}__fecha">
+      <time datetime="{{fecha}}">{{fecha}}</time>
+    </p>
+    <h3 class="{{nombre}}__titulo">{{titulo}}</h3>
+    <p class="{{nombre}}__descripcion">{{descripcion}}</p>
+  </div>`);
+
   constructor({ fecha, titulo, descripcion }) {
     this.fecha = fecha;
     this.titulo = titulo;
@@ -51,17 +59,7 @@ export class Tarjeta {
   }
 
   getContenido() {
-    const templateString = `<div class="{{nombre}}__cuerpo">
-      <p class="{{nombre}}__fecha">
-        <time datetime="{{fecha}}">{{fecha}}</time>
-      </p>
-      <h3 class="{{nombre}}__titulo">{{titulo}}</h3>
-      <p class="{{nombre}}__descripcion">{{descripcion}}</p>
-    </div>`;
-
-    const template = Handlebars.compile(templateString);
-    
-    return template({
+    return Tarjeta.template({
       nombre: this.nombre,
       fecha: this.fecha,
       titulo: this.titulo,
