@@ -1,7 +1,0 @@
-import { Tarjeta } from './tarjetas/Tarjeta.js';
-
-export class TarjetaFactory {
-  static crearTarjeta(config) {
-    return new Tarjeta(config);
-  }
-}

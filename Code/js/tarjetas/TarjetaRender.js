@@ -8,4 +8,13 @@ export class TarjetaRender extends Render {
       this.render(contenedor, tarjeta.getElemento());
     }
   }
+
+  static renderTarjetasRepositorio(repositorio) {
+    document.addEventListener('DOMContentLoaded', () => {
+      let tarjetas = repositorio.getTarjetas();
+      let contenedor = repositorio.getContenedor();
+
+      TarjetaRender.renderTarjetas(contenedor, tarjetas);
+    });
+  }
 }
