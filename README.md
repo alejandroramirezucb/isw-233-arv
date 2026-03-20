@@ -11,6 +11,8 @@ Code/
 ├── index.html
 ├── index.css
 ├── index.js
+├── vite.config.js
+├── package.json
 ├── blocks/
 │   ├── base.css
 │   ├── boton.css
@@ -18,13 +20,30 @@ Code/
 │   ├── contacto.css
 │   ├── educacion.css
 │   ├── experiencia.css
+│   ├── footer.css
 │   ├── hobbies.css
 │   ├── introduccion.css
 │   ├── navegacion.css
 │   ├── proyectos.css
-│   ├── skills.css
-│   └── footer.css
-└── images/
+│   └── skills.css
+├── images/
+└── js/
+    ├── Render.js
+    ├── Router.js
+    ├── blog/
+    │   ├── BlogTarjeta.js
+    │   ├── BlogTarjetaFactory.js
+    │   └── BlogTarjetaRepository.js
+    ├── proyectos/
+    │   ├── ProyectosTarjeta.js
+    │   ├── ProyectosTarjetaFactory.js
+    │   └── ProyectosTarjetaRepository.js
+    └── tarjetas/
+        ├── Tarjeta.js
+        ├── TarjetaElement.js
+        ├── TarjetaFactory.js
+        ├── TarjetaRender.js
+        └── TarjetaRepository.js
 ```
 
 ## Bloques Identificados
@@ -63,6 +82,32 @@ Code/
 - **Variables CSS (Custom Properties)**: Definí mis colores principales y tipografías en `:root`.
 - **Flexbox**: Use Flexbox para centrar el menú de navegación, organizar las tarjetas de proyectos en fila y estructurar el formulario de contacto.
 - **Diseño Responsivo**: Use _Media Queries_ para adaptar la web a móviles.
+
+## Patrones de Diseño
+
+### Factory
+
+**Ubicación**: `Code/js/tarjetas/TarjetaFactory.js`, `Code/js/blog/BlogTarjetaFactory.js`, `Code/js/proyectos/ProyectosTarjetaFactory.js`
+
+**Por qué se usa**: Para abstraer la creación de Tarjetas y permitir que subclases especializadas creen sus propios tipos de tarjetas sin duplicar lógica. Cada factory se encarga de crear instancias de su tipo específico de tarjeta.
+
+**Uso**: Al inicializar repositorios, se utilizan `BlogTarjetaFactory.crearTarjeta()` y `ProyectosTarjetaFactory.crearTarjeta()` para crear instancias de cada tipo de tarjeta con su propios parametros.
+
+### Singleton
+
+**Ubicación**: `Code/js/blog/BlogTarjetaRepository.js`, `Code/js/proyectos/ProyectosTarjetaRepository.js`
+
+**Por qué se usa**: Para garantizar que exista una única instancia de cada repositorio, permitiendo que todos los componentes accedan a los mismos datos.
+
+**Uso**: Se invoca `BlogTarjetaRepository.getInstancia()` y `ProyectosTarjetaRepository.getInstancia()` para obtener la instancia única de cada repositorio, permitiendo acceder a las tarjetas.
+
+### Template Method
+
+**Ubicación**: `Code/js/tarjetas/Tarjeta.js`, `Code/js/blog/BlogTarjeta.js`, `Code/js/proyectos/ProyectosTarjeta.js`
+
+**Por qué se usa**: Para permitir que las subclases cambien pasos específicos. Esto es para reutilizar la estructura base mientras se especializan comportamientos.
+
+**Uso**: La clase `Tarjeta` define el template base y el método `getElemento()`. Las subclases `BlogTarjeta` y `ProyectosTarjeta` heredan de esta clase y pueden sobrescribir `getContenido()` (ProyectosTarjeta) o `getElemento()` (BlogTarjeta) para agregar su propia funcionalidad.
 
 ## ¿Por qué se hace?
 
