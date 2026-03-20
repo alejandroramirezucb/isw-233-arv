@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { Tarjeta } from '../tarjetas/Tarjeta.js';
 
 export class ProyectosTarjeta extends Tarjeta {
@@ -16,13 +17,22 @@ export class ProyectosTarjeta extends Tarjeta {
   }
 
   getContenido() {
-    return `<figure class="${this.nombre}__figura">
+    const templateString = `<figure class="{{nombre}}__figura">
       <img
-        src="${this.imagenUrl}"
-        alt="${this.titulo}"
-        title="${this.titulo}"
-        class="${this.nombre}__imagen" />
-    </figure>
-    ${super.getContenido()}`;
+        src="{{imagenUrl}}"
+        alt="{{titulo}}"
+        title="{{titulo}}"
+        class="{{nombre}}__imagen" />
+    </figure>`;
+
+    const template = Handlebars.compile(templateString);
+
+    return (
+      template({
+        nombre: this.nombre,
+        imagenUrl: this.imagenUrl,
+        titulo: this.titulo,
+      }) + super.getContenido()
+    );
   }
 }

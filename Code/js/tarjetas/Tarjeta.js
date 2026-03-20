@@ -1,3 +1,5 @@
+import Handlebars from 'handlebars';
+
 export class Tarjeta {
   nombre = '';
   elemento = null;
@@ -49,12 +51,21 @@ export class Tarjeta {
   }
 
   getContenido() {
-    return `<div class="${this.nombre}__cuerpo">
-          <p class="${this.nombre}__fecha">
-            <time datetime="${this.fecha}">${this.fecha}</time>
-          </p>
-          <h3 class="${this.nombre}__titulo">${this.titulo}</h3>
-          <p class="${this.nombre}__descripcion">${this.descripcion}</p>
-      </div>`;
+    const templateString = `<div class="{{nombre}}__cuerpo">
+      <p class="{{nombre}}__fecha">
+        <time datetime="{{fecha}}">{{fecha}}</time>
+      </p>
+      <h3 class="{{nombre}}__titulo">{{titulo}}</h3>
+      <p class="{{nombre}}__descripcion">{{descripcion}}</p>
+    </div>`;
+
+    const template = Handlebars.compile(templateString);
+    
+    return template({
+      nombre: this.nombre,
+      fecha: this.fecha,
+      titulo: this.titulo,
+      descripcion: this.descripcion,
+    });
   }
 }

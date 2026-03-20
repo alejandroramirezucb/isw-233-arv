@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { Tarjeta } from '../tarjetas/Tarjeta.js';
 
 export class BlogTarjeta extends Tarjeta {
@@ -51,10 +52,10 @@ export class BlogTarjeta extends Tarjeta {
   }
 
   getContenido() {
-    return `<div class="blog__cuerpo">
+    const templateString = `<div class="blog__cuerpo">
       <div class="blog__header">
         <p class="blog__fecha">
-          <time datetime="${this.fecha}">${this.fecha}</time>
+          <time datetime="{{fecha}}">{{fecha}}</time>
         </p>
         <button type="button" class="boton favorito__boton">
           <figure class="favorito__figura">
@@ -63,9 +64,18 @@ export class BlogTarjeta extends Tarjeta {
           </figure>
         </button>
       </div>
-      <h3 class="blog__titulo">${this.titulo}</h3>
-      <p class="blog__categoria">${this.categoria}</p>
-      <p class="blog__descripcion">${this.descripcion}</p>
+      <h3 class="blog__titulo">{{titulo}}</h3>
+      <p class="blog__categoria">{{categoria}}</p>
+      <p class="blog__descripcion">{{descripcion}}</p>
     </div>`;
+
+    const template = Handlebars.compile(templateString);
+    
+    return template({
+      fecha: this.fecha,
+      titulo: this.titulo,
+      categoria: this.categoria,
+      descripcion: this.descripcion,
+    });
   }
 }
