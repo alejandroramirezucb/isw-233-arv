@@ -38,7 +38,7 @@ export class Tarjeta {
 
   getElemento() {
     if (!this.elemento) {
-      let elemento = document.createElement('article');
+      let elemento = document.createElement('tarjeta-element');
 
       elemento.classList.add(`${this.nombre}__tarjeta`);
       elemento.innerHTML = this.getContenido();

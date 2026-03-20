@@ -24,6 +24,15 @@ export class TarjetaRender extends Render {
     let tarjetas = repositorio.getTarjetasPorCategoria(categoria);
     let contenedor = repositorio.getContenedor();
 
+    if (!tarjetas.length) {
+      contenedor.replaceChildren();
+      let elemento = document.createElement('p');
+      elemento.classList.add('blog__sin-resultados');
+      elemento.innerText = `No se encontraron resultados para la categoría "${categoria}"`;
+      this.render(contenedor, elemento);
+      return;
+    }
+
     TarjetaRender.renderTarjetas(contenedor, tarjetas);
   }
 }
