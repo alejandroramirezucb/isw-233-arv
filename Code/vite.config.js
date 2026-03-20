@@ -1,6 +1,11 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      handlebars: 'handlebars/dist/handlebars.js',
+    },
+  },
   optimizeDeps: {
     include: ['handlebars'],
   },
