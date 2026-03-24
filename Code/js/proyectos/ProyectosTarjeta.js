@@ -13,16 +13,17 @@ export class ProyectosTarjeta extends Tarjeta {
 
   constructor(config) {
     super(config);
-    this.imagenUrl = config.imagenUrl;
-    this.nombre = 'proyectos';
+    this.imagenUrl = Object.freeze(config.imagenUrl);
+    this.nombre = Object.freeze('proyectos');
   }
 
   getImagenUrl() {
     return this.imagenUrl;
   }
 
-  setImagenUrl(imagenUrl) {
-    this.imagenUrl = imagenUrl;
+  esIgualA(otraTarjeta) {
+    return super.esIgualA(otraTarjeta) &&
+      this.imagenUrl === otraTarjeta.getImagenUrl();
   }
 
   getTemplate() {

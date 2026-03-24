@@ -22,8 +22,8 @@ export class BlogTarjeta extends Tarjeta {
   constructor(config) {
     super(config);
     this.esFavorito = false;
-    this.nombre = 'blog';
-    this.categoria = config.categoria;
+    this.nombre = Object.freeze('blog');
+    this.categoria = Object.freeze(config.categoria);
   }
 
   getEsFavorito() {
@@ -41,8 +41,9 @@ export class BlogTarjeta extends Tarjeta {
     return this.categoria;
   }
 
-  setCategoria(categoria) {
-    this.categoria = categoria;
+  esIgualA(otraTarjeta) {
+    return super.esIgualA(otraTarjeta) && 
+      this.categoria === otraTarjeta.getCategoria();
   }
 
   marcarComoFavorito() {

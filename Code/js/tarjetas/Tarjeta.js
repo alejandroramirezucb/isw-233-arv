@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 
 export class Tarjeta {
-  nombre = '';
+  nombre = undefined;
   elemento = null;
 
   static template = Handlebars.compile(`<div class="{{nombre}}__cuerpo">
@@ -13,37 +13,32 @@ export class Tarjeta {
   </div>`);
 
   constructor({ fecha, titulo, descripcion }) {
-    this.fecha = fecha;
-    this.titulo = titulo;
-    this.descripcion = descripcion;
+    this.fecha = Object.freeze(fecha);
+    this.titulo = Object.freeze(titulo);
+    this.descripcion = Object.freeze(descripcion);
   }
 
   getFecha() {
     return this.fecha;
   }
 
-  setFecha(fecha) {
-    this.fecha = fecha;
-  }
-
   getTitulo() {
     return this.titulo;
-  }
-
-  setTitulo(titulo) {
-    this.titulo = titulo;
   }
 
   getDescripcion() {
     return this.descripcion;
   }
 
-  setDescripcion(descripcion) {
-    this.descripcion = descripcion;
-  }
-
   getTarjeta() {
     return this;
+  }
+
+  esIgualA(otraTarjeta) {
+    return (otraTarjeta instanceof Tarjeta) &&
+      this.fecha === otraTarjeta.getFecha() &&
+      this.titulo === otraTarjeta.getTitulo() &&
+      this.descripcion === otraTarjeta.getDescripcion();
   }
 
   getElemento() {

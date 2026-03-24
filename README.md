@@ -109,6 +109,14 @@ Code/
 
 **Uso**: La clase `Tarjeta` define el template base y el método `getElemento()`. Las subclases `BlogTarjeta` y `ProyectosTarjeta` heredan de esta clase y pueden sobrescribir `getContenido()` (ProyectosTarjeta) o `getElemento()` (BlogTarjeta) para agregar su propia funcionalidad.
 
+### Value Object
+
+**Ubicación**: `Code/js/tarjetas/Tarjeta.js`, `Code/js/blog/BlogTarjeta.js`, `Code/js/proyectos/ProyectosTarjeta.js`, `Code/js/tarjetas/TarjetaRepository.js`
+
+**Por qué se usa**: Usando `Object.freeze()`, se crean atributos inmutables que garantizan que sus valores no pueden cambiar cuando ya estan creados, esto hace que las comparaciones sean seguras entre objetos.
+
+**Uso**: En `TarjetaRepository.eliminarTarjeta()` se compara cada tarjeta con `this.tarjetas[i].esIgualA(tarjeta)`.
+
 ## ¿Por qué se hace?
 
 1.  **Practicar Frontend**: Este proyecto me permite practicar HTML y CSS.

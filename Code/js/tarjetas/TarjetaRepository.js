@@ -15,7 +15,7 @@ export class TarjetaRepository {
 
   eliminarTarjeta(tarjeta) {
     for (let i = 0; i < this.tarjetas.length; i++) {
-      if (this.tarjetas[i] === tarjeta) {
+      if (this.tarjetas[i].esIgualA(tarjeta)) {
         tarjeta.getElemento().remove();
         this.tarjetas.splice(i, 1);
         break;
