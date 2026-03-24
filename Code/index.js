@@ -2,6 +2,7 @@ import './js/tarjetas/TarjetaElement.js';
 import { BlogTarjetaRepository } from './js/blog/BlogTarjetaRepository.js';
 import { ProyectosTarjetaRepository } from './js/proyectos/ProyectosTarjetaRepository.js';
 import { TarjetaRender } from './js/tarjetas/TarjetaRender.js';
+import { ImagenRender } from './js/secciones/ImagenRender.js';
 import { Router } from './js/Router.js';
 
 window.renderizarCategoria =
@@ -17,5 +18,6 @@ function renderTarjetasRepositorios() {
   TarjetaRender.renderTarjetasRepositorio(repositorioProyectos);
 }
 
+ImagenRender.renderizarImagenes();
 renderTarjetasRepositorios();
 Router.iniciar();
