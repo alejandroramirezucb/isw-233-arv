@@ -17,6 +17,7 @@ export class TarjetaRender extends Render {
 
       TarjetaRender.renderTarjetas(contenedor, tarjetas);
     });
+
   }
 
   static renderizarCategoria(categoria) {

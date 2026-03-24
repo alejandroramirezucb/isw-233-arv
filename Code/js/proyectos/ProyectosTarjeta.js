@@ -25,13 +25,13 @@ export class ProyectosTarjeta extends Tarjeta {
     this.imagenUrl = imagenUrl;
   }
 
-  getContenido() {
+  getTemplate() {
     const imagenContenido = ProyectosTarjeta.imagenTemplate({
       nombre: this.nombre,
       imagenUrl: this.imagenUrl,
       titulo: this.titulo,
     });
 
-    return imagenContenido + super.getContenido();
+    return imagenContenido + super.getTemplate();
   }
 }

@@ -33,6 +33,7 @@ export class BlogTarjeta extends Tarjeta {
   getElemento() {
     let elemento = super.getElemento();
     this.clickFavorito(elemento);
+
     return elemento;
   }
 
@@ -49,8 +50,8 @@ export class BlogTarjeta extends Tarjeta {
   }
 
   clickFavorito(elemento) {
-    const boton = elemento.querySelector('.favorito__boton');
-    const imagen = elemento.querySelector('.favorito__imagen');
+    const boton = elemento.shadowRoot.querySelector('.favorito__boton');
+    const imagen = elemento.shadowRoot.querySelector('.favorito__imagen');
 
     boton.addEventListener(
       'click',
@@ -68,7 +69,7 @@ export class BlogTarjeta extends Tarjeta {
     );
   }
 
-  getContenido() {
+  getTemplate() {
     return BlogTarjeta.template({
       fecha: this.fecha,
       titulo: this.titulo,

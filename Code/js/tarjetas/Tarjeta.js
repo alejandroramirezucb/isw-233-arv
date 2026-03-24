@@ -51,14 +51,14 @@ export class Tarjeta {
       let elemento = document.createElement('tarjeta-element');
 
       elemento.classList.add(`${this.nombre}__tarjeta`);
-      elemento.innerHTML = this.getContenido();
+      elemento.crearShadow(this.getTemplate(), this.nombre);
       this.elemento = elemento;
     }
 
     return this.elemento;
   }
 
-  getContenido() {
+  getTemplate() {
     return Tarjeta.template({
       nombre: this.nombre,
       fecha: this.fecha,
