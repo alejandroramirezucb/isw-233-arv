@@ -138,6 +138,8 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 
 **Fuentes:**
 
+Se uso las skills contenidas en `Code/.agents/skills` con os siguientes modelos:
+
 - ChatGPT-5.3 Codex
 - Gemini 3.1 Pro
 - Claude Haiku 4.5
