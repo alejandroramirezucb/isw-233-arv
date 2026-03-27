@@ -1,15 +1,8 @@
-.experiencia__contenedor {
+.experiencia__titulo--principal {
   width: 100%;
-  margin: 0 auto 38px;
+  margin: 0 auto;
   padding: 0 48px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.experiencia__titulo--principal {
   margin-bottom: 24px;
   font-size: 1.5rem;
   text-align: center;
@@ -54,6 +47,16 @@
   color: #555;
 }
 
-.experiencia__descripcion {
+.experiencia__contenido {
   margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .experiencia__titulo--principal {
+    padding: 0 16px;
+  }
+
+  .experiencia__tarjeta {
+    padding: 16px;
+  }
 }

@@ -1,0 +1,44 @@
+import { ItemTarjeta } from './ItemTarjeta.js';
+import { ComponenteBase } from '../base/ComponenteBase.js';
+
+export class ListaTarjetas extends ComponenteBase {
+  tarjetas = [];
+
+  crearElemento() {
+    let elemento = document.createElement('lista-tarjetas');
+    for (let tarjeta of this.tarjetas) {
+      tarjeta.crearElemento();
+      elemento.appendChild(tarjeta.getElemento());
+    }
+    this.elemento = elemento;
+  }
+
+  agregarTarjeta(tarjeta) {
+    if (!(tarjeta instanceof ItemTarjeta)) {
+      throw new Error('Debe ser una Tarjeta');
+    }
+
+    this.tarjetas.push(tarjeta);
+  }
+
+  agregarTarjetas(tarjetas) {
+    for (let tarjeta of tarjetas) {
+      this.agregarTarjeta(tarjeta);
+    }
+  }
+
+  eliminarTarjeta(tarjeta) {
+    for (let i = 0; i < this.tarjetas.length; i++) {
+      if (this.tarjetas[i].esIgualA(tarjeta)) {
+        tarjeta.getElemento().remove();
+        this.tarjetas.splice(i, 1);
+        break;
+      }
+    }
+  }
+
+  getTarjetas() {
+    return this.tarjetas;
+  }
+
+}

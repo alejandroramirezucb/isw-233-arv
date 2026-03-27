@@ -1,23 +1,34 @@
-import './js/tarjetas/TarjetaElement.js';
-import { BlogTarjetaRepository } from './js/blog/BlogTarjetaRepository.js';
-import { ProyectosTarjetaRepository } from './js/proyectos/ProyectosTarjetaRepository.js';
-import { TarjetaRender } from './js/tarjetas/TarjetaRender.js';
-import { ImagenRender } from './js/secciones/ImagenRender.js';
-import { Router } from './js/Router.js';
+import { Router } from './src/router/Router.js';
+import { Navegacion } from './src/navegacion/Navegacion.js';
+import { registrarBotonPartial } from './src/partials/BotonPartial.js';
+import { registrarCamposFormularioPartials } from './src/partials/FormularioCamposPartial.js';
+import { registrarEtiquetaPartial } from './src/partials/FormularioEtiquetaPartial.js';
+import { registrarImagenPartial } from './src/partials/ImagenPartial.js';
+import { registrarSeccionPartial } from './src/partials/SeccionPartial.js';
+import './src/navegacion/HTMLItemNavegacion.js';
+import './src/navegacion/HTMLListaNavegacion.js';
+import './src/home/HTMLArticuloHome.js';
+import './src/home/HTMLListaRedesSociales.js';
+import './src/home/HTMLRedSocial.js';
+import './src/sobre-mi/HTMLGrupoSkills.js';
+import './src/sobre-mi/HTMLItemHobbie.js';
+import './src/sobre-mi/HTMLItemSkill.js';
+import './src/sobre-mi/HTMLListaHobbies.js';
+import './src/sobre-mi/HTMLListaSkills.js';
+import './src/sobre-mi/HTMLTarjetaInformacion.js';
+import './src/contacto/HTMLFormularioContacto.js';
+import './src/contacto/HTMLItemContacto.js';
+import './src/contacto/HTMLListaContacto.js';
+import './src/tarjetas/HTMLItemTarjeta.js';
+import './src/tarjetas/HTMLListaTarjetas.js';
+import './src/blog/HTMLItemCategoria.js';
+import './src/blog/HTMLListaCategorias.js';
 
-window.renderizarCategoria =
-  TarjetaRender.renderizarCategoria.bind(TarjetaRender);
+registrarBotonPartial();
+registrarCamposFormularioPartials();
+registrarEtiquetaPartial();
+registrarImagenPartial();
+registrarSeccionPartial();
 
-window.navegarA = Router.navegarA.bind(Router);
-
-function renderTarjetasRepositorios() {
-  let repositorioBlog = BlogTarjetaRepository.getInstancia();
-  let repositorioProyectos = ProyectosTarjetaRepository.getInstancia();
-
-  TarjetaRender.renderTarjetasRepositorio(repositorioBlog);
-  TarjetaRender.renderTarjetasRepositorio(repositorioProyectos);
-}
-
-ImagenRender.renderizarImagenes();
-renderTarjetasRepositorios();
-Router.iniciar();
+const navegacion = Navegacion.getInstancia();
+navegacion.renderizar();

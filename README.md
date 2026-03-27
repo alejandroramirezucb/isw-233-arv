@@ -2,52 +2,52 @@
 
 ## Introducción
 
-El siguiente portafolio tiene mi perfil, mi formación académica, mis hobbies, los proyectos en los que he trabajado, artículos, y una sección para contactarme.
+Este portafolio web muestra mi perfil, formación académica, experiencia, habilidades, hobbies, proyectos y artículos, además de una sección de contacto. La aplicación funciona como una SPA (Single Page Application).
 
 ## Estructura del Proyecto
 
 ```
-Code/
-├── index.html
-├── index.css
-├── index.js
-├── vite.config.js
-├── package.json
-├── blocks/
-│   ├── base.css
-│   ├── boton.css
-│   ├── blog.css
-│   ├── contacto.css
-│   ├── educacion.css
-│   ├── experiencia.css
-│   ├── footer.css
-│   ├── hobbies.css
-│   ├── introduccion.css
-│   ├── navegacion.css
-│   ├── proyectos.css
-│   └── skills.css
-├── images/
-└── js/
-    ├── Render.js
-    ├── Router.js
+/
+├── README.md
+└── Code/
+  ├── index.html
+  ├── index.css
+  ├── index.js
+  ├── package.json
+  ├── vite.config.js
+  ├── blocks/
+  │   ├── base.css
+  │   ├── navegacion.css
+  │   ├── introduccion.css
+  │   ├── blog.css
+  │   ├── proyectos.css
+  │   ├── skills.css
+  │   ├── hobbies.css
+  │   ├── contacto.css
+  │   ├── educacion.css
+  │   ├── experiencia.css
+  │   ├── boton.css
+  │   └── footer.css
+  ├── images/
+  └── src/
+    ├── base/
     ├── blog/
-    │   ├── BlogTarjeta.js
-    │   ├── BlogTarjetaFactory.js
-    │   └── BlogTarjetaRepository.js
+    ├── contacto/
+    ├── home/
+    ├── navegacion/
+    ├── partials/
     ├── proyectos/
-    │   ├── ProyectosTarjeta.js
-    │   ├── ProyectosTarjetaFactory.js
-    │   └── ProyectosTarjetaRepository.js
+    ├── render/
+    ├── router/
+    ├── sobre-mi/
     └── tarjetas/
-        ├── Tarjeta.js
-        ├── TarjetaElement.js
-        ├── TarjetaFactory.js
-        ├── TarjetaRender.js
-        └── TarjetaRepository.js
 ```
 
 ## Bloques Identificados
 
+- **base** (`base.css`)
+- **blog** (`blog.css`)
+- **boton** (`boton.css`)
 - **contacto** (`contacto.css`)
 - **educacion** (`educacion.css`)
 - **experiencia** (`experiencia.css`)
@@ -60,21 +60,20 @@ Code/
 
 ## ¿Qué se hace?
 
-- **Introducción**: Tiene mi foto de perfil, una breve descripción de quién soy y enlaces a mis redes sociales.
-- **Sobre mí**: En esta sección está mi formación académica, skills, experiencia y mis hobbies (programar, diseño UX/UI, viajar, leer).
-- **Proyectos**: Aqui muestro mis proyectos más importantes, como el sistema de inventario "UCB Hold", el "Simulador de Arquitectura x86" y la aplicación de transporte "Pasa App".
-- **Blog**: Aquí tengo los artículos de mi blog.
-- **Contacto**: En esta sección esta el formulario de contacto y mis datos de contacto.
+- **Home**: Muestra mi foto de perfil, un artículo de presentación, enlaces a redes sociales y un botón de contacto.
+- **Sobre mí**: Incluye educación, experiencia, skills y hobbies.
+- **Proyectos**: Muestra proyectos destacados con tarjeta, fecha, descripción e imagen.
+- **Blog**: Muestra artículos y permite filtrar por categorías (incluyendo favoritos).
+- **Contacto**: Incluye formulario de contacto y datos de contacto.
 
 ## ¿Cómo se hace?
 
 ### HTML
 
-- **Navegación clara**: Use la etiqueta `<nav>` con una lista desordenada `<ul>` para el menú principal.
-- **Jerarquía de contenido**: Organicé la web usando `<header>` para la cabecera, `<main>` para el contenido principal y `<footer>` para el pie de página, las secciones están delimitadas por `<section>`.
-- **Contenido**: Para las tarjetas de mis proyectos, educación y mis artículos del blog, use la etiqueta `<article>` porque representan contenido que tiene sentido por sí mismo.
-- **Manejo de imágenes**: En lugar de usar la etiqueta `<img>` sola, la puse dentro de la etiqueta `<figure>`, para que tenga un contenedor semántico adecuado para las fotos.
-- **Fechas**: Use la etiqueta `<time>` (por ejemplo, `<time datetime="2025">2025</time>`) para que las fechas sean interpretables por el navegador de forma estándar.
+- **Estructura base del documento**: Se usa `<header>`, `<main>` y `<footer>` en `index.html` para la jerarquía principal.
+- **Renderizado por componentes**: Las secciones (`home`, `sobre-mi`, `proyectos`, `blog`, `contacto`) se crean con JavaScript y plantillas Handlebars.
+- **Semántica en tarjetas y secciones**: Se usan `<section>`, `<article>`, `<figure>`, `<img>` y encabezados (`h2`, `h3`, `h4`).
+- **Navegación**: El contenedor de navegación usa `<nav>` y los web components son `role="list"` y `role="listitem"`.
 
 ### CSS
 
@@ -83,39 +82,46 @@ Code/
 - **Flexbox**: Use Flexbox para centrar el menú de navegación, organizar las tarjetas de proyectos en fila y estructurar el formulario de contacto.
 - **Diseño Responsivo**: Use _Media Queries_ para adaptar la web a móviles.
 
+### JavaScript
+
+- **Arquitectura**: El proyecto está dividido por secciones (`home`, `blog`, `proyectos`, `contacto`, etc.).
+- **Uso de Handlebars**: Cada componente define una plantilla para producir su HTML.
+- **Navegación**: El router se encarga de las rutas como `/`, `/sobre-mi`, `/proyectos`, `/blog` y `/contacto` sin recargar toda la página.
+- **Web Components**: Se usan elementos personalizados (`item-tarjeta`, `lista-tarjetas`, `item-navegacion`, `lista-navegacion`, etc.).
+
 ## Patrones de Diseño
 
 ### Factory
 
-**Ubicación**: `Code/js/tarjetas/TarjetaFactory.js`, `Code/js/blog/BlogTarjetaFactory.js`, `Code/js/proyectos/ProyectosTarjetaFactory.js`
+**Ubicación**: `Code/src/tarjetas/FactoryTarjeta.js`, `Code/src/blog/FactoryBlogTarjeta.js`, `Code/src/proyectos/FactoryProyectosTarjeta.js`
 
-**Por qué se usa**: Para abstraer la creación de Tarjetas y permitir que subclases especializadas creen sus propios tipos de tarjetas sin duplicar lógica. Cada factory se encarga de crear instancias de su tipo específico de tarjeta.
+**Por qué se usa**: Para abstraer la creación de tarjetas y permitir variantes especializadas sin duplicar la lógica.
 
-**Uso**: Al inicializar repositorios, se utilizan `BlogTarjetaFactory.crearTarjeta()` y `ProyectosTarjetaFactory.crearTarjeta()` para crear instancias de cada tipo de tarjeta con su propios parametros.
+**Uso**: `FactoryBlogTarjeta.crearTarjeta()` crea instancias de `ItemBlogTarjeta` y `FactoryProyectosTarjeta.crearTarjeta()` crea instancias de `ItemProyectosTarjeta`.
 
 ### Singleton
 
-**Ubicación**: `Code/js/blog/BlogTarjetaRepository.js`, `Code/js/proyectos/ProyectosTarjetaRepository.js`
+**Ubicación**: `Code/src/navegacion/Navegacion.js`
 
-**Por qué se usa**: Para garantizar que exista una única instancia de cada repositorio, permitiendo que todos los componentes accedan a los mismos datos.
+**Por qué se usa**: Para garantizar una sola instancia de la navegación en toda la app.
 
-**Uso**: Se invoca `BlogTarjetaRepository.getInstancia()` y `ProyectosTarjetaRepository.getInstancia()` para obtener la instancia única de cada repositorio, permitiendo acceder a las tarjetas.
+**Uso**: `Navegacion.getInstancia()` crea o retorna la única instancia y evita duplicar listeners o estructura de menú.
 
 ### Template Method
 
-**Ubicación**: `Code/js/tarjetas/Tarjeta.js`, `Code/js/blog/BlogTarjeta.js`, `Code/js/proyectos/ProyectosTarjeta.js`
+**Ubicación**: `Code/src/base/ComponenteBase.js`, clases hijas en `Code/src/**`
 
-**Por qué se usa**: Para permitir que las subclases cambien pasos específicos. Esto es para reutilizar la estructura base mientras se especializan comportamientos.
+**Por qué se usa**: La clase base define metodos comunes para la creación de un componente y las subclases implementan el paso específico de construcción de su nodo DOM.
 
-**Uso**: La clase `Tarjeta` define el template base y el método `getElemento()`. Las subclases `BlogTarjeta` y `ProyectosTarjeta` heredan de esta clase y pueden sobrescribir `getContenido()` (ProyectosTarjeta) o `getElemento()` (BlogTarjeta) para agregar su propia funcionalidad.
+**Uso**: `ComponenteBase.getElemento()` se encarga de obtener un elemento y delega en `crearElemento()` implementado por cada componente (por ejemplo, listas, items, secciones y tarjetas).
 
 ### Value Object
 
-**Ubicación**: `Code/js/tarjetas/Tarjeta.js`, `Code/js/blog/BlogTarjeta.js`, `Code/js/proyectos/ProyectosTarjeta.js`, `Code/js/tarjetas/TarjetaRepository.js`
+**Ubicación**: `Code/src/tarjetas/ItemTarjeta.js`, `Code/src/blog/ItemBlogTarjeta.js`, `Code/src/proyectos/ItemProyectosTarjeta.js`, `Code/src/contacto/ItemContacto.js`
 
-**Por qué se usa**: Usando `Object.freeze()`, se crean atributos inmutables que garantizan que sus valores no pueden cambiar cuando ya estan creados, esto hace que las comparaciones sean seguras entre objetos.
+**Por qué se usa**: Se crean objetos inmutables mediante congelación de propiedades para garantizar que sus atributos no cambien una vez instanciados. Esto es para realizar comparaciones entre objetos.
 
-**Uso**: En `TarjetaRepository.eliminarTarjeta()` se compara cada tarjeta con `this.tarjetas[i].esIgualA(tarjeta)`.
+**Uso**: Las clases de lista requieren que los datos sean innmutables para comparar correctamente un elemeno cuando se necesita eliminarlo.
 
 ## ¿Por qué se hace?
 
@@ -132,8 +138,9 @@ Code/
 
 **Fuentes:**
 
-- ChatGPT-4o
-- Gemini 3 Flash
+- ChatGPT-5.3 Codex
+- Gemini 3.1 Pro
+- Claude Haiku 4.5
 
 ## Pregunta 1: Corrige el HTML actual para que haga HTML semántico, explícame luego por qué
 

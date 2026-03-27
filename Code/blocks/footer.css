@@ -5,7 +5,7 @@ footer {
   background-color: #ffffff;
 }
 
-#footer__contenido {
+.footer__contenido {
   margin: 0;
   color: var(--color-texto);
 }

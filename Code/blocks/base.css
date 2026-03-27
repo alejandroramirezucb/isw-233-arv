@@ -42,6 +42,11 @@ footer {
   display: none !important;
 }
 
-main > section {
+main > section,
+main > .sobre-mi,
+main > .blog,
+main > .proyectos,
+main > .contacto,
+main > .home {
   width: 100%;
 }
