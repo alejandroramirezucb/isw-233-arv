@@ -4,15 +4,37 @@
   margin: 0 auto 48px;
   padding: 0 48px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr auto auto 1fr;
+  grid-template-areas:
+    '. titulo titulo .'
+    '. categorias boton .'
+    'contenedor contenedor contenedor contenedor';
+  column-gap: 20px;
+  row-gap: 12px;
   align-items: center;
 }
 
 .blog__titulo-principal {
-  margin-bottom: 24px;
+  grid-area: titulo;
+  margin-bottom: 12px;
   font-size: 1.5rem;
   text-align: center;
+}
+
+.blog__boton-agregar-publicacion {
+  grid-area: boton;
+  align-self: center;
+  margin: 0;
+  padding: 10px 20px;
+  white-space: nowrap;
+}
+
+lista-categorias {
+  grid-area: categorias;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0 !important;
 }
 
 .blog__header {
@@ -73,6 +95,7 @@
 }
 
 .blog__contenedor {
+  grid-area: contenedor;
   display: flex;
   gap: 20px;
   align-items: stretch;

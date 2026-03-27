@@ -2,7 +2,6 @@ import Handlebars from 'handlebars';
 import { ComponenteBase } from '../base/ComponenteBase.js';
 
 export class FormularioContacto extends ComponenteBase {
-
   static template = Handlebars.compile(`
     {{> campoMensaje
       contenedor='contacto'
@@ -36,7 +35,7 @@ export class FormularioContacto extends ComponenteBase {
 
   crearElemento() {
     const elemento = document.createElement('formulario-contacto');
-elemento.innerHTML = this.getTemplate();
+    elemento.innerHTML = this.getTemplate();
     this.elemento = elemento;
   }
 

@@ -3,6 +3,7 @@ export class ImagenRender {
     const observer = new IntersectionObserver(this.callback.bind(this), {
       threshold: 0.2,
     });
+    
     let imagenes = document.querySelectorAll('.img[data-src]');
 
     for (let imagen of imagenes) {

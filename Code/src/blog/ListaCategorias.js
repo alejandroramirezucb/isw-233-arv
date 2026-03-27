@@ -21,4 +21,15 @@ export class ListaCategorias extends ComponenteBase {
   getCategorias() {
     return this.categorias;
   }
+
+  getCategoriasNombres(){
+    let categoriasNombres = [];
+
+    for (let categoria of this.categorias) {
+      if (categoria.getNombre() !== 'Todos' && categoria.getNombre() !== 'Favoritos') {
+        categoriasNombres.push(categoria.getNombre());
+      }
+    }
+    return categoriasNombres;
+  }
 }

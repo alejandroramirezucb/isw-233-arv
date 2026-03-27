@@ -2,6 +2,7 @@
 @import './blocks/navegacion.css';
 @import './blocks/introduccion.css';
 @import './blocks/blog.css';
+@import './blocks/modal-blog.css';
 @import './blocks/proyectos.css';
 @import './blocks/skills.css';
 @import './blocks/hobbies.css';

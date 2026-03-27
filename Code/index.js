@@ -3,6 +3,7 @@ import { Navegacion } from './src/navegacion/Navegacion.js';
 import { registrarBotonPartial } from './src/partials/BotonPartial.js';
 import { registrarCamposFormularioPartials } from './src/partials/FormularioCamposPartial.js';
 import { registrarEtiquetaPartial } from './src/partials/FormularioEtiquetaPartial.js';
+import { registrarFormularioBlogPartial } from './src/partials/FormularioBlogPartial.js';
 import { registrarImagenPartial } from './src/partials/ImagenPartial.js';
 import { registrarSeccionPartial } from './src/partials/SeccionPartial.js';
 import './src/navegacion/HTMLItemNavegacion.js';
@@ -27,6 +28,7 @@ import './src/blog/HTMLListaCategorias.js';
 registrarBotonPartial();
 registrarCamposFormularioPartials();
 registrarEtiquetaPartial();
+registrarFormularioBlogPartial();
 registrarImagenPartial();
 registrarSeccionPartial();
 
