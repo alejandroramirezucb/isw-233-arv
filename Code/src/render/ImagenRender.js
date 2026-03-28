@@ -4,7 +4,7 @@ export class ImagenRender {
       threshold: 0.2,
     });
     
-    let imagenes = document.querySelectorAll('.img[data-src]');
+    let imagenes = document.querySelectorAll('img[data-src]');
 
     for (let imagen of imagenes) {
       observer.observe(imagen);

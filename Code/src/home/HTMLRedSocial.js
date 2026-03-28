@@ -4,6 +4,7 @@ export class HTMLRedSocial extends HTMLComponenteBase {
   connectedCallback() {
     this.setAttribute('role', 'listitem');
     this.setAttribute('class', 'home__red-social');
+    this.setAttribute('data-escala', '1.2');
     this.setAttribute('target', '_blank');
     this.style.cursor = 'pointer';
     this.addEventListener('click', () => {

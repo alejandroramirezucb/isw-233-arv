@@ -4,6 +4,7 @@ export class HTMLItemSkill extends HTMLComponenteBase {
   connectedCallback() {
     this.setAttribute('role', 'listitem');
     this.classList.add('skills__item');
+    this.setAttribute('data-escala', '1.1');
   }
 
 }

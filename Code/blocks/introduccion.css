@@ -46,9 +46,6 @@
   transition: transform 0.2s ease;
 }
 
-.home__red-social:hover {
-  transform: scale(1.2);
-}
 
 .home-red-social__figura {
   width: 40px;

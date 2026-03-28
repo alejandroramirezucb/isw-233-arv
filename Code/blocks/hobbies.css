@@ -33,9 +33,6 @@
   cursor: default;
 }
 
-.hobbies__item:hover {
-  transform: scale(1.15);
-}
 
 .hobbies__figura {
   width: 56px;

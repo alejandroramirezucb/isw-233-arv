@@ -79,9 +79,6 @@ grupo-skills > .skills__lista {
   transition: transform 0.3s;
 }
 
-.skills__item:hover {
-  transform: scale(1.1);
-}
 
 .skills__imagen {
   width: 48px;

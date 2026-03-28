@@ -1,4 +1,6 @@
 import { Navegacion } from './src/navegacion/Navegacion.js';
+import { EscalaRender } from './src/render/EscalaRender.js';
+import { ImagenRender } from './src/render/ImagenRender.js';
 import { registrarBotonPartial } from './src/partials/BotonPartial.js';
 import { registrarCamposFormularioPartials } from './src/partials/FormularioCamposPartial.js';
 import { registrarEtiquetaPartial } from './src/partials/FormularioEtiquetaPartial.js';
@@ -36,3 +38,9 @@ registrarToastPartial();
 
 const navegacion = Navegacion.getInstancia();
 navegacion.renderizar();
+
+const escalaRender = new EscalaRender();
+escalaRender.render();
+
+const imagenRender = new ImagenRender();
+imagenRender.render();
