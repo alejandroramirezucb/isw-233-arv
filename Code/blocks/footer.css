@@ -3,6 +3,7 @@ footer {
   padding: 50px 16px;
   box-sizing: border-box;
   background-color: #ffffff;
+  min-height: 60px;
 }
 
 .footer__contenido {
