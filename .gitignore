@@ -1,6 +1,7 @@
 Code/.idea/
 Code/.vscode/
 Code/node_modules/
+Code/dist/
 .idea/
 .vscode/
 node_modules/
