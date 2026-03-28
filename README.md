@@ -123,6 +123,112 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 
 **Uso**: Las clases de lista requieren que los datos sean innmutables para comparar correctamente un elemeno cuando se necesita eliminarlo.
 
+## Observers
+
+### MutationObserver
+
+**Ubicación**: `Code/src/blog/Blog.js` (método `eventoSinResultados()`)
+
+**Problema resuelto**:
+Cuando el usuario cambia de categoría y no hay resultados, es necesario mostrar un mensaje de "sin resultados". Por eso uso Mutation Observer para ver si hay cambios en el contenedor de tarjetas.
+
+**Implementación**:
+
+```javascript
+let observer = new MutationObserver((mutations) => {
+  for (let mutation of mutations) {
+    if (mutation.type === 'childList' && contenedor.childElementCount === 0) {
+      contenedor.innerHTML =
+        '<p class="blog__mensaje-sin-resultados">No hay resultados para esta categoría</p>';
+    }
+  }
+});
+
+observer.observe(contenedor, { childList: true });
+```
+
+**Por qué MutationObserver es la solución correcta**:
+
+- Se dispara solo cuando hay cambios reales
+- Detecta que es lo qué cambió (childList) y cuándo
+
+### IntersectionObserver
+
+**Ubicación**: `Code/src/render/ImagenRender.js`
+
+**Problema resuelto**:
+Las imágenes se cargan incluso fuera de la pantalla. Es necesario cargar imágenes solo cuando el usuario esta apunto de verlas.
+
+**Implementación**:
+
+```javascript
+export class ImagenRender {
+  render() {
+    const observer = new IntersectionObserver(this.callback.bind(this), {
+      threshold: 0.2,
+    });
+
+    for (let imagen of document.querySelectorAll('img[data-src]')) {
+      observer.observe(imagen);
+    }
+  }
+
+  callback(entries, observer) {
+    for (let entrie of entries) {
+      if (entrie.isIntersecting) {
+        entrie.target.src = entrie.target.getAttribute('data-src');
+        observer.unobserve(entrie.target);
+      }
+    }
+  }
+}
+```
+
+**Por qué IntersectionObserver es la solución correcta**:
+
+- `threshold: 0.2` permite cargar imágenes antes de que sean visibles muy facilmente
+- Desuscribirse (`unobserve`) es automático cuando ya no se necesita
+
+### ResizeObserver
+
+**Ubicación**: `Code/src/render/EscalaRender.js`
+
+**Problema resuelto**:
+Los elementos con atributo `data-escala` deben escalar cuando el usuario pasa el mouse, pero solo si el elemento ha sido renderizado. Sin esto, podría fallar en elementos con display:none.
+
+**Implementación**:
+
+```javascript
+export class EscalaRender {
+  render() {
+    const observer = new ResizeObserver(this.callback.bind(this));
+
+    for (let elemento of document.querySelectorAll('[data-escala]')) {
+      observer.observe(elemento, { box: 'border-box' });
+    }
+  }
+
+  callback(entries) {
+    for (let entrie of entries) {
+      if (entrie.contentRect.width === 0 || entrie.target.escalaRegistrada) {
+        continue;
+      }
+
+      entrie.target.escalaRegistrada = true;
+      entrie.target.addEventListener('mouseenter', () => {
+        entrie.target.style.transform = `scale(${entrie.target.getAttribute('data-escala')})`;
+      });
+    }
+  }
+}
+```
+
+**Por qué ResizeObserver es la solución correcta**:
+
+- Primero verifica que el elemento tiene dimensiones válidas antes de registrar listeners
+- Solo registra listeners una vez por elemento (usando `escalaRegistrada`)
+- Funciona con elementos dinámicos o con animaciones CSS
+
 ## ¿Por qué se hace?
 
 1.  **Practicar Frontend**: Este proyecto me permite practicar HTML y CSS.
@@ -138,11 +244,12 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 
 **Fuentes:**
 
-Se uso las skills contenidas en `Code/.agents/skills` con os siguientes modelos:
+Se uso las skills contenidas en `Code/.agents/skills` con los siguientes modelos:
 
 - ChatGPT-5.3 Codex
 - Gemini 3.1 Pro
 - Claude Haiku 4.5
+- Claude Opus 4.6
 
 ## Pregunta 1: Corrige el HTML actual para que haga HTML semántico, explícame luego por qué
 
