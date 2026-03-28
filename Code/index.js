@@ -1,4 +1,3 @@
-import { Router } from './src/router/Router.js';
 import { Navegacion } from './src/navegacion/Navegacion.js';
 import { registrarBotonPartial } from './src/partials/BotonPartial.js';
 import { registrarCamposFormularioPartials } from './src/partials/FormularioCamposPartial.js';
@@ -6,6 +5,7 @@ import { registrarEtiquetaPartial } from './src/partials/FormularioEtiquetaParti
 import { registrarFormularioBlogPartial } from './src/partials/FormularioBlogPartial.js';
 import { registrarImagenPartial } from './src/partials/ImagenPartial.js';
 import { registrarSeccionPartial } from './src/partials/SeccionPartial.js';
+import { registrarToastPartial } from './src/partials/ToastPartial.js';
 import './src/navegacion/HTMLItemNavegacion.js';
 import './src/navegacion/HTMLListaNavegacion.js';
 import './src/home/HTMLArticuloHome.js';
@@ -24,6 +24,7 @@ import './src/tarjetas/HTMLItemTarjeta.js';
 import './src/tarjetas/HTMLListaTarjetas.js';
 import './src/blog/HTMLItemCategoria.js';
 import './src/blog/HTMLListaCategorias.js';
+import './src/base/HTMLToast.js';
 
 registrarBotonPartial();
 registrarCamposFormularioPartials();
@@ -31,6 +32,7 @@ registrarEtiquetaPartial();
 registrarFormularioBlogPartial();
 registrarImagenPartial();
 registrarSeccionPartial();
+registrarToastPartial();
 
 const navegacion = Navegacion.getInstancia();
 navegacion.renderizar();

@@ -29,10 +29,9 @@ export class ItemBlogTarjeta extends ItemTarjeta {
 
   marcarFavorito() {
     this.esFavorito = !this.esFavorito;
-    const imagen = this.elemento.querySelector(
-      '.blog-favorito__imagen',
-    );
+    const imagen = this.elemento.querySelector('.blog-favorito__imagen');
     imagen.src = this.esFavorito ? 'images/star.svg' : 'images/star-line.svg';
+    this.elemento.dispatchEvent(new CustomEvent('favorito-cambio', { bubbles: true }));
   }
 
   getTemplate() {

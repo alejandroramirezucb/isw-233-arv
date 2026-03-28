@@ -1,5 +1,6 @@
 import { FactoryBlogTarjeta } from './FactoryBlogTarjeta.js';
 import { ModalBlog } from './ModalBlog.js';
+import { Toast } from '../base/Toast.js';
 
 export class ModalAgregarBlogTarjeta extends ModalBlog {
   botonTexto = 'Agregar Publicación';
@@ -36,6 +37,7 @@ export class ModalAgregarBlogTarjeta extends ModalBlog {
       this.agregarTarjeta(tarjeta);
       formulario.reset();
       this.cerrarModal();
+      Toast.mostrar('Tarjeta agregada exitosamente.', 'toast--agregacion');
     });
   }
 }

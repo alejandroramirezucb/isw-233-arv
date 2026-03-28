@@ -13,12 +13,12 @@ export class ListaTarjetas extends ComponenteBase {
     this.elemento = elemento;
   }
 
-  agregarTarjeta(tarjeta) {
-    if (!(tarjeta instanceof ItemTarjeta)) {
+  agregarTarjeta(config) {
+    if (!(config.tarjeta instanceof ItemTarjeta)) {
       throw new Error('Debe ser una Tarjeta');
     }
 
-    this.tarjetas.push(tarjeta);
+    this.tarjetas.push(config.tarjeta);
   }
 
   agregarTarjetas(tarjetas) {
@@ -40,5 +40,4 @@ export class ListaTarjetas extends ComponenteBase {
   getTarjetas() {
     return this.tarjetas;
   }
-
 }

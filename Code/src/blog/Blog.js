@@ -6,13 +6,22 @@ import './HTMLItemCategoria.js';
 import './HTMLListaCategorias.js';
 import '../tarjetas/HTMLItemTarjeta.js';
 import '../tarjetas/HTMLListaTarjetas.js';
-
+ 
 export class Blog {
+  categoriaActiva = 'Todos';
   listaCategorias = new ListaCategorias();
   listaTarjetas = new ListaBlogTarjetas();
   modalAgregarTarjeta = new ModalAgregarBlogTarjeta(
     this.listaCategorias.getCategoriasNombres(),
-    this.listaTarjetas.agregarTarjeta.bind(this.listaTarjetas),
+    (tarjeta) => {
+      tarjeta.crearElemento();
+      let contenedor = this.elemento.querySelector('.blog__contenedor');
+      this.listaTarjetas.agregarTarjeta({
+        tarjeta: tarjeta,
+        contenedor: contenedor,
+        categoriaActiva: this.categoriaActiva,
+      });
+    },
   );
   elemento = null;
 
@@ -43,8 +52,10 @@ export class Blog {
     }
 
     this.elemento = elemento;
-    this.eventoPorCategoria();
+    this.eventoTarjetasPorCategoria();
     this.eventoAbrirModalAgregarTarjeta();
+    this.eventoSinResultados();
+    this.eventoSeleccionarFavorito();
   }
 
   getElemento() {
@@ -59,14 +70,50 @@ export class Blog {
     return Blog.template({});
   }
 
-  eventoPorCategoria() {
+  eventoTarjetasPorCategoria() {
     for (let categoria of this.listaCategorias.getCategorias()) {
       categoria.eventoClick({
         contenedor: this.elemento.querySelector('.blog__contenedor'),
         tarjetas: () =>
           this.listaTarjetas.getTarjetasPorCategoria(categoria.getNombre()),
+        blog: this,
       });
     }
+  }
+
+  eventoSinResultados() {
+    let contenedor = this.elemento.querySelector('.blog__contenedor');
+
+    let observer = new MutationObserver((mutations) => {
+      for (let mutation of mutations) {
+        if (
+          mutation.type === 'childList' &&
+          contenedor.childElementCount === 0
+        ) {
+          contenedor.innerHTML =
+            '<p class="blog__mensaje-sin-resultados">No hay resultados para esta categoría</p>';
+        }
+      }
+    });
+
+    observer.observe(contenedor, {
+      childList: true,
+    });
+  }
+
+  eventoSeleccionarFavorito() {
+    this.elemento.addEventListener('favorito-cambio', () => {
+      if (this.categoriaActiva !== 'Favoritos') 
+        return;
+
+      const contenedor = this.elemento.querySelector('.blog__contenedor');
+      contenedor.innerHTML = '';
+      for (let tarjeta of this.listaTarjetas.getTarjetasPorCategoria(
+        'Favoritos',
+      )) {
+        contenedor.appendChild(tarjeta.getElemento());
+      }
+    });
   }
 
   eventoAbrirModalAgregarTarjeta() {

@@ -16,23 +16,13 @@
 }
 
 .proyectos__contenedor {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  align-items: stretch;
-  justify-content: center;
   padding-bottom: 24px;
   padding-left: 8px;
   padding-right: 8px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   width: 100%;
-}
-
-.proyectos__contenedor::-webkit-scrollbar {
-  display: none;
-  height: 0;
 }
 
 .proyectos__contenedor > item-tarjeta {
@@ -42,8 +32,6 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-width: 280px;
-  flex: 0 0 320px;
   min-height: 320px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -55,7 +43,18 @@
 }
 
 .proyectos__figura {
-  display: none;
+  display: block;
+  width: 100%;
+  height: 200px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.proyectos__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .proyectos__cuerpo {
@@ -91,47 +90,30 @@
   text-align: left;
 }
 
-@media (max-width: 1200px) {
-  .proyectos__figura {
-    height: 220px;
-  }
-
-  .proyectos__contenedor > item-tarjeta {
-    min-width: 300px;
-    flex: 0 0 300px;
-  }
-}
-
 @media (max-width: 900px) {
   .proyectos {
     padding: 0 20px;
   }
 
   .proyectos__contenedor {
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
-  .proyectos__contenedor > item-tarjeta {
-    flex: 0 0 calc(50% - 20px);
-    min-width: calc(50% - 20px);
-    max-width: calc(50% - 20px);
+  .proyectos__figura {
+    height: 180px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .proyectos {
     padding: 0 16px;
   }
 
   .proyectos__contenedor {
-    flex-wrap: wrap;
-    justify-content: center;
+    grid-template-columns: 1fr;
   }
 
-  .proyectos__contenedor > item-tarjeta {
-    flex: 0 0 100%;
-    min-width: 100%;
-  }
   .proyectos__figura {
     height: 200px;
   }
@@ -144,6 +126,5 @@
 
   .proyectos__contenedor > item-tarjeta {
     min-height: auto;
-    padding: 12px;
   }
 }

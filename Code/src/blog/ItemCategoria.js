@@ -38,17 +38,13 @@ export class ItemCategoria extends ComponenteBase {
 
     boton.addEventListener('click', (_) => {
       let contenedor = config.contenedor;
-
-      if (config.tarjetas().length === 0) {
-        contenedor.innerHTML = '<p class="blog__mensaje-sin-resultados">No hay resultados para esta categoría</p>';
-        return;
-      }
-
       contenedor.innerHTML = '';
 
       for (let tarjeta of config.tarjetas()) {
         contenedor.appendChild(tarjeta.getElemento());
       }
+
+      config.blog.categoriaActiva = this.nombre;
     });
   }
 }

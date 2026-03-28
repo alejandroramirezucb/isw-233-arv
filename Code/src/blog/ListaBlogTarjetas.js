@@ -39,4 +39,16 @@ export class ListaBlogTarjetas extends ListaTarjetas {
 
     return this.tarjetas.filter((tarjeta) => tarjeta.getCategoria() === categoria);
   }
+
+  agregarTarjeta(config) {
+    super.agregarTarjeta(config);
+    if (
+      config.contenedor &&
+      config.categoriaActiva &&
+      (config.categoriaActiva === config.tarjeta.getCategoria() ||
+        config.categoriaActiva === 'Todos')
+    ) {
+      config.contenedor.appendChild(config.tarjeta.getElemento());
+    }
+  }
 }
