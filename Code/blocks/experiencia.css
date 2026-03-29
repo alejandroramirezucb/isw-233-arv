@@ -51,7 +51,7 @@
   margin-top: 8px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .experiencia__titulo--principal {
     padding: 0 16px;
   }

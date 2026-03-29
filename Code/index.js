@@ -1,3 +1,4 @@
+import './index.css';
 import { Navegacion } from './src/navegacion/Navegacion.js';
 import { EscalaRender } from './src/render/EscalaRender.js';
 import { ImagenRender } from './src/render/ImagenRender.js';

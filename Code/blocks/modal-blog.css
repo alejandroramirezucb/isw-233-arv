@@ -10,12 +10,12 @@ modal-blog {
   max-width: 420px;
   min-height: 72vh;
   max-height: 88vh;
-  background: #ffffff;
+  background: #fff;
   border-radius: 18px;
   overflow: hidden;
   box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.25),
-    0 4px 16px rgba(0, 0, 0, 0.1);
+    0 24px 64px rgb(0 0 0 / 25%),
+    0 4px 16px rgb(0 0 0 / 10%);
   filter: none !important;
   backdrop-filter: none !important;
 }
@@ -24,7 +24,7 @@ modal-blog::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0 0 0 / 50%);
   backdrop-filter: blur(8px);
   z-index: -1;
 }
@@ -35,7 +35,7 @@ modal-blog::before {
   justify-content: center;
   width: 100%;
   padding: 18px 22px;
-  background: #ffffff;
+  background: #fff;
 }
 
 .modal-blog__titulo {
@@ -50,7 +50,7 @@ modal-blog::before {
 .modal-blog__cuerpo {
   padding: 20px 24px;
   overflow-y: auto;
-  background: #ffffff;
+  background: #fff;
   flex: 1;
   display: grid;
   grid-template-columns: auto auto;
@@ -63,7 +63,7 @@ modal-blog::before {
 }
 
 .modal-blog__contenedor {
-  background: #ffffff;
+  background: #fff;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -114,13 +114,6 @@ modal-blog::before {
   outline: none;
 }
 
-.modal-blog__campo-text:focus,
-.modal-blog__campo-selector:focus,
-.modal-blog__campo-descripcion:focus {
-  border-color: var(--color-primario);
-  box-shadow: 0 0 0 3px rgba(47, 113, 229, 0.12);
-}
-
 .modal-blog__campo-selector {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -136,13 +129,20 @@ modal-blog::before {
   line-height: 1.5;
 }
 
+.modal-blog__campo-text:focus,
+.modal-blog__campo-selector:focus,
+.modal-blog__campo-descripcion:focus {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgb(47 113 229 / 12%);
+}
+
 .modal-blog__boton-accion,
 .modal-blog__boton-cerrar {
   align-self: center;
   margin-top: 0;
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   modal-blog {
     width: 90%;
     min-height: 60vh;

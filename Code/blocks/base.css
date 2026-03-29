@@ -1,7 +1,7 @@
 :root {
   --color-primario: #2f71e5;
-  --color-texto: #000000;
-  --color-fondo: #ffffff;
+  --color-texto: #000;
+  --color-fondo: #fff;
   --fuente-principal: 'Inter', sans-serif;
   --ancho-maximo: 800px;
   --espaciado-base: 20px;
@@ -22,7 +22,7 @@ body {
   padding-top: 30px;
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   body {
     padding-top: 68px;
   }

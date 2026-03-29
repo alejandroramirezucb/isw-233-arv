@@ -37,8 +37,7 @@ grupo-skills {
 
 grupo-skills > ul {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   gap: 12px;
   justify-content: center;
   align-items: center;
@@ -51,19 +50,18 @@ grupo-skills > ul {
   font-size: 1.1rem;
   margin-bottom: 16px;
   text-align: center;
-  color: #000000;
+  color: #000;
 }
 
 .skills__lista {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   gap: 12px;
   justify-content: center;
   align-items: center;
   list-style: none;
   padding: 0;
   margin: 0;
-  flex-wrap: wrap;
 }
 
 grupo-skills > .skills__lista {
@@ -87,7 +85,7 @@ grupo-skills > .skills__lista {
   object-fit: contain;
 }
 
-@media (max-width: 900px) {
+@media (width <= 900px) {
   .skills {
     padding: 0 20px 20px;
   }
@@ -98,13 +96,13 @@ grupo-skills > .skills__lista {
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .skills {
     padding: 0 16px 20px;
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .skills__imagen {
     width: 40px;
     height: 40px;

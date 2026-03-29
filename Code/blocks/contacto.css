@@ -41,7 +41,7 @@
 }
 
 .contacto__subtitulo {
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   font-weight: 700;
 }
 
@@ -115,7 +115,7 @@
   justify-content: center;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .contacto {
     padding: 0 16px;
   }
@@ -127,7 +127,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .contacto__campo-mensaje {
     min-height: 120px;
   }
