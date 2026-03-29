@@ -1,0 +1,6 @@
+.categoria-item {
+  list-style: none;
+  margin: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+}

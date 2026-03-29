@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "bem-structure": {
+      "source": "rolemodel/rolemodel-skills",
+      "sourceType": "github",
+      "computedHash": "a46395c295b1a8c2814d6e1ca36219be5475ae8828dddd2f28595fb8d53af16b"
+    },
     "interface-design": {
       "source": "dammyjay93/interface-design",
       "sourceType": "github",

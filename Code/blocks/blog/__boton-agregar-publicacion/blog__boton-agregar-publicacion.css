@@ -1,0 +1,28 @@
+.blog__boton-agregar-publicacion {
+  grid-area: boton;
+  align-self: center;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  color: var(--color-primario);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
+  margin: 0 0 24px;
+
+  &:hover {
+    background-color: var(--color-primario);
+    color: #fff;
+    border-color: var(--color-primario);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

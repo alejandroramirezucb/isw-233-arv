@@ -1,0 +1,10 @@
+.home__articulo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (width <= 768px) {
+    align-items: center;
+    text-align: center;
+  }
+}

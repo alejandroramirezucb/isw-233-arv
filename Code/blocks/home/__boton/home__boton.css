@@ -1,0 +1,15 @@
+.home__boton {
+  @media (width <= 768px) {
+    align-self: center;
+  }
+
+  @media (width <= 480px) {
+    align-self: center;
+  }
+
+  @media (width <= 360px) {
+    padding: 8px 14px;
+    font-size: 14px;
+    align-self: center;
+  }
+}

@@ -1,0 +1,45 @@
+@import url('./__titulo-principal/blog__titulo-principal.css');
+@import url('./__boton-agregar-publicacion/blog__boton-agregar-publicacion.css');
+@import url('./__header/blog__header.css');
+@import url('./__favorito-boton/blog__favorito-boton.css');
+@import url('./__contenedor/blog__contenedor.css');
+@import url('./__cuerpo/blog__cuerpo.css');
+@import url('./__fecha/blog__fecha.css');
+@import url('./__titulo/blog__titulo.css');
+@import url('./__categoria/blog__categoria.css');
+@import url('./__descripcion/blog__descripcion.css');
+@import url('./__categoria-boton/blog__categoria-boton.css');
+@import url('./__mensaje-sin-resultados/blog__mensaje-sin-resultados.css');
+
+
+lista-categorias {
+  grid-area: categorias;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px !important;
+}
+
+.blog {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto 48px;
+  padding: 0 48px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr auto auto 1fr;
+  grid-template-areas:
+    '. titulo titulo .'
+    '. categorias boton .'
+    'contenedor contenedor contenedor contenedor';
+  gap: 12px 20px;
+  align-items: center;
+
+  @media (width <= 900px) {
+    padding: 0 20px;
+  }
+
+  @media (width <= 600px) {
+    padding: 0 16px;
+  }
+}
+

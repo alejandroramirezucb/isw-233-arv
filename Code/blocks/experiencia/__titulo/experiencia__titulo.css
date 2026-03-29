@@ -1,0 +1,12 @@
+.experiencia__titulo--principal {
+  width: 100%;
+  margin: 0 auto 24px;
+  padding: 0 48px;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  text-align: center;
+
+  @media (width <= 768px) {
+    padding: 0 16px;
+  }
+}

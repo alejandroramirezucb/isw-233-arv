@@ -1,0 +1,17 @@
+@import url('./__titulo-principal/hobbies__titulo-principal.css');
+@import url('./__lista/hobbies__lista.css');
+@import url('./__item/hobbies__item.css');
+@import url('./__figura/hobbies__figura.css');
+@import url('./__imagen/hobbies__imagen.css');
+@import url('./__nombre/hobbies__nombre.css');
+
+.hobbies {
+  width: 100%;
+  margin: 0 auto 38px;
+  padding: 0 48px 52px;
+  box-sizing: border-box;
+
+  @media (width <= 768px) {
+    padding: 0 16px 32px;
+  }
+}

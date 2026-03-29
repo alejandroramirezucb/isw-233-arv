@@ -1,0 +1,14 @@
+.contacto__contenedor {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+
+  @media (width <= 768px) {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+}

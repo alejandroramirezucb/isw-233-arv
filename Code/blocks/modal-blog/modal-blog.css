@@ -1,0 +1,62 @@
+@import url('./__cabecera/modal-blog__cabecera.css');
+@import url('./__titulo/modal-blog__titulo.css');
+@import url('./__cuerpo/modal-blog__cuerpo.css');
+@import url('./__contenedor/modal-blog__contenedor.css');
+@import url('./__formulario/modal-blog__formulario.css');
+@import url('./__grupo/modal-blog__grupo.css');
+@import url('./__etiqueta/modal-blog__etiqueta.css');
+@import url('./__campo-text/modal-blog__campo-text.css');
+@import url('./__campo-selector/modal-blog__campo-selector.css');
+@import url('./__campo-descripcion/modal-blog__campo-descripcion.css');
+@import url('./__boton-accion/modal-blog__boton-accion.css');
+
+
+modal-blog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  width: min(420px, 80%);
+  max-width: 420px;
+  min-height: 72vh;
+  max-height: 88vh;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 64px rgb(0 0 0 / 25%),
+    0 4px 16px rgb(0 0 0 / 10%);
+  filter: none !important;
+  backdrop-filter: none !important;
+
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgb(0 0 0 / 50%);
+    backdrop-filter: blur(8px);
+    z-index: -1;
+  }
+
+  @media (width <= 480px) {
+    width: 90%;
+    min-height: 60vh;
+    max-height: 95vh;
+  }
+}
+
+header,
+main,
+footer {
+  transition: filter 0.3s ease;
+}
+
+body:has(modal-blog) header,
+body:has(modal-blog) main,
+body:has(modal-blog) footer {
+  filter: blur(4px);
+}
+

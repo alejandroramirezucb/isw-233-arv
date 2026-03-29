@@ -1,0 +1,27 @@
+@import url('./__titulo-principal/proyectos__titulo-principal.css');
+@import url('./__contenedor/proyectos__contenedor.css');
+@import url('./__figura/proyectos__figura.css');
+@import url('./__imagen/proyectos__imagen.css');
+@import url('./__cuerpo/proyectos__cuerpo.css');
+@import url('./__fecha/proyectos__fecha.css');
+@import url('./__titulo/proyectos__titulo.css');
+@import url('./__descripcion/proyectos__descripcion.css');
+
+.proyectos {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto 48px;
+  padding: 0 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (width <= 900px) {
+    padding: 0 20px;
+  }
+
+  @media (width <= 600px) {
+    padding: 0 16px;
+  }
+}

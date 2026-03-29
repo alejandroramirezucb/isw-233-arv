@@ -1,0 +1,18 @@
+.hobbies__figura {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+
+  @media (width <= 768px) {
+    width: 44px;
+    height: 44px;
+  }
+
+  @media (width <= 480px) {
+    width: 44px;
+    height: 44px;
+  }
+}

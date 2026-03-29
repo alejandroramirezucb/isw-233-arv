@@ -1,0 +1,42 @@
+.proyectos__contenedor {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-bottom: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 100%;
+
+  > item-tarjeta {
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 8px 16px -2px rgb(0 0 0 / 15%);
+    }
+  }
+
+  @media (width <= 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media (width <= 600px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (width <= 480px) {
+    > item-tarjeta {
+      min-height: auto;
+    }
+  }
+}

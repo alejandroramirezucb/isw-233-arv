@@ -1,0 +1,14 @@
+.navegacion__lista {
+  display: flex;
+  list-style: none;
+
+  @media (width <= 768px) {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (width <= 360px) {
+    gap: 8px;
+  }
+}

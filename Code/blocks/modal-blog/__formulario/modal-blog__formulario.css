@@ -1,0 +1,5 @@
+.modal-blog__formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

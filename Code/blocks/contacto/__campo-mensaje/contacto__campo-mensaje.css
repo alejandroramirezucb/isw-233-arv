@@ -1,0 +1,8 @@
+.contacto__campo-mensaje {
+  min-height: 140px;
+  resize: vertical;
+
+  @media (width <= 480px) {
+    min-height: 120px;
+  }
+}

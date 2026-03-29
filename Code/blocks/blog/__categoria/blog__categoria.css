@@ -1,0 +1,6 @@
+.blog__categoria {
+  font-size: 0.875rem;
+  color: var(--color-primario);
+  margin: 0;
+  text-align: left;
+}

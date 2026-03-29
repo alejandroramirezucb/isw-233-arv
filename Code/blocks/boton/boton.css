@@ -1,0 +1,12 @@
+@import url('./_primario/boton_primario.css');
+
+.boton {
+  font-family: inherit;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  width: fit-content;
+  text-align: center;
+  transition: all 0.3s;
+}

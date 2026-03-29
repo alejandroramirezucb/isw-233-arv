@@ -1,0 +1,14 @@
+.hobbies__lista {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  flex-wrap: wrap;
+
+  @media (width <= 768px) {
+    gap: 20px;
+  }
+}

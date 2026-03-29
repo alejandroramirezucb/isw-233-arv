@@ -1,0 +1,6 @@
+.blog__cuerpo {
+  padding: 8px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

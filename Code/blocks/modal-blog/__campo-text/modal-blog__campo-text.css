@@ -1,0 +1,19 @@
+.modal-blog__campo-text {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-family: var(--fuente-principal);
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  background: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  outline: none;
+
+  &:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgb(47 113 229 / 12%);
+  }
+}

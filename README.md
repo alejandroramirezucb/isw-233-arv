@@ -10,53 +10,72 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 /
 ├── README.md
 └── Code/
-  ├── index.html
-  ├── index.css
-  ├── index.js
-  ├── package.json
-  ├── vite.config.js
-  ├── blocks/
-  │   ├── base.css
-  │   ├── navegacion.css
-  │   ├── introduccion.css
-  │   ├── blog.css
-  │   ├── proyectos.css
-  │   ├── skills.css
-  │   ├── hobbies.css
-  │   ├── contacto.css
-  │   ├── educacion.css
-  │   ├── experiencia.css
-  │   ├── boton.css
-  │   └── footer.css
-  ├── images/
-  └── src/
-    ├── base/
-    ├── blog/
-    ├── contacto/
-    ├── home/
-    ├── navegacion/
-    ├── partials/
-    ├── proyectos/
-    ├── render/
-    ├── router/
-    ├── sobre-mi/
-    └── tarjetas/
+    ├── index.html
+    ├── index.css
+    ├── index.js
+    ├── package.json
+    ├── vite.config.js
+    ├── eslint.config.js
+    ├── postcss.config.js
+    ├── .stylelintrc.json
+    ├── blocks/
+    │   ├── base/
+    │   ├── navegacion/
+    │   ├── encabezado/
+    │   ├── home/
+    │   ├── home-red-social/
+    │   ├── blog/
+    │   ├── blog-favorito/
+    │   ├── categorias/
+    │   ├── categoria-item/
+    │   ├── modal-blog/
+    │   ├── proyectos/
+    │   ├── skills/
+    │   ├── hobbies/
+    │   ├── contacto/
+    │   ├── contacto-item/
+    │   ├── educacion/
+    │   ├── experiencia/
+    │   ├── boton/
+    │   ├── footer/
+    │   └── toast/
+    ├── images/
+    └── src/
+        ├── base/
+        ├── blog/
+        ├── contacto/
+        ├── home/
+        ├── navegacion/
+        ├── partials/
+        ├── proyectos/
+        ├── render/
+        ├── router/
+        ├── sobre-mi/
+        └── tarjetas/
 ```
 
 ## Bloques Identificados
 
-- **base** (`base.css`)
-- **blog** (`blog.css`)
-- **boton** (`boton.css`)
-- **contacto** (`contacto.css`)
-- **educacion** (`educacion.css`)
-- **experiencia** (`experiencia.css`)
-- **hobbies** (`hobbies.css`)
-- **introduccion** (`introduccion.css`)
-- **navegacion** (`navegacion.css`)
-- **proyectos** (`proyectos.css`)
-- **skills** (`skills.css`)
-- **footer** (`footer.css`)
+- **base**: Estilos base del proyecto
+- **navegacion**: Barra de navegación
+- **encabezado**: Encabezado principal
+- **home**: Sección de inicio
+- **home-red-social**: Elementos de redes sociales
+- **blog**: Sección de artículos con filtros
+- **blog-favorito**: Artículos marcados como favoritos
+- **categorias**: Lista de categorías
+- **categoria-item**: Elemento individual de categoría
+- **modal-blog**: Modal para crear/editar artículos
+- **proyectos**: Sección de proyectos
+- **skills**: Sección de skills
+- **hobbies**: Sección de hobbies
+- **contacto**: Formulario y datos de contacto
+- **contacto-item**: Elemento de contacto
+- **educacion**: Sección de educación
+- **experiencia**: Sección de experiencia
+- **boton**: Componente de botón
+- **toast**: Notificaciones emergentes
+- **footer**: Pie de página
 
 ## ¿Qué se hace?
 

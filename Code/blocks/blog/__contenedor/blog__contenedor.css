@@ -1,0 +1,47 @@
+.blog__contenedor {
+  grid-area: contenedor;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 100%;
+
+  > item-tarjeta {
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(33.333% - 14px);
+    min-width: 250px;
+    min-height: 220px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 8px 16px -2px rgb(0 0 0 / 15%);
+    }
+  }
+
+  @media (width <= 900px) {
+    gap: 16px;
+
+    > item-tarjeta {
+      flex: 0 0 calc(50% - 8px);
+      min-width: calc(50% - 8px);
+    }
+  }
+
+  @media (width <= 600px) {
+    > item-tarjeta {
+      flex: 0 0 100%;
+      min-width: 100%;
+    }
+  }
+}

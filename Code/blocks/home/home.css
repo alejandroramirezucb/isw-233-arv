@@ -1,0 +1,40 @@
+@import url('./__figura/home__figura.css');
+@import url('./__imagen/home__imagen.css');
+@import url('./__articulo/home__articulo.css');
+@import url('./__contenido/home__contenido.css');
+@import url('./__titulo/home__titulo.css');
+@import url('./__redes-sociales/home__redes-sociales.css');
+@import url('./__red-social/home__red-social.css');
+@import url('./__boton/home__boton.css');
+
+.home {
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-base);
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+  padding: 0 var(--espaciado-base);
+  margin-bottom: 48px;
+
+  @media (width <= 900px) {
+    gap: 16px;
+    padding: 0 20px;
+  }
+
+  @media (width <= 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  @media (width <= 480px) {
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (width <= 360px) {
+    align-items: center;
+    text-align: center;
+  }
+}
