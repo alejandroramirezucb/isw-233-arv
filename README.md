@@ -240,6 +240,54 @@ export class EscalaRender {
 
 ---
 
+# Plugins Adicionales
+
+Se implementaron dos plugins adicionales: `webpack-bundle-analyzer` y `image-minimizer-webpack-plugin`.
+
+## Plugin 1: `image-minimizer-webpack-plugin`
+
+**¿Que hace?**: Comprime las imágenes durante el build de producción, reduciendo su tamaño sin pérdida de calidad.
+
+**Cómo funciona**:
+
+- Solo se activa en modo `production`.
+- Cada formato usa un algoritmo distinto:
+  - **PNG** → `optipng` con nivel de optimización 5
+  - **JPG** → `jpegtran` en modo progresivo
+  - **GIF** → `gifsicle` con entrelazado
+  - **SVG** → `svgo` con configuración `preset-default`
+
+**Resultados**:
+
+| Imagen | Original | Comprimida | Reducción |
+|--------|----------|------------|-----------|
+| `foto-perfil.png` | 1.16 MiB | 883 KB | 24% |
+| `proyecto-pasa.png` | 1.04 MiB | 755 KB | 27% |
+| `proyecto-simulador-x86.png` | 30.6 KB | 21 KB | 31% |
+| `proyecto-ucb-hold.png` | 484 KB | 403 KB | 17% |
+
+---
+
+## Plugin 2: `webpack-bundle-analyzer`
+
+**¿Que hace?**: Genera un reporte HTML que visualiza el tamaño y composición del bundle, sirve para detectar dependencias innecesarias o módulos que ocupan demasiado espacio.
+
+**Cómo funciona**:
+
+- Solo ocurre cuando se pasa la variable de entorno `ANALYZE=true`.
+- `analyzerMode: 'static'` genera un archivo HTML estático en `dist/bundle-report.html` en lugar de abrir un servidor.
+- `openAnalyzer: false` evita que abra el navegador automáticamente.
+
+**Uso**:
+
+```bash
+npm run analyze
+# Genera: dist/bundle-report.html
+# Esto hay que abrirlo en el navegador
+```
+
+---
+
 # Prompts
 
 **Fuentes:**

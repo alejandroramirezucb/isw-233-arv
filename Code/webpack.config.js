@@ -4,12 +4,15 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default (env, argv) => {
   const isProduction = argv.mode === 'production';
+  const analyzeBundle = process.env.ANALYZE === 'true';
 
   return {
     entry: './src/index.js',
@@ -78,7 +81,34 @@ export default (env, argv) => {
 
     optimization: {
       minimize: isProduction,
-      minimizer: isProduction ? ['...', new CssMinimizerPlugin()] : [],
+      minimizer: isProduction
+        ? [
+            '...',
+            new CssMinimizerPlugin(),
+            new ImageMinimizerPlugin({
+              minimizer: {
+                implementation: ImageMinimizerPlugin.imageminMinify,
+                options: {
+                  plugins: [
+                    ['gifsicle', { interlaced: true }],
+                    ['jpegtran', { progressive: true }],
+                    ['optipng', { optimizationLevel: 5 }],
+                    [
+                      'svgo',
+                      {
+                        plugins: [
+                          {
+                            name: 'preset-default',
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                },
+              },
+            }),
+          ]
+        : [],
       usedExports: true,
       sideEffects: false,
       splitChunks: {
@@ -117,6 +147,15 @@ export default (env, argv) => {
           },
         ],
       }),
+      ...(analyzeBundle
+        ? [
+            new BundleAnalyzerPlugin({
+              analyzerMode: 'static',
+              reportFilename: 'bundle-report.html',
+              openAnalyzer: false,
+            }),
+          ]
+        : []),
     ],
   };
 };
