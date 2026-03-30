@@ -1,0 +1,15 @@
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+dist/
+*.log
+node_modules/
+.env
+.env.local
+.DS_Store
+Thumbs.db
+.cache/
+.parcel-cache/
+.webpack/

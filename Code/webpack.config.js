@@ -9,14 +9,12 @@ export default (env, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
-    entry: './index.js',
+    entry: './src/index.js',
 
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: isProduction ? 'js/[name].[contenthash].js' : 'js/[name].js',
-      chunkFilename: isProduction
-        ? 'js/[name].[contenthash].js'
-        : 'js/[name].js',
+      filename: '[name].[contenthash].js',
+      chunkFilename: '[name].[contenthash].js',
       assetModuleFilename: 'images/[hash][ext][query]',
       clean: true,
     },
@@ -92,7 +90,7 @@ export default (env, argv) => {
 
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html',
+        template: './src/index.html',
         minify: isProduction
           ? {
               removeComments: true,
