@@ -2,20 +2,26 @@ import Handlebars from 'handlebars';
 import { ComponenteBase } from '../base/ComponenteBase.js';
 
 export class ItemTarjeta extends ComponenteBase {
-  tipo = undefined;
+  tipo: string | undefined = undefined;
+  elemento: HTMLElement | null = null;
+  outerHTML: string | null = null;
+  fecha: string;
+  titulo: string;
+  descripcion: string;
 
   static template = Handlebars.compile(`
     <div class="{{tipo}}__cuerpo">
         <p class="{{tipo}}__fecha">{{fecha}}</p>
         <h3 class="{{tipo}}__titulo">{{titulo}}</h3>
         <p class="{{tipo}}__descripcion">{{descripcion}}</p>
-    </div>`);
+    </div>`
+  );
 
-  constructor({ fecha, titulo, descripcion }) {
+  constructor(config: { fecha: string; titulo: string; descripcion: string }) {
     super();
-    this.fecha = Object.freeze(fecha);
-    this.titulo = Object.freeze(titulo);
-    this.descripcion = Object.freeze(descripcion);
+    this.fecha = Object.freeze(config.fecha);
+    this.titulo = Object.freeze(config.titulo);
+    this.descripcion = Object.freeze(config.descripcion);
   }
 
   crearElemento() {
@@ -25,7 +31,7 @@ export class ItemTarjeta extends ComponenteBase {
     this.outerHTML = elemento.outerHTML;
   }
 
-  esIgualA(otraTarjeta) {
+  esIgualA(otraTarjeta : ItemTarjeta) {
     return (
       otraTarjeta instanceof ItemTarjeta &&
       this.fecha === otraTarjeta.fecha &&
@@ -35,7 +41,7 @@ export class ItemTarjeta extends ComponenteBase {
   }
 
   getTemplate() {
-    return this.constructor.template({
+    return ItemTarjeta.template({
       tipo: this.tipo,
       fecha: this.fecha,
       titulo: this.titulo,

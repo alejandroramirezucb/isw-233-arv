@@ -37,7 +37,7 @@ registrarImagenPartial();
 registrarSeccionPartial();
 registrarToastPartial();
 
-const navegacion = Navegacion.getInstancia();
+const navegacion = Navegacion.getInstancia()!;
 navegacion.renderizar();
 
 const escalaRender = new EscalaRender();

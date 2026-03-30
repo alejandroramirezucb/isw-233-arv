@@ -2,6 +2,7 @@ import { ListaNavegacion } from './ListaNavegacion.js';
 import { Router } from '../router/Router.js';
 
 export class Navegacion {
+  /** @type {Navegacion | null} */
   static instancia = null;
   elemento = null;
   listaNavegacion = new ListaNavegacion();

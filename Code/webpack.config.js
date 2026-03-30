@@ -15,7 +15,7 @@ export default (env, argv) => {
   const analyzeBundle = process.env.ANALYZE === 'true';
 
   return {
-    entry: './src/index.js',
+    entry: './src/index.ts',
 
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -52,11 +52,22 @@ export default (env, argv) => {
           test: /\.hbs$/,
           loader: 'handlebars-loader',
         },
+        {
+          test: /\.tsx?$/,
+          loader: 'ts-loader',
+          exclude: /node_modules/,
+          options: {
+            transpileOnly: true,
+          },
+        },
       ],
     },
 
     resolve: {
-      extensions: ['.js', '.json', '.css'],
+      extensions: ['.ts', '.tsx', '.js', '.json', '.css'],
+      extensionAlias: {
+        '.js': ['.ts', '.js'],
+      },
       alias: {
         handlebars: 'handlebars/dist/handlebars.js',
       },

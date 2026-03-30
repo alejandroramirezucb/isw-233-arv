@@ -1,4 +1,5 @@
 export class ComponenteBase {
+  /** @type {HTMLElement | null} */
   elemento = null;
 
   getElemento() {
