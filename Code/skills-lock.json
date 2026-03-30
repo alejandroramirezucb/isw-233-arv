@@ -20,6 +20,11 @@
       "source": "antfu/skills",
       "sourceType": "github",
       "computedHash": "1cdc4bbecaa89544e6ef92566b015db989994bf90c4472683ac64f7a114dc3af"
+    },
+    "webpack-bundler": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "computedHash": "b596219543e8d70db01a759d71497661cd670bc4d8d831eb048dc81947e48ab7"
     }
   }
 }
