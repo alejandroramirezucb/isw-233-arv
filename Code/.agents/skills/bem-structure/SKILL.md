@@ -23,23 +23,23 @@ Keywords: CSS review, BEM structure, BEM methodology, CSS best practices, Refact
 
 BEM stands for **Block Element Modifier** - a methodology that helps you create reusable components and code sharing in front-end development.
 
-| Pattern | Syntax | Example |
-|---------|--------|---------|
-| **Block** | `.block` | `.card` |
-| **Element** | `.block__element` | `.card__title` |
-| **Block Modifier** | `.block--modifier` | `.card--elevated` |
+| Pattern              | Syntax                      | Example               |
+| -------------------- | --------------------------- | --------------------- |
+| **Block**            | `.block`                    | `.card`               |
+| **Element**          | `.block__element`           | `.card__title`        |
+| **Block Modifier**   | `.block--modifier`          | `.card--elevated`     |
 | **Element Modifier** | `.block__element--modifier` | `.card__title--large` |
-| **Multi-word names** | `.block-name` | `.user-profile` |
+| **Multi-word names** | `.block-name`               | `.user-profile`       |
 
 ### Naming Convention
 
 - As with any other development, intention revealing names are important.
-- In BEM, the intention we are trying to convey in naming is not based on the styling that gets applied or its appearance, but rather its purpose in the interface. 
-- Specific styling typically makes for bad naming with the exception of modifiers (small, large, padded, etc.). 
-- Naming after the specific workflow can, in certain cases, be acceptable. (calendar with days). 
-- Naming after the shared type of workflow tends to be the sweet spot. (form, table, card, button). 
-- Naming after the broader UI abstraction is not always necessary, but can be used for abstract cases with no context required (primary, large, etc). 
-- Be specific enough to convey purpose clearly, but general enough to allow for reuse if applicable. Reuse won't always be possible or desirable, so don't push it too far. 
+- In BEM, the intention we are trying to convey in naming is not based on the styling that gets applied or its appearance, but rather its purpose in the interface.
+- Specific styling typically makes for bad naming with the exception of modifiers (small, large, padded, etc.).
+- Naming after the specific workflow can, in certain cases, be acceptable. (calendar with days).
+- Naming after the shared type of workflow tends to be the sweet spot. (form, table, card, button).
+- Naming after the broader UI abstraction is not always necessary, but can be used for abstract cases with no context required (primary, large, etc).
+- Be specific enough to convey purpose clearly, but general enough to allow for reuse if applicable. Reuse won't always be possible or desirable, so don't push it too far.
 - Try to use names that are explicit and not open to interpretation. This will need to be considered most often for modifiers.
 - Use flat BEM classes with explicit `&` usage for modifiers.
 - DOM structure does not need to follow CSS class structure.
@@ -49,16 +49,20 @@ If you're not able to follow these guidelines due to project constraints or othe
 ### Basic Syntax
 
 ✅ GOOD (Do this)
+
 ```css
 .block {
   .block__element {
-    &.block__element--modifier { }
+    &.block__element--modifier {
+    }
   }
-  
-  &.block--modifier { }
+
+  &.block--modifier {
+  }
 }
 ```
-``` html
+
+```html
 <div class="block">
   <div class="block__element">...</div>
   <div class="block__element block__element--modifier">...</div>
@@ -71,17 +75,22 @@ If you're not able to follow these guidelines due to project constraints or othe
 ```
 
 🚫 BAD (Don't do this)
+
 ```css
 .block {
-  .block--modifier { } /* Use `&` before all Modifier class names */
+  .block--modifier {
+  } /* Use `&` before all Modifier class names */
 }
 
-.block_element { /* Use `__` between Blocks and Elements and nest Element within the Block */
-  &.block__element-modifier { } /* Use `--` between the Modifier and its Element */
+.block_element {
+  /* Use `__` between Blocks and Elements and nest Element within the Block */
+  &.block__element-modifier {
+  } /* Use `--` between the Modifier and its Element */
 }
 ```
-``` html
-<div class="block">...</div>  
+
+```html
+<div class="block">...</div>
 <div class="block__element">...</div> <!-- Incorrect; Element has become the Block -->
   <div class="block__element--modifier">...</div> <!-- Incorrect; Modifier must be accompanied by a corresponding Element -->
 </div>
@@ -100,35 +109,49 @@ If you're not able to follow these guidelines due to project constraints or othe
 - `&` may be used to co-locate modifiers with their Block or Element while keeping selectors explicit.
 
 ✅ GOOD (Do this)
+
 ```css
 .card {
-  &.card--featured {}
-  &.card--compact {}
   &.card--featured {
-    &.card--compact {}
+  }
+  &.card--compact {
+  }
+  &.card--featured {
+    &.card--compact {
+    }
   }
 }
 ```
 
 🚫 BAD (Don't do this)
+
 ```css
 .card {
-  &--featured {}
-  &__title {}
-  &__title--large {}
+  &--featured {
+  }
+  &__title {
+  }
+  &__title--large {
+  }
 }
 ```
+
 ---
+
 ### Block
+
 Encapsulates a standalone entity that is meaningful on its own. While blocks can be nested and interact with each other, semantically they remain equal; there is no precedence or hierarchy. Holistic entities without DOM representation (such as controllers or models) can be blocks as well.
 
 #### Naming:
+
 Block names may consist of lowercase Latin letters, digits, and dashes. To form a CSS class, add a short prefix for namespacing: `.block`. Spaces in long block names are replaced by dash.
 
-#### HTML: 
+#### HTML:
+
 Any DOM node can be a block if it accepts a class name.
 
 ✅ GOOD (Do this)
+
 ```html
 <div class="card">...</div>
 <div class="button">...</div>
@@ -142,30 +165,44 @@ Any DOM node can be a block if it accepts a class name.
 ```
 
 🚫 BAD (Don't do this)
+
 ```html
 <div class="searchForm">...</div>
 <div class="button_primary">...</div>
 <div class="userProfile">...</div>
-<div class="dropdown__menu">...</div>  <!-- Don't use element syntax for blocks -->
+<div class="dropdown__menu">...</div>
+<!-- Don't use element syntax for blocks -->
 ```
 
 #### CSS:
+
 Use class name selector only. No tag name or IDs. No dependency on other blocks/elements on a page.
 
 ✅ GOOD (Do this)
+
 ```css
-.card { }
-.button { }
-.menu { }
-.header { }
-.search-form { }
-.user-profile { }
-.modal { }
-.navigation { }
-.dropdown-menu { }
+.card {
+}
+.button {
+}
+.menu {
+}
+.header {
+}
+.search-form {
+}
+.user-profile {
+}
+.modal {
+}
+.navigation {
+}
+.dropdown-menu {
+}
 ```
 
 🚫 BAD (Don't do this)
+
 ```css
 .searchForm {}
 .button_primary {}
@@ -173,82 +210,113 @@ Use class name selector only. No tag name or IDs. No dependency on other blocks/
 .dropdown__menu {} /* Don't use element syntax for blocks */
 }
 ```
+
 ---
+
 ### Element
+
 Parts of a block and have no standalone meaning. Any element is semantically tied to its block.
 
 #### Naming:
+
 Element names may consist of lowercase Latin letters, digits, dashes and underscores. CSS class is formed as block name plus two underscores plus element name: `.block__elem`. Spaces in long element names are replaced by dash.
 
-#### HTML: 
+#### HTML:
+
 Any DOM node within a block can be an element. Within a given block, all elements are semantically equal. An element should not be used outside of the block that contains it in the CSS.
 
 ✅ GOOD (Do this)
+
 ```html
-<div class='block'>
-  <div class='block__element'>
-    <div class='block2'>
-      <div class='block2__element'>...</div>
+<div class="block">
+  <div class="block__element">
+    <div class="block2">
+      <div class="block2__element">...</div>
     </div>
   </div>
 </div>
 ```
 
 🚫 BAD (Don't do this)
+
 ```html
-<div class='block'>
-  <div class='block__element'>
-    <div class='element__element'>...</div> <!-- Incorrect; element has become the block -->
+<div class="block">
+  <div class="block__element">
+    <div class="element__element">...</div>
+    <!-- Incorrect; element has become the block -->
   </div>
 </div>
 ```
 
 #### CSS:
+
 In the CSS, elements should be nested inside of the block they belong to. The structure doesn't need to match the DOM structure.
 
 ✅ GOOD (Do this)
+
 ```css
 /* Card block with elements */
-.card { /* This is the block; elements are inside */
-  .card__header { }
-  .card__title { }
-  .card__body { }
-  .card__footer { }
-  .card__image { }
+.card {
+  /* This is the block; elements are inside */
+  .card__header {
+  }
+  .card__title {
+  }
+  .card__body {
+  }
+  .card__footer {
+  }
+  .card__image {
+  }
 }
 
 /* Menu block with elements */
 .menu {
-  .menu__item { }
-  .menu__link { }
-  .menu__icon { }
+  .menu__item {
+  }
+  .menu__link {
+  }
+  .menu__icon {
+  }
 }
 
 /* Search form block with elements */
 .search-form {
-  .search-form__input { }
-  .search-form__button { }
-  .search-form__label { }
+  .search-form__input {
+  }
+  .search-form__button {
+  }
+  .search-form__label {
+  }
 }
 ```
 
 🚫 BAD (Don't do this)
+
 ```css
 /* Don't create deeply nested element names */
 .menu {
-  .menu__item { }
-  .menu__item__link { } /* Improper naming structure */
-  .menu__item__link__icon { } /* Improper naming structure */
+  .menu__item {
+  }
+  .menu__item__link {
+  } /* Improper naming structure */
+  .menu__item__link__icon {
+  } /* Improper naming structure */
 }
 ```
+
 ---
+
 ### Modifier
+
 Flags on blocks or elements. Use them to change appearance, behavior or state.
 
-#### Naming: 
-Modifier names may consist of lowercase Latin letters, digits, dashes and underscores. CSS class is formed as block’s or element’s name plus two dashes: `.block--modifier` or `.block__elem--modifier` and `.block--color-black` with `.block--color-red`. Spaces in complicated modifiers are replaced by dash. 
+#### Naming:
+
+Modifier names may consist of lowercase Latin letters, digits, dashes and underscores. CSS class is formed as block’s or element’s name plus two dashes: `.block--modifier` or `.block__elem--modifier` and `.block--color-black` with `.block--color-red`. Spaces in complicated modifiers are replaced by dash.
 
 Modifiers should be used over creating separate elements when:
+
 - The change is a simple state change (e.g., active, disabled, highlighted)
 - The change is a simple appearance change (e.g., size, color, layout)
 - The change does not introduce new content or functionality that would require additional elements
@@ -256,6 +324,7 @@ Modifiers should be used over creating separate elements when:
 If you have a default state for an element and another that would be a modifier, add the default styles to the base element and use the modifier to override those styles when the modifier is applied. Don't create an exclusive element for the default and also don't create two modifiers for this case.
 
 🚫 BAD (Don't do this)
+
 ```css
 .music-entry__artwork-image {
   position: absolute;
@@ -275,10 +344,16 @@ If you have a default state for an element and another that would be a modifier,
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-tan) 0%, var(--color-beige) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-tan) 0%,
+    var(--color-beige) 100%
+  );
 }
 ```
+
 ✅ GOOD (Do this)
+
 ```css
 .music-entry__artwork-image {
   position: absolute;
@@ -287,61 +362,82 @@ If you have a default state for an element and another that would be a modifier,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  
+
   &.music-entry__artwork-image--placeholder {
     object-fit: unset;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-tan) 0%, var(--color-beige) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-tan) 0%,
+      var(--color-beige) 100%
+    );
   }
 }
 ```
 
 #### HTML:
+
 Modifier is an extra class name which you add to a block/element DOM node. Add modifier classes only to blocks/elements they modify, and keep the original class. To be clear, a modifier class should always be used in conjunction with its base block/element class.
 
 ✅ GOOD (Do this)
+
 ```html
 <div class="block block--modifier">...</div>
 <div class="block block--size-big block--shadow-yes">...</div>
 ```
 
 🚫 BAD (Don't do this)
+
 ```html
-<div class="block--modifier utility">...</div> <!-- Missing base block class and using utility class -->
+<div class="block--modifier utility">...</div>
+<!-- Missing base block class and using utility class -->
 ```
 
-#### CSS: 
+#### CSS:
+
 ✅ GOOD (Do this)
+
 ```css
 .menu {
   .menu__item {
-    &.menu__item--active { }
+    &.menu__item--active {
+    }
   }
-  .menu__link { }
-  .menu__icon { }
-  
-  &.menu--padded { }
+  .menu__link {
+  }
+  .menu__icon {
+  }
+
+  &.menu--padded {
+  }
 }
 ```
 
 🚫 BAD (Don't do this)
+
 ```css
 .menu {
   .menu__item {
-    .menu__item--active { } /* No ampersand */
+    .menu__item--active {
+    } /* No ampersand */
   }
-  
-  .menu__link { }
-  .menu-link-active { } /* Bad name structure */
-  .menu__icon { }
-  
-  .menu__padded { } /* Improper modifier structure; should be using `&` and `--`, not `__` */
+
+  .menu__link {
+  }
+  .menu-link-active {
+  } /* Bad name structure */
+  .menu__icon {
+  }
+
+  .menu__padded {
+  } /* Improper modifier structure; should be using `&` and `--`, not `__` */
 }
 ```
 
 ## Miscellaneous Rules
+
 - Classes only (no IDs)
 - Flat classes and selectors only
 - No tag-based styling
@@ -356,31 +452,36 @@ Modifier is an extra class name which you add to a block/element DOM node. Add m
 - Avoid abbreviations that aren't universally understood
 
 ### Syntax Example
+
 Suppose you have block form with modifiers `theme: "xmas"` and `simple: true` and with elements `input` and `submit`, and element `submit` with its own modifier `disabled: true` for not submitting form while it is not filled:
 
 ✅ GOOD (Do this)
+
 ```html
 <form class="form form--theme-xmas form--simple">
   <input class="form__input" type="text" />
-  <input
-    class="form__submit form__submit--disabled"
-    type="submit" />
+  <input class="form__submit form__submit--disabled" type="submit" />
 </form>
 ```
 
 ```css
 .form {
-  .form__input { }
-  .form__submit {
-    &.form__submit--disabled { }
+  .form__input {
   }
-  
-  &.form--simple { }
-  &.form--theme-xmas { }
+  .form__submit {
+    &.form__submit--disabled {
+    }
+  }
+
+  &.form--simple {
+  }
+  &.form--theme-xmas {
+  }
 }
 ```
 
 🚫 BAD (Don't do this)
+
 ```html
 <form class="form form-simple form--theme-xmas "> <!-- Incorrect; cannot have multiple blocks -->
   <input class="form_input" type="text" /> <!-- Incorrect; must use `__` between Block and Element  -->
@@ -392,13 +493,18 @@ Suppose you have block form with modifiers `theme: "xmas"` and `simple: true` an
 
 ```css
 .form {
-  .form__input { }
-  .form_submit { /* Use `__` between Block and Element */
-    .form__submit--disabled { } /* Use `&` before all Modifier class names */
+  .form__input {
   }
-  
-  &.form-simple { }  /* Use `--` between Element and Modifier */
+  .form_submit {
+    /* Use `__` between Block and Element */
+    .form__submit--disabled {
+    } /* Use `&` before all Modifier class names */
+  }
+
+  &.form-simple {
+  } /* Use `--` between Element and Modifier */
 }
 
-&.form--theme-xmas { } /* Must nest Elements and Modifiers within Block */
+&.form--theme-xmas {
+} /* Must nest Elements and Modifiers within Block */
 ```

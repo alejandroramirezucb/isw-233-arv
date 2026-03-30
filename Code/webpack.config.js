@@ -1,6 +1,8 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,7 +29,7 @@ export default (env, argv) => {
       rules: [
         {
           test: /\.css$/i,
-          use: ['style-loader', 'css-loader', 'postcss-loader'],
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -75,6 +77,7 @@ export default (env, argv) => {
 
     optimization: {
       minimize: isProduction,
+      minimizer: isProduction ? ['...', new CssMinimizerPlugin()] : [],
       splitChunks: {
         chunks: 'all',
         cacheGroups: {
@@ -98,6 +101,10 @@ export default (env, argv) => {
               removeRedundantAttributes: true,
             }
           : false,
+      }),
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css',
+        chunkFilename: '[name].[contenthash].css',
       }),
     ],
   };

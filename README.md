@@ -10,48 +10,29 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 /
 ├── README.md
 └── Code/
-    ├── index.html
-    ├── index.css
-    ├── index.js
     ├── package.json
-    ├── vite.config.js
+    ├── webpack.config.js
     ├── eslint.config.js
     ├── postcss.config.js
     ├── .stylelintrc.json
-    ├── blocks/
-    │   ├── base/
-    │   ├── navegacion/
-    │   ├── encabezado/
-    │   ├── home/
-    │   ├── home-red-social/
-    │   ├── blog/
-    │   ├── blog-favorito/
-    │   ├── categorias/
-    │   ├── categoria-item/
-    │   ├── modal-blog/
-    │   ├── proyectos/
-    │   ├── skills/
-    │   ├── hobbies/
-    │   ├── contacto/
-    │   ├── contacto-item/
-    │   ├── educacion/
-    │   ├── experiencia/
-    │   ├── boton/
-    │   ├── footer/
-    │   └── toast/
+    ├── .gitignore
     ├── images/
+    ├── dist/                    
     └── src/
-        ├── base/
-        ├── blog/
-        ├── contacto/
-        ├── home/
-        ├── navegacion/
-        ├── partials/
-        ├── proyectos/
-        ├── render/
-        ├── router/
-        ├── sobre-mi/
-        └── tarjetas/
+        ├── index.html           
+        ├── index.css            
+        ├── index.js             
+        ├── base/                
+        ├── blog/                
+        ├── contacto/            
+        ├── home/                
+        ├── navegacion/          
+        ├── partials/            
+        ├── proyectos/           
+        ├── render/              
+        ├── router/              
+        ├── sobre-mi/            
+        └── tarjetas/            
 ```
 
 ## Bloques Identificados
@@ -89,7 +70,7 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 
 ### HTML
 
-- **Estructura base del documento**: Se usa `<header>`, `<main>` y `<footer>` en `index.html` para la jerarquía principal.
+- **Estructura base del documento**: Se usa `<header>`, `<main>` y `<footer>` en `src/index.html` para la jerarquía principal.
 - **Renderizado por componentes**: Las secciones (`home`, `sobre-mi`, `proyectos`, `blog`, `contacto`) se crean con JavaScript y plantillas Handlebars.
 - **Semántica en tarjetas y secciones**: Se usan `<section>`, `<article>`, `<figure>`, `<img>` y encabezados (`h2`, `h3`, `h4`).
 - **Navegación**: El contenedor de navegación usa `<nav>` y los web components son `role="list"` y `role="listitem"`.

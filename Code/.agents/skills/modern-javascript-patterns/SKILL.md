@@ -421,6 +421,7 @@ async function withTimeout(promise, ms) {
 Functional programming in JavaScript centers on pure functions, immutability, and composable transformations.
 
 Key topics covered in [references/advanced-patterns.md](references/advanced-patterns.md):
+
 - **Array methods** — `map`, `filter`, `reduce`, `find`, `findIndex`, `some`, `every`, `flatMap`, `Array.from`
 - **Higher-order functions** — custom `forEach`/`map`/`filter`, currying, partial application, memoization
 - **Composition and piping** — `compose`/`pipe` utilities with practical data transformation examples
@@ -435,10 +436,14 @@ ES2022 classes support private fields (`#field`), static fields, getters/setters
 ```javascript
 // Named exports
 export const PI = 3.14159;
-export function add(a, b) { return a + b; }
+export function add(a, b) {
+  return a + b;
+}
 
 // Default export
-export default function multiply(a, b) { return a * b; }
+export default function multiply(a, b) {
+  return a * b;
+}
 
 // Import
 import multiply, { PI, add } from "./math.js";
@@ -462,12 +467,12 @@ const result = obj.method?.();
 
 // Nullish coalescing — default only for null/undefined (not 0 or "")
 const value = null ?? "default"; // 'default'
-const zero = 0 ?? "default";    // 0
+const zero = 0 ?? "default"; // 0
 
 // Logical assignment
-a ??= "default";   // assign if null/undefined
-obj.count ||= 1;   // assign if falsy
-obj.count &&= 2;   // assign if truthy
+a ??= "default"; // assign if null/undefined
+obj.count ||= 1; // assign if falsy
+obj.count &&= 2; // assign if truthy
 ```
 
 ## Performance Optimization
