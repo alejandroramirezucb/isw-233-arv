@@ -79,6 +79,8 @@ export default (env, argv) => {
     optimization: {
       minimize: isProduction,
       minimizer: isProduction ? ['...', new CssMinimizerPlugin()] : [],
+      usedExports: true,
+      sideEffects: false,
       splitChunks: {
         chunks: 'all',
         cacheGroups: {
