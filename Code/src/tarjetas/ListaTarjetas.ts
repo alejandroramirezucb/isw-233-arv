@@ -2,28 +2,28 @@ import { ItemTarjeta } from './ItemTarjeta.js';
 import { ComponenteBase } from '../base/ComponenteBase.js';
 
 export class ListaTarjetas extends ComponenteBase {
-  tarjetas: ItemTarjeta[] = [];
+  protected tarjetas: ItemTarjeta[] = [];
 
   crearElemento() {
     let elemento = document.createElement('lista-tarjetas');
-    
+
     for (let tarjeta of this.tarjetas) {
       tarjeta.crearElemento();
       elemento.appendChild(tarjeta.getElemento()!);
     }
-    
+
     this.elemento = elemento;
   }
 
-  agregarTarjeta(config: { tarjeta: ItemTarjeta }) {
-    if (!(config.tarjeta instanceof ItemTarjeta)) {
+  agregarTarjeta(tarjeta: ItemTarjeta) {
+    if (!(tarjeta instanceof ItemTarjeta)) {
       throw new Error('Debe ser una Tarjeta');
     }
 
-    this.tarjetas.push(config.tarjeta);
+    this.tarjetas.push(tarjeta);
   }
 
-  agregarTarjetas(tarjetas: { tarjeta: ItemTarjeta }[]) {
+  agregarTarjetas(tarjetas: ItemTarjeta[]) {
     for (let tarjeta of tarjetas) {
       this.agregarTarjeta(tarjeta);
     }
