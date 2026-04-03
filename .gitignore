@@ -1,0 +1,16 @@
+*.swp
+*.swo
+*~
+*.log
+.claude/
+Code/dist/
+Code/.vscode/
+Code/.idea/
+Code/node_modules/
+Code/.env
+Code/.env.local
+Code/.DS_Store
+Code/Thumbs.db
+Code/.cache/
+Code/.parcel-cache/
+Code/.webpack/

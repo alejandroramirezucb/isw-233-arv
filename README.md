@@ -15,24 +15,23 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
     ├── eslint.config.js
     ├── postcss.config.js
     ├── .stylelintrc.json
-    ├── .gitignore
     ├── images/
-    ├── dist/                    
+    ├── dist/
     └── src/
-        ├── index.html           
-        ├── index.css            
-        ├── index.js             
-        ├── base/                
-        ├── blog/                
-        ├── contacto/            
-        ├── home/                
-        ├── navegacion/          
-        ├── partials/            
-        ├── proyectos/           
-        ├── render/              
-        ├── router/              
-        ├── sobre-mi/            
-        └── tarjetas/            
+        ├── index.html
+        ├── index.css
+        ├── index.ts
+        ├── base/
+        ├── blog/
+        ├── contacto/
+        ├── home/
+        ├── navegacion/
+        ├── partials/
+        ├── proyectos/
+        ├── render/
+        ├── router/
+        ├── sobre-mi/
+        └── tarjetas/
 ```
 
 ## Bloques Identificados
@@ -71,7 +70,7 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 ### HTML
 
 - **Estructura base del documento**: Se usa `<header>`, `<main>` y `<footer>` en `src/index.html` para la jerarquía principal.
-- **Renderizado por componentes**: Las secciones (`home`, `sobre-mi`, `proyectos`, `blog`, `contacto`) se crean con JavaScript y plantillas Handlebars.
+- **Renderizado por componentes**: Las secciones (`home`, `sobre-mi`, `proyectos`, `blog`, `contacto`) se crean con TypeScript y plantillas Handlebars.
 - **Semántica en tarjetas y secciones**: Se usan `<section>`, `<article>`, `<figure>`, `<img>` y encabezados (`h2`, `h3`, `h4`).
 - **Navegación**: El contenedor de navegación usa `<nav>` y los web components son `role="list"` y `role="listitem"`.
 
@@ -82,7 +81,7 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 - **Flexbox**: Use Flexbox para centrar el menú de navegación, organizar las tarjetas de proyectos en fila y estructurar el formulario de contacto.
 - **Diseño Responsivo**: Use _Media Queries_ para adaptar la web a móviles.
 
-### JavaScript
+### TypeScript
 
 - **Arquitectura**: El proyecto está dividido por secciones (`home`, `blog`, `proyectos`, `contacto`, etc.).
 - **Uso de Handlebars**: Cada componente define una plantilla para producir su HTML.
@@ -93,7 +92,7 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 
 ### Factory
 
-**Ubicación**: `Code/src/tarjetas/FactoryTarjeta.js`, `Code/src/blog/FactoryBlogTarjeta.js`, `Code/src/proyectos/FactoryProyectosTarjeta.js`
+**Ubicación**: `Code/src/tarjetas/FactoryTarjeta.ts`, `Code/src/blog/FactoryBlogTarjeta.ts`, `Code/src/proyectos/FactoryProyectosTarjeta.ts`
 
 **Por qué se usa**: Para abstraer la creación de tarjetas y permitir variantes especializadas sin duplicar la lógica.
 
@@ -101,7 +100,7 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 
 ### Singleton
 
-**Ubicación**: `Code/src/navegacion/Navegacion.js`
+**Ubicación**: `Code/src/navegacion/Navegacion.ts`
 
 **Por qué se usa**: Para garantizar una sola instancia de la navegación en toda la app.
 
@@ -109,7 +108,7 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 
 ### Template Method
 
-**Ubicación**: `Code/src/base/ComponenteBase.js`, clases hijas en `Code/src/**`
+**Ubicación**: `Code/src/base/ComponenteBase.ts`, clases hijas en `Code/src/**`
 
 **Por qué se usa**: La clase base define metodos comunes para la creación de un componente y las subclases implementan el paso específico de construcción de su nodo DOM.
 
@@ -117,7 +116,7 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 
 ### Value Object
 
-**Ubicación**: `Code/src/tarjetas/ItemTarjeta.js`, `Code/src/blog/ItemBlogTarjeta.js`, `Code/src/proyectos/ItemProyectosTarjeta.js`, `Code/src/contacto/ItemContacto.js`
+**Ubicación**: `Code/src/tarjetas/ItemTarjeta.ts`, `Code/src/blog/ItemBlogTarjeta.ts`, `Code/src/proyectos/ItemProyectosTarjeta.ts`, `Code/src/contacto/ItemContacto.ts`
 
 **Por qué se usa**: Se crean objetos inmutables mediante congelación de propiedades para garantizar que sus atributos no cambien una vez instanciados. Esto es para realizar comparaciones entre objetos.
 
@@ -127,7 +126,7 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 
 ### MutationObserver
 
-**Ubicación**: `Code/src/blog/Blog.js` (método `eventoSinResultados()`)
+**Ubicación**: `Code/src/blog/Blog.ts` (método `vincularEventoSinResultados()`)
 
 **Problema resuelto**:
 Cuando el usuario cambia de categoría y no hay resultados, es necesario mostrar un mensaje de "sin resultados". Por eso uso Mutation Observer para ver si hay cambios en el contenedor de tarjetas.
@@ -154,7 +153,7 @@ observer.observe(contenedor, { childList: true });
 
 ### IntersectionObserver
 
-**Ubicación**: `Code/src/render/ImagenRender.js`
+**Ubicación**: `Code/src/render/ImagenRender.ts`
 
 **Problema resuelto**:
 Las imágenes se cargan incluso fuera de la pantalla. Es necesario cargar imágenes solo cuando el usuario esta apunto de verlas.
@@ -191,7 +190,7 @@ export class ImagenRender {
 
 ### ResizeObserver
 
-**Ubicación**: `Code/src/render/EscalaRender.js`
+**Ubicación**: `Code/src/render/EscalaRender.ts`
 
 **Problema resuelto**:
 Los elementos con atributo `data-escala` deben escalar cuando el usuario pasa el mouse, pero solo si el elemento ha sido renderizado. Sin esto, podría fallar en elementos con display:none.
@@ -259,12 +258,12 @@ Se implementaron dos plugins adicionales: `webpack-bundle-analyzer` y `image-min
 
 **Resultados**:
 
-| Imagen | Original | Comprimida | Reducción |
-|--------|----------|------------|-----------|
-| `foto-perfil.png` | 1.16 MiB | 883 KB | 24% |
-| `proyecto-pasa.png` | 1.04 MiB | 755 KB | 27% |
-| `proyecto-simulador-x86.png` | 30.6 KB | 21 KB | 31% |
-| `proyecto-ucb-hold.png` | 484 KB | 403 KB | 17% |
+| Imagen                       | Original | Comprimida | Reducción |
+| ---------------------------- | -------- | ---------- | --------- |
+| `foto-perfil.png`            | 1.16 MiB | 883 KB     | 24%       |
+| `proyecto-pasa.png`          | 1.04 MiB | 755 KB     | 27%       |
+| `proyecto-simulador-x86.png` | 30.6 KB  | 21 KB      | 31%       |
+| `proyecto-ucb-hold.png`      | 484 KB   | 403 KB     | 17%       |
 
 ---
 
