@@ -23,7 +23,7 @@ export class Home extends ComponenteBase {
   `);
 
   crearElemento() {
-    this.listaRedesSociales.getItems().forEach(item => item.getElemento());
+    this.listaRedesSociales.getItems().forEach((item) => item.getElemento());
     const elemento = document.createElement('section');
     elemento.classList.add('home');
     elemento.innerHTML = this.getTemplate();
@@ -38,7 +38,7 @@ export class Home extends ComponenteBase {
       redesSociales: this.listaRedesSociales.getItems(),
       textoBoton: 'Contactame',
       clasesBoton: 'home__boton',
-      onclick: `location.href = '${this.url}'`,
+      onclick: `history.pushState({}, '', '${this.url}'); window.dispatchEvent(new PopStateEvent('popstate'));`,
     });
   }
 
