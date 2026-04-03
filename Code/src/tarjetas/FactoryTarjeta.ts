@@ -10,9 +10,9 @@ export class FactoryTarjeta {
     if (!options.fecha || !options.titulo || !options.descripcion) {
       let toast = new Toast({
         mensaje: 'Campos requeridos: fecha, titulo, descripcion',
-        clase: 'error',
+        clase: 'toast--error',
       });
-      
+
       toast.abrirToast();
     }
 

@@ -23,7 +23,13 @@ export class Toast extends ComponenteBase {
   }
 
   abrirToast() {
-    document.body.appendChild(this.elemento);
+    const elementoToast = this.getElemento();
+
+    if (!(elementoToast instanceof Node)) {
+      return;
+    }
+
+    document.body.appendChild(elementoToast);
   }
 
   getTemplate() {

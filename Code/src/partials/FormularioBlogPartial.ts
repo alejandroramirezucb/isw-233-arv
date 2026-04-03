@@ -20,7 +20,7 @@ export function registrarFormularioBlogPartial() {
         </div>
 
         <div class="{{nombre}}__grupo">
-          {{> campoTexto contenedor=nombre nombre="fecha" tipo="text" etiqueta="Fecha" placeholder=placeholderFecha}}
+          {{> campoFecha contenedor=nombre nombre="fecha" etiqueta="Fecha"}}
         </div>
 
         <div class="{{nombre}}__grupo">

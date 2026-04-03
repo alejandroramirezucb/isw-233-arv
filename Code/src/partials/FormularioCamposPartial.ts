@@ -27,4 +27,17 @@ export function registrarCamposFormularioPartials() {
         class="{{contenedor}}__campo-{{nombre}}"></textarea>
     `,
   );
+
+  Handlebars.registerPartial(
+    'campoFecha',
+    `
+      {{> etiqueta contenedor=contenedor nombre=nombre etiqueta=etiqueta}}
+      <input
+        type="date"
+        id="{{contenedor}}__{{nombre}}"
+        name="{{nombre}}"
+        required
+        class="{{contenedor}}__campo-text" />
+    `,
+  );
 }
