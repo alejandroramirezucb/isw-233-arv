@@ -23,7 +23,6 @@ export class Home extends ComponenteBase {
   `);
 
   crearElemento() {
-    this.listaRedesSociales.crearElemento();
     const elemento = document.createElement('section');
     elemento.classList.add('home');
     elemento.innerHTML = this.getTemplate();

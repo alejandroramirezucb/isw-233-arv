@@ -4,7 +4,6 @@ import { ComponenteBase } from '../base/ComponenteBase.js';
 export class ItemHobbie extends ComponenteBase {
   private nombre: string;
   private imagen: string
-  private outerHTML: string | null = null;
 
   static template = Handlebars.compile(`
     {{> imagen nombre='hobbies' titulo=nombre imagen=imagen}}
@@ -21,7 +20,6 @@ export class ItemHobbie extends ComponenteBase {
     let elemento = document.createElement('item-hobbie');
     elemento.innerHTML = this.getTemplate();
     this.elemento = elemento;
-    this.outerHTML = elemento.outerHTML;
   }
 
   getTemplate() {

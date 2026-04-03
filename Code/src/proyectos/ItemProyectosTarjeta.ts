@@ -25,7 +25,7 @@ export class ItemProyectosTarjeta extends ItemTarjeta {
     this.nombre = Object.freeze('proyectos');
   }
 
-  esIgualA(otraTarjeta: ItemTarjeta) {
+  esIgualA(otraTarjeta: ItemProyectosTarjeta) {
     return (
       super.esIgualA(otraTarjeta) &&
       this.imagenUrl === otraTarjeta.getImagenUrl()

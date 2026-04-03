@@ -35,7 +35,7 @@ export class ModalBlog extends ComponenteBase {
     let elemento = document.createElement('modal-blog');
     elemento.innerHTML = this.getTemplate();
     this.elemento = elemento;
-    this.eventoClickCerrar();
+    this.vincularEventoClickCerrar();
   }
 
   getTemplate() {
@@ -60,7 +60,7 @@ export class ModalBlog extends ComponenteBase {
     this.elemento.remove();
   }
 
-  eventoClickCerrar() {
+  vincularEventoClickCerrar() {
     let boton = this.elemento.querySelector('.modal-blog__boton-cerrar');
 
     boton.addEventListener('click', (evento) => {

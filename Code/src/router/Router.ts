@@ -22,7 +22,7 @@ export class Router {
   iniciar() {
     const rutaActual = window.location.pathname || '/';
     this.navegarA(rutaActual);
-    this.eventoCambiar();
+    this.vincularEventoCambiar();
   }
 
   navegarA(ruta: string) {
@@ -31,7 +31,7 @@ export class Router {
     history.pushState({}, '', ruta);
   }
 
-  eventoCambiar() {
+  vincularEventoCambiar() {
     window.addEventListener('popstate', (_) => {
       const rutaActual = window.location.pathname || '/';
       this.navegarA(rutaActual);

@@ -25,13 +25,13 @@ export class Navegacion extends ComponenteBase {
     elemento.setAttribute('aria-label', 'Navegación');
     elemento.appendChild(this.listaNavegacion.getElemento());
     this.elemento = elemento;
-    this.eventoPorItemNavegacion();
+    this.vincularEventoPorItemNavegacion();
     this.router.iniciar();
   }
 
-  eventoPorItemNavegacion() {
+  vincularEventoPorItemNavegacion() {
     for (let item of this.listaNavegacion.getItems()) {
-      item.eventoClick(this.router.navegarA.bind(this.router));
+      item.vincularEventoClick(this.router.navegarA.bind(this.router));
     }
   }
 

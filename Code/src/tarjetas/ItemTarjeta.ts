@@ -3,7 +3,6 @@ import { ComponenteBase } from '../base/ComponenteBase.js';
 
 export class ItemTarjeta extends ComponenteBase {
   protected tipo: string | undefined = undefined;
-  protected outerHTML: string | null = null;
   protected fecha: string;
   protected titulo: string;
   protected descripcion: string;
@@ -26,7 +25,6 @@ export class ItemTarjeta extends ComponenteBase {
     let elemento = document.createElement('item-tarjeta');
     elemento.innerHTML = this.getTemplate();
     this.elemento = elemento;
-    this.outerHTML = elemento.outerHTML;
   }
 
   esIgualA(otraTarjeta: ItemTarjeta) {
@@ -45,9 +43,5 @@ export class ItemTarjeta extends ComponenteBase {
       titulo: this.titulo,
       descripcion: this.descripcion,
     });
-  }
-
-  getImagenUrl() {
-    return '';
   }
 }

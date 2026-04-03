@@ -32,7 +32,7 @@ export class ItemNavegacion extends ComponenteBase {
     });
   }
 
-  eventoClick(navegarA : (ruta: string) => void) {
+  vincularEventoClick(navegarA : (ruta: string) => void) {
     let link = this.elemento.querySelector('.navegacion__link');
 
     link.addEventListener('click', (event) => {

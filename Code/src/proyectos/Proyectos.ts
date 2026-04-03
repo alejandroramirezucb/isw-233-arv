@@ -15,10 +15,6 @@ export class Proyectos extends ComponenteBase {
   `);
 
   crearElemento() {
-    for (let tarjeta of this.listaProyectos.getTarjetas()) {
-      tarjeta.crearElemento();
-    }
-
     let elemento = document.createElement('section');
     elemento.classList.add('proyectos');
     elemento.innerHTML = this.getTemplate();

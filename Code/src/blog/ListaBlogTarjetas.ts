@@ -37,11 +37,13 @@ export class ListaBlogTarjetas extends ListaTarjetas {
       return this.tarjetas.filter((tarjeta) => tarjeta.getEsFavorito());
     }
 
-    return this.tarjetas.filter((tarjeta) => tarjeta.getCategoria() === categoria);
+    return this.tarjetas.filter(
+      (tarjeta) => tarjeta.getCategoria() === categoria,
+    );
   }
 
   agregarTarjeta(config) {
-    super.agregarTarjeta(config);
+    super.agregarTarjeta(config.tarjeta);
     if (
       config.contenedor &&
       config.categoriaActiva &&

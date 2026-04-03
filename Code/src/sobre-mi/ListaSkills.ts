@@ -114,10 +114,6 @@ export class ListaSkills extends ComponenteBase {
   `);
 
   crearElemento() {
-    for (let grupo of this.grupos) {
-      grupo.crearElemento();
-    }
-
     const elemento = document.createElement('lista-skills');
     elemento.innerHTML = this.getTemplate();
     this.elemento = elemento;

@@ -12,9 +12,8 @@ export class ListaNavegacion extends ComponenteBase {
 
   crearElemento() {
     let elemento = document.createElement('lista-navegacion');
-    
+
     for (let item of this.items) {
-      item.crearElemento();
       elemento.appendChild(item.getElemento());
     }
 

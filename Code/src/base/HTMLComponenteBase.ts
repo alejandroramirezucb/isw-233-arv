@@ -4,4 +4,8 @@ export class HTMLComponenteBase extends HTMLElement {
       this.attachShadow({ mode: 'open' });
     }
   }
+
+  protected agregarClases(...clases: string[]) {
+    clases.forEach((clase) => this.classList.add(clase));
+  }
 }

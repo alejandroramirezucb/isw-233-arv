@@ -1,6 +1,11 @@
 toast-elemento {
   &.toast--agregacion,
-  &.toast--eliminacion {
+  &.toast--eliminacion,
+  &.toast--error {
+    --toast-bg: #eff6ff;
+    --toast-color: #1e3a8a;
+    --toast-border: var(--color-primario);
+
     position: fixed;
     top: 24px;
     left: 50%;
@@ -19,12 +24,18 @@ toast-elemento {
     display: flex;
     align-items: center;
     max-width: 320px;
-    background: #eff6ff;
-    color: #1e3a8a;
-    border-left: 3px solid var(--color-primario);
+    background: var(--toast-bg);
+    color: var(--toast-color);
+    border-left: 3px solid var(--toast-border);
     animation:
       toast-entrar 0.25s ease forwards,
       toast-salir 0.3s ease 3s forwards;
+  }
+
+  &.toast--error {
+    --toast-bg: #fee2e2;
+    --toast-color: #991b1b;
+    --toast-border: #ef4444;
   }
 
   .toast__mensaje {

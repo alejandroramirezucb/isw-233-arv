@@ -5,6 +5,9 @@ import { ListaHobbies } from './ListaHobbies.js';
 import { ComponenteBase } from '../base/ComponenteBase.js';
 
 export class SobreMi extends ComponenteBase {
+  private listaSkills = new ListaSkills();
+  private listaHobbies = new ListaHobbies();
+
   private educacion = new TarjetaInformacion({
     nombre: 'educacion',
     titulo: 'Educación',
@@ -27,9 +30,6 @@ export class SobreMi extends ComponenteBase {
       'Guié a estudiantes en ejercicios prácticos y exámenes simulados de Introducción a la Programación, reforzando fundamentos y pensamiento analítico.',
   });
 
-  private listaSkills = new ListaSkills();
-  private listaHobbies = new ListaHobbies();
-
   static template = Handlebars.compile(`
     {{{educacion.outerHTML}}}
     {{{experiencia.outerHTML}}}
@@ -46,8 +46,6 @@ export class SobreMi extends ComponenteBase {
  `);
 
   crearElemento() {
-    this.educacion.crearElemento();
-    this.experiencia.crearElemento();
     const elemento = document.createElement('section');
     elemento.classList.add('sobre-mi');
     elemento.innerHTML = this.getTemplate();

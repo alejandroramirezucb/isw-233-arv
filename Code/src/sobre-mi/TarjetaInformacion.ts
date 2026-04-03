@@ -9,7 +9,6 @@ export class TarjetaInformacion extends ComponenteBase{
   private institucion: string
   private contenido: string;
   private fecha: string;
-  private outerHTML: string | null = null;
 
   static template = Handlebars.compile(`
     <h2 class="{{nombre}}__titulo--principal">{{titulo}}</h2>
@@ -45,7 +44,6 @@ export class TarjetaInformacion extends ComponenteBase{
     let elemento = document.createElement('tarjeta-informacion');
     elemento.innerHTML = this.getTemplate();
     this.elemento = elemento;
-    this.outerHTML = elemento.outerHTML;
   }
 
   getTemplate() {

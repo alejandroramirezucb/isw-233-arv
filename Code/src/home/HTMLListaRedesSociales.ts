@@ -3,7 +3,7 @@ import { HTMLComponenteBase } from '../base/HTMLComponenteBase.js';
 export class HTMLListaRedesSociales extends HTMLComponenteBase {
   connectedCallback() {
     this.setAttribute('role', 'list');
-    this.classList.add('home__redes-sociales');
+    this.agregarClases('home__redes-sociales');
   }
 
 }

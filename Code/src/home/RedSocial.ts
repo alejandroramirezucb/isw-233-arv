@@ -5,7 +5,6 @@ export class RedSocial extends ComponenteBase {
   private nombre: string;
   private url: string;
   private imagen: string;
-  private outerHTML: string | null = null;
 
   static template = Handlebars.compile(`
     {{> imagen nombre='home-red-social' titulo=nombre imagen=imagen}}
@@ -24,7 +23,6 @@ export class RedSocial extends ComponenteBase {
     elemento.setAttribute('aria-label', this.nombre);
     elemento.innerHTML = this.getTemplate();
     this.elemento = elemento;
-    this.outerHTML = elemento.outerHTML;
   }
 
   getTemplate() {

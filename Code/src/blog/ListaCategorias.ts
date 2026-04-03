@@ -11,10 +11,11 @@ export class ListaCategorias extends ComponenteBase {
 
   crearElemento() {
     const elemento = document.createElement('lista-categorias');
+
     for (let categoria of this.categorias) {
-      categoria.crearElemento();
       elemento.appendChild(categoria.getElemento());
     }
+
     this.elemento = elemento;
   }
 
@@ -22,14 +23,18 @@ export class ListaCategorias extends ComponenteBase {
     return this.categorias;
   }
 
-  getCategoriasNombres(){
+  getCategoriasNombres() {
     let categoriasNombres = [];
 
     for (let categoria of this.categorias) {
-      if (categoria.getNombre() !== 'Todos' && categoria.getNombre() !== 'Favoritos') {
+      if (
+        categoria.getNombre() !== 'Todos' &&
+        categoria.getNombre() !== 'Favoritos'
+      ) {
         categoriasNombres.push(categoria.getNombre());
       }
     }
+
     return categoriasNombres;
   }
 }

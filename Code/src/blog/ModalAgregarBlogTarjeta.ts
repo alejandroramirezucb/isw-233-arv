@@ -17,10 +17,10 @@ export class ModalAgregarBlogTarjeta extends ModalBlog {
 
   crearElemento() {
     super.crearElemento();
-    this.eventoAccion();
+    this.vincularEventoAccion();
   }
 
-  eventoAccion() {
+  vincularEventoAccion() {
     let boton = this.elemento.querySelector('.modal-blog__boton-accion');
 
     boton.addEventListener('click', (evento) => {
@@ -44,6 +44,7 @@ export class ModalAgregarBlogTarjeta extends ModalBlog {
       this.agregarTarjeta(tarjeta);
       formulario.reset();
       this.cerrarModal();
+      
       Toast.mostrar({
         mensaje: 'Tarjeta agregada exitosamente.',
         clase: 'toast--agregacion',

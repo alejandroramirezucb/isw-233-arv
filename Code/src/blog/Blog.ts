@@ -18,8 +18,8 @@ export class Blog extends ComponenteBase {
     new ModalAgregarBlogTarjeta(
       this.listaCategorias.getCategoriasNombres(),
       (tarjeta: ItemBlogTarjeta) => {
-        tarjeta.crearElemento();
         let contenedor = this.elemento.querySelector('.blog__contenedor');
+
         this.listaTarjetas.agregarTarjeta({
           tarjeta: tarjeta,
           contenedor: contenedor,
@@ -35,12 +35,6 @@ export class Blog extends ComponenteBase {
   `);
 
   crearElemento() {
-    this.listaCategorias.crearElemento();
-
-    for (let tarjeta of this.listaTarjetas.getTarjetas()) {
-      tarjeta.crearElemento();
-    }
-
     const elemento = document.createElement('section');
     elemento.classList.add('blog');
     elemento.innerHTML = this.getTemplate();
@@ -55,19 +49,23 @@ export class Blog extends ComponenteBase {
     }
 
     this.elemento = elemento;
-    this.eventoTarjetasPorCategoria();
-    this.eventoAbrirModalAgregarTarjeta();
-    this.eventoSinResultados();
-    this.eventoSeleccionarFavorito();
+    this.conectarEventos();
+  }
+
+  private conectarEventos() {
+    this.vincularEventoTarjetasPorCategoria();
+    this.vincularEventoAbrirModalAgregarTarjeta();
+    this.vincularEventoSinResultados();
+    this.vincularEventoSeleccionarFavorito();
   }
 
   getTemplate() {
     return Blog.template({});
   }
 
-  eventoTarjetasPorCategoria() {
+  vincularEventoTarjetasPorCategoria() {
     for (let categoria of this.listaCategorias.getCategorias()) {
-      categoria.eventoClick({
+      categoria.vincularEventoClick({
         contenedor: this.elemento.querySelector('.blog__contenedor'),
         tarjetas: () =>
           this.listaTarjetas.getTarjetasPorCategoria(categoria.getNombre()),
@@ -76,7 +74,7 @@ export class Blog extends ComponenteBase {
     }
   }
 
-  eventoSinResultados() {
+  vincularEventoSinResultados() {
     let contenedor = this.elemento.querySelector('.blog__contenedor');
 
     let observer = new MutationObserver((mutations) => {
@@ -96,7 +94,7 @@ export class Blog extends ComponenteBase {
     });
   }
 
-  eventoSeleccionarFavorito() {
+  vincularEventoSeleccionarFavorito() {
     this.elemento.addEventListener('favorito-cambio', () => {
       if (this.categoriaActiva !== 'Favoritos') return;
 
@@ -111,7 +109,7 @@ export class Blog extends ComponenteBase {
     });
   }
 
-  eventoAbrirModalAgregarTarjeta() {
+  vincularEventoAbrirModalAgregarTarjeta() {
     let boton = this.elemento.querySelector('.blog__boton-agregar-publicacion');
 
     boton.addEventListener('click', (evento) => {

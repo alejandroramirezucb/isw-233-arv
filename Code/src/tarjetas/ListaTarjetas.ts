@@ -8,7 +8,6 @@ export class ListaTarjetas extends ComponenteBase {
     let elemento = document.createElement('lista-tarjetas');
 
     for (let tarjeta of this.tarjetas) {
-      tarjeta.crearElemento();
       elemento.appendChild(tarjeta.getElemento()!);
     }
 

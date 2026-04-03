@@ -34,7 +34,7 @@ export class ItemCategoria extends ComponenteBase {
     return this.nombre;
   }
 
-  eventoClick(options : {contenedor : HTMLElement, tarjetas : () => ItemTarjeta[], blog : Blog}) {
+  vincularEventoClick(options : {contenedor : HTMLElement, tarjetas : () => ItemTarjeta[], blog : Blog}) {
     const boton = this.elemento.querySelector(
       '.blog__categoria-boton',
     );

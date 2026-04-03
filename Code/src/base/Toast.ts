@@ -2,14 +2,14 @@ import Handlebars from 'handlebars';
 import { ComponenteBase } from './ComponenteBase.js';
 
 export class Toast extends ComponenteBase {
-  private mensaje : string;
-  private clase : string;
+  private mensaje: string;
+  private clase: string;
 
   static template = Handlebars.compile(`
     {{> toast mensaje=mensaje}}
   `);
 
-  constructor(options : { mensaje: string, clase: string }) {
+  constructor(options: { mensaje: string; clase: string }) {
     super();
     this.mensaje = options.mensaje;
     this.clase = options.clase;
@@ -32,9 +32,8 @@ export class Toast extends ComponenteBase {
     });
   }
 
-  static mostrar(options : { mensaje: string, clase: string }) {
+  static mostrar(options: { mensaje: string; clase: string }) {
     const toast = new Toast(options);
-    toast.crearElemento();
     toast.abrirToast();
   }
 }

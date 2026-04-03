@@ -45,6 +45,7 @@ export class ListaContacto extends ComponenteBase {
 
   getTemplate() {
     const items = [];
+    
     for (let item of this.items) {
       items.push(item.getElemento().outerHTML);
     }

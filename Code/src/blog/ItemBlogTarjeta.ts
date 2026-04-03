@@ -32,7 +32,7 @@ export class ItemBlogTarjeta extends ItemTarjeta {
 
   crearElemento() {
     super.crearElemento();
-    this.eventoFavorito();
+    this.vincularEventoFavorito();
   }
 
   marcarFavorito() {
@@ -40,7 +40,9 @@ export class ItemBlogTarjeta extends ItemTarjeta {
     const imagen = this.elemento.querySelector(
       '.blog-favorito__imagen',
     ) as HTMLImageElement;
+    
     imagen.src = this.esFavorito ? 'images/star.svg' : 'images/star-line.svg';
+    
     this.elemento.dispatchEvent(
       new CustomEvent('favorito-cambio', { bubbles: true }),
     );
@@ -63,13 +65,11 @@ export class ItemBlogTarjeta extends ItemTarjeta {
     return this.esFavorito;
   }
 
-  eventoFavorito() {
+  vincularEventoFavorito() {
     const boton = this.elemento.querySelector('.blog__favorito-boton');
 
     boton.addEventListener('click', (evento) => {
       evento.preventDefault();
-      evento.stopPropagation();
-      evento.stopImmediatePropagation();
       this.marcarFavorito();
     });
   }

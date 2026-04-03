@@ -17,10 +17,6 @@ export class ListaHobbies extends ComponenteBase {
   `);
 
   crearElemento() {
-    for (let item of this.items) {
-      item.crearElemento();
-    }
-
     let elemento = document.createElement('lista-hobbies');
     elemento.innerHTML = this.getTemplate();
     this.elemento = elemento;
