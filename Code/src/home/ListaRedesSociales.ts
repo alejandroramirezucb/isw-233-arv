@@ -33,6 +33,7 @@ export class ListaRedesSociales extends ComponenteBase {
   `);
 
   crearElemento() {
+    this.items.forEach(item => item.getElemento());
     const elemento = document.createElement('lista-redes-sociales');
     elemento.innerHTML = this.getTemplate();
     this.elemento = elemento;

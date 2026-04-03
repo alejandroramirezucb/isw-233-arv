@@ -15,6 +15,7 @@ export class Proyectos extends ComponenteBase {
   `);
 
   crearElemento() {
+    this.listaProyectos.getTarjetas().forEach(t => t.getElemento());
     let elemento = document.createElement('section');
     elemento.classList.add('proyectos');
     elemento.innerHTML = this.getTemplate();

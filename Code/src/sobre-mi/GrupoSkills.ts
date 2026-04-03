@@ -21,6 +21,7 @@ export class GrupoSkills extends ComponenteBase {
   }
 
   crearElemento() {
+    this.items.forEach(item => item.getElemento());
     const elemento = document.createElement('grupo-skills');
     elemento.innerHTML = this.getTemplate();
     this.elemento = elemento;

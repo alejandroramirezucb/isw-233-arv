@@ -46,6 +46,8 @@ export class SobreMi extends ComponenteBase {
  `);
 
   crearElemento() {
+    this.educacion.getElemento();
+    this.experiencia.getElemento();
     const elemento = document.createElement('section');
     elemento.classList.add('sobre-mi');
     elemento.innerHTML = this.getTemplate();
