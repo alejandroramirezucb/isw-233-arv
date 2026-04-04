@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 
 export default (env, argv) => {
   const isProduction = argv.mode === 'production';
-  const analyzeBundle = process.env.ANALYZE === 'true';
+  const analyzeBundle = process?.env?.ANALYZE === 'true';
 
   return {
     entry: './src/index.ts',
@@ -155,6 +155,10 @@ export default (env, argv) => {
           {
             from: 'images',
             to: 'images',
+          },
+          {
+            from: 'data',
+            to: 'data',
           },
         ],
       }),
