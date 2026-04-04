@@ -1,8 +1,16 @@
 import { ItemTarjeta } from './ItemTarjeta.js';
 import { ComponenteBase } from '../base/ComponenteBase.js';
 
-export class ListaTarjetas extends ComponenteBase {
-  protected tarjetas: ItemTarjeta[] = [];
+export abstract class ListaTarjetas extends ComponenteBase {
+  protected abstract tarjetas: ItemTarjeta[];
+
+  constructor(){
+    super();
+    this.cargarTarjetas();
+  }
+
+  
+  abstract cargarTarjetas() : Promise<void>;
 
   crearElemento() {
     let elemento = document.createElement('lista-tarjetas');

@@ -1,32 +1,18 @@
 import { ListaTarjetas } from '../tarjetas/ListaTarjetas.js';
 import { FactoryBlogTarjeta } from './FactoryBlogTarjeta.js';
+import { ItemBlogTarjeta } from './ItemBlogTarjeta.js';
 
 export class ListaBlogTarjetas extends ListaTarjetas {
-  tarjetas = [
-    FactoryBlogTarjeta.crearTarjeta({
-      fecha: '2026',
-      titulo:
-        'DeepSeek-V3.1 en una Quipus de 8GB: Guía práctica para freír huevos',
-      categoria: 'Tecnología',
-      descripcion:
-        'Este artículo analizará el experimento termodinámico de intentar cargar un modelo de 670B en 8GB de RAM, un proceso que transforma instantáneamente el chasis de plástico en una plancha de cocina de grado profesional.',
-    }),
-    FactoryBlogTarjeta.crearTarjeta({
-      fecha: '2025',
-      titulo: 'Análisis Integral de la Inteligencia Artificial en Salud',
-      categoria: 'Inteligencia Artificial',
-      descripcion:
-        'Esta investigación tiene como propósito fundamental examinar la implementación de la inteligencia artificial (IA) en el ámbito sanitario, tomando como eje el principio de confiabilidad (reliability) establecido por la norma ISO 24028.',
-    }),
-    FactoryBlogTarjeta.crearTarjeta({
-      fecha: '2025',
-      titulo:
-        'Estándar DDR5: ¿Memoria Volátil o Nueva Reserva de Valor Macroeconómica?',
-      categoria: 'Tecnología',
-      descripcion:
-        'Ante la volatilidad de los mercados, este estudio propone tratar los módulos RAM no como hardware, sino como el nuevo "patrón oro" digital. Analizamos cómo la RAM ha superado a los bonos del Tesoro en estabilidad financiera, permitiendo a los ingenieros considerar sus bancos de memoria como activos de refugio.',
-    }),
-  ];
+  tarjetas: ItemBlogTarjeta[] = [];
+
+  async cargarTarjetas() {
+    const data = await fetch('data/blog.json');
+    const tarjetasJson = await data.json();
+
+    for (let tarjeta of tarjetasJson) {
+      super.agregarTarjeta(FactoryBlogTarjeta.crearTarjeta(tarjeta));
+    }
+  }
 
   getTarjetasPorCategoria(categoria) {
     if (categoria === 'Todos') {
@@ -42,15 +28,15 @@ export class ListaBlogTarjetas extends ListaTarjetas {
     );
   }
 
-  agregarTarjeta(config) {
-    super.agregarTarjeta(config.tarjeta);
+  agregarTarjeta(options) {
+    super.agregarTarjeta(options.tarjeta);
     if (
-      config.contenedor &&
-      config.categoriaActiva &&
-      (config.categoriaActiva === config.tarjeta.getCategoria() ||
-        config.categoriaActiva === 'Todos')
+      options.contenedor &&
+      options.categoriaActiva &&
+      (options.categoriaActiva === options.tarjeta.getCategoria() ||
+        options.categoriaActiva === 'Todos')
     ) {
-      config.contenedor.appendChild(config.tarjeta.getElemento());
+      options.contenedor.appendChild(options.tarjeta.getElemento());
     }
   }
 }
