@@ -99,12 +99,23 @@ npm run dev
 - **Datos**: `Api` consume JSON locales para proyectos y articulos.
 - **Comunicación**: `EventBus` coordina eventos (navegacion, modal, acciones de blog).
 
-## Arquitectura y utilidades
+## Patrones de Diseño
 
-- **Base de componentes**: `Block` centraliza render y eventos.
-- **Bus de eventos**: `EventBus` permite trasmitir eventos facilmente.
-- **Router SPA**: Cambia `pages` sin recargar la pagina.
-- **Api**: Lee `data/*.json` para obtener datos.
+### Template Method
+
+**Ubicacion**: `Code/src/shared/lib/Block.ts`
+
+**Por que se usa**: `Block` define el flujo base de renderizado y eventos, y las clases hijas implementan solo su template.
+
+**Uso**: Las paginas y widgets extienden `Block` y heredan el ciclo de vida (`willMount`, `didMount`) y el renderizado.
+
+### EventBus (Pub/Sub)
+
+**Ubicacion**: `Code/src/shared/lib/EventBus.ts`
+
+**Por que se usa**: Desacopla la comunicacion entre componentes (navegacion, modal, acciones del blog) sin dependencias directas.
+
+**Uso**: Se emiten eventos como `navigate`, `open::modal` y `add::article` desde distintos componentes.
 
 ## Observers
 
