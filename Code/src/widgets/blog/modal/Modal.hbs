@@ -1,0 +1,43 @@
+<div class="blog-modal">
+  <div class="blog-modal__header">
+    <h3 class="blog-modal__title">Agregar Artículo</h3>
+  </div>
+
+  <form class="blog-modal__form">
+    <div class="blog-modal__group">
+      <label for="blog-modal__category" class="blog-modal__label">Categoria</label>
+      <select id="blog-modal__category" name="category" required class="blog-modal__select">
+        <option value="" disabled selected>Selecciona una categoria</option>
+        <option value="Tecnología">Tecnología</option>
+        <option value="Inteligencia Artificial">Inteligencia Artificial</option>
+      </select>
+    </div>
+
+    <div class="blog-modal__group">
+      <label for="blog-modal__title" class="blog-modal__label">Titulo</label>
+      <input
+        id="blog-modal__title"
+        name="title"
+        type="text"
+        required
+        placeholder="Titulo"
+        class="blog-modal__input"
+      />
+    </div>
+
+    <div class="blog-modal__group">
+      <label for="blog-modal__description" class="blog-modal__label">Descripción</label>
+      <textarea
+        id="blog-modal__description"
+        name="description"
+        required
+        placeholder="Descripción"
+        class="blog-modal__textarea"></textarea>
+    </div>
+
+    <div class="blog-modal__actions">
+      {{> button text="Guardar" type="submit" classes="blog-modal__action-button"}}
+      {{> button text="Cancelar" type="button" classes="blog-modal__close-button"}}
+    </div>
+  </form>
+</div>

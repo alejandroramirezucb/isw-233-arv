@@ -1,0 +1,302 @@
+.skills {
+  width: 100%;
+  margin: 0 auto 20px;
+  padding: 0 48px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (width <= 900px) {
+    padding: 0 20px 20px;
+  }
+
+  @media (width <= 768px) {
+    padding: 0 16px 20px;
+  }
+}
+
+.skills__title {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.skills__subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #000;
+}
+
+.skills__list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.skills__image {
+  width: 48px;
+  height: 48px;
+  display: block;
+  object-fit: contain;
+
+  @media (width <= 900px) {
+    width: 44px;
+    height: 44px;
+  }
+
+  @media (width <= 480px) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.hobbies {
+  width: 100%;
+  margin: 0 auto 38px;
+  padding: 0 48px 52px;
+  box-sizing: border-box;
+
+  @media (width <= 768px) {
+    padding: 0 16px 32px;
+  }
+}
+
+.hobbies__title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 1.5rem;
+}
+
+.hobbies__list {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  flex-wrap: wrap;
+
+  @media (width <= 768px) {
+    gap: 20px;
+  }
+}
+
+.hobbies__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 96px;
+  min-width: 72px;
+  transition: transform 0.2s ease;
+  cursor: default;
+}
+
+.hobbies__figure {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+
+  @media (width <= 768px) {
+    width: 44px;
+    height: 44px;
+  }
+
+  @media (width <= 480px) {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.hobbies__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.hobbies__name {
+  font-size: 0.9rem;
+  margin: 0;
+  text-align: center;
+}
+
+.education {
+  width: 100%;
+}
+
+.education__title {
+  width: 100%;
+  margin: 0 auto 24px;
+  padding: 0 48px;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  text-align: center;
+
+  @media (width <= 768px) {
+    padding: 0 16px;
+  }
+}
+
+.education__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+  margin: 8px auto 16px;
+  padding: 20px 16px;
+
+  @media (width <= 768px) {
+    padding: 16px;
+  }
+}
+
+.education__figure {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.education__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.education__title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.education__institution,
+.education__date {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.education__content {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.education__description {
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.experience {
+  width: 100%;
+}
+
+.experience__title {
+  width: 100%;
+  margin: 0 auto 24px;
+  padding: 0 48px;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  text-align: center;
+
+  @media (width <= 768px) {
+    padding: 0 16px;
+  }
+}
+
+.experience__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+  margin: 8px auto 16px;
+  padding: 20px 16px;
+
+  @media (width <= 768px) {
+    padding: 16px;
+  }
+}
+
+.experience__figure {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.experience__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.experience__title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.experience__company,
+.experience__date {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.experience__content {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.experience__description {
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.encabezado {
+  margin-bottom: 40px;
+}
+
+footer {
+  text-align: center;
+  padding: 50px 16px;
+  box-sizing: border-box;
+  background-color: #fff;
+  min-height: 60px;
+}
+
+.footer__contenido {
+  margin: 0;
+  color: var(--color-texto);
+}

@@ -1,0 +1,127 @@
+.contact {
+  width: 100%;
+  margin: 0 auto 48px;
+  padding: 0 48px;
+  box-sizing: border-box;
+
+  @media (width <= 768px) {
+    padding: 0 16px;
+  }
+}
+
+.contact__title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.contact__container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+
+  @media (width <= 768px) {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+}
+
+.contact__list {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  font-style: normal;
+  justify-content: center;
+}
+
+.contact__subtitle {
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+.contact__items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.contact__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact__text {
+  font-style: normal;
+  margin: 0;
+}
+
+.contact__form {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.contact__field-text,
+.contact__field-email,
+.contact__field-message {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.contact__field-message {
+  min-height: 140px;
+  resize: vertical;
+
+  @media (width <= 480px) {
+    min-height: 120px;
+  }
+}
+
+.contact__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.contact__button {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.contact-item__figure {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.contact-item__image {
+  width: 28px;
+  height: 28px;
+  display: block;
+}

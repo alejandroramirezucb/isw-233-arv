@@ -1,9 +1,0 @@
-.contacto__lista {
-  flex: 1 1 45%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
-  font-style: normal;
-  justify-content: center;
-}

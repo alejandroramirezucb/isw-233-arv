@@ -10,69 +10,80 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 /
 ├── README.md
 └── Code/
-    ├── package.json
-    ├── webpack.config.js
-    ├── eslint.config.js
-    ├── postcss.config.js
-    ├── .stylelintrc.json
+  ├── package.json
+  ├── webpack.config.js
+  ├── eslint.config.js
+  ├── postcss.config.js
+  ├── .stylelintrc.json
+  ├── data/
+  │   ├── blog.json
+  │   ├── projects.json
+  │   └── proyectos.json
     ├── images/
-    ├── dist/
     └── src/
-        ├── index.html
+    ├── index.hbs
         ├── index.css
         ├── index.ts
-        ├── base/
-        ├── blog/
-        ├── contacto/
-        ├── home/
-        ├── navegacion/
-        ├── partials/
-        ├── proyectos/
-        ├── render/
-        ├── router/
-        ├── sobre-mi/
-        └── tarjetas/
+    ├── handlebars.d.ts
+    ├── app/
+    │   ├── api/
+    │   ├── config/
+    │   ├── router/
+    │   └── styles/
+    ├── entities/
+    │   ├── article/
+    │   └── project/
+    ├── pages/
+    │   ├── home/
+    │   ├── about/
+    │   ├── projects/
+    │   ├── blog/
+    │   └── contact/
+    ├── shared/
+    │   ├── lib/
+    │   ├── ui/
+    │   ├── styles/
+    │   └── utils/
+    └── widgets/
+      ├── navbar/
+      └── blog/
+        ├── articles/
+        └── modal/
 ```
 
-## Bloques Identificados
+## Modulos principales
 
-- **base**: Estilos base del proyecto
-- **navegacion**: Barra de navegación
-- **encabezado**: Encabezado principal
-- **home**: Sección de inicio
-- **home-red-social**: Elementos de redes sociales
-- **blog**: Sección de artículos con filtros
-- **blog-favorito**: Artículos marcados como favoritos
-- **categorias**: Lista de categorías
-- **categoria-item**: Elemento individual de categoría
-- **modal-blog**: Modal para crear/editar artículos
-- **proyectos**: Sección de proyectos
-- **skills**: Sección de skills
-- **hobbies**: Sección de hobbies
-- **contacto**: Formulario y datos de contacto
-- **contacto-item**: Elemento de contacto
-- **educacion**: Sección de educación
-- **experiencia**: Sección de experiencia
-- **boton**: Componente de botón
-- **toast**: Notificaciones emergentes
-- **footer**: Pie de página
+- **app**: Configuracion, router y consumo de datos.
+- **entities**: Modelos y UI base de entidades (articulos y proyectos).
+- **pages**: Vistas por ruta (home, about, projects, blog, contact).
+- **widgets**: Componentes compuestos como navbar y modal de blog.
+- **shared**: Librerias base, utilidades y componentes UI reutilizables.
+- **data**: Fuentes JSON para proyectos y articulos.
 
 ## ¿Qué se hace?
 
-- **Home**: Muestra mi foto de perfil, un artículo de presentación, enlaces a redes sociales y un botón de contacto.
-- **Sobre mí**: Incluye educación, experiencia, skills y hobbies.
-- **Proyectos**: Muestra proyectos destacados con tarjeta, fecha, descripción e imagen.
-- **Blog**: Muestra artículos y permite filtrar por categorías (incluyendo favoritos).
-- **Contacto**: Incluye formulario de contacto y datos de contacto.
+- **Home**: Presentacion principal con acceso rapido a contacto.
+- **Sobre mi**: Secciones de skills, educacion, experiencia y hobbies.
+- **Proyectos**: Tarjetas de proyectos cargadas desde JSON.
+- **Blog**: Articulos filtrables por categoria y modal para agregar nuevos.
+- **Contacto**: Formulario y datos de contacto.
+
+## Instalación y ejecución
+
+```bash
+cd Code
+npm install
+npm run dev
+```
 
 ## ¿Cómo se hace?
 
 ### HTML
 
-- **Estructura base del documento**: Se usa `<header>`, `<main>` y `<footer>` en `src/index.html` para la jerarquía principal.
+- **Estructura base del documento**: Se usa `src/index.hbs` con `nav`, `main` y `footer` para la jerarquia principal.
 - **Renderizado por componentes**: Las secciones (`home`, `sobre-mi`, `proyectos`, `blog`, `contacto`) se crean con TypeScript y plantillas Handlebars.
 - **Semántica en tarjetas y secciones**: Se usan `<section>`, `<article>`, `<figure>`, `<img>` y encabezados (`h2`, `h3`, `h4`).
-- **Navegación**: El contenedor de navegación usa `<nav>` y los web components son `role="list"` y `role="listitem"`.
+- **Navegación**: El contenedor principal de navegacion vive en `#navbar-container` y el contenido se renderiza en `#app`.
 
 ### CSS
 
@@ -83,77 +94,23 @@ Este portafolio web muestra mi perfil, formación académica, experiencia, habil
 
 ### TypeScript
 
-- **Arquitectura**: El proyecto está dividido por secciones (`home`, `blog`, `proyectos`, `contacto`, etc.).
-- **Uso de Handlebars**: Cada componente define una plantilla para producir su HTML.
-- **Navegación**: El router se encarga de las rutas como `/`, `/sobre-mi`, `/proyectos`, `/blog` y `/contacto` sin recargar toda la página.
-- **Web Components**: Se usan elementos personalizados (`item-tarjeta`, `lista-tarjetas`, `item-navegacion`, `lista-navegacion`, etc.).
+- **Arquitectura**: Componentes basados en `Block` con templates Handlebars.
+- **Navegación**: Router SPA con rutas `/`, `/sobre-mi`, `/proyectos`, `/blog` y `/contacto`.
+- **Datos**: `Api` consume JSON locales para proyectos y articulos.
+- **Comunicación**: `EventBus` coordina eventos (navegacion, modal, acciones de blog).
 
-## Patrones de Diseño
+## Arquitectura y utilidades
 
-### Factory
-
-**Ubicación**: `Code/src/tarjetas/FactoryTarjeta.ts`, `Code/src/blog/FactoryBlogTarjeta.ts`, `Code/src/proyectos/FactoryProyectosTarjeta.ts`
-
-**Por qué se usa**: Para abstraer la creación de tarjetas y permitir variantes especializadas sin duplicar la lógica.
-
-**Uso**: `FactoryBlogTarjeta.crearTarjeta()` crea instancias de `ItemBlogTarjeta` y `FactoryProyectosTarjeta.crearTarjeta()` crea instancias de `ItemProyectosTarjeta`.
-
-### Singleton
-
-**Ubicación**: `Code/src/navegacion/Navegacion.ts`
-
-**Por qué se usa**: Para garantizar una sola instancia de la navegación en toda la app.
-
-**Uso**: `Navegacion.getInstancia()` crea o retorna la única instancia y evita duplicar listeners o estructura de menú.
-
-### Template Method
-
-**Ubicación**: `Code/src/base/ComponenteBase.ts`, clases hijas en `Code/src/**`
-
-**Por qué se usa**: La clase base define metodos comunes para la creación de un componente y las subclases implementan el paso específico de construcción de su nodo DOM.
-
-**Uso**: `ComponenteBase.getElemento()` se encarga de obtener un elemento y delega en `crearElemento()` implementado por cada componente (por ejemplo, listas, items, secciones y tarjetas).
-
-### Value Object
-
-**Ubicación**: `Code/src/tarjetas/ItemTarjeta.ts`, `Code/src/blog/ItemBlogTarjeta.ts`, `Code/src/proyectos/ItemProyectosTarjeta.ts`, `Code/src/contacto/ItemContacto.ts`
-
-**Por qué se usa**: Se crean objetos inmutables mediante congelación de propiedades para garantizar que sus atributos no cambien una vez instanciados. Esto es para realizar comparaciones entre objetos.
-
-**Uso**: Las clases de lista requieren que los datos sean innmutables para comparar correctamente un elemeno cuando se necesita eliminarlo.
+- **Base de componentes**: `Block` centraliza render y eventos.
+- **Bus de eventos**: `EventBus` permite trasmitir eventos facilmente.
+- **Router SPA**: Cambia `pages` sin recargar la pagina.
+- **Api**: Lee `data/*.json` para obtener datos.
 
 ## Observers
 
-### MutationObserver
-
-**Ubicación**: `Code/src/blog/Blog.ts` (método `vincularEventoSinResultados()`)
-
-**Problema resuelto**:
-Cuando el usuario cambia de categoría y no hay resultados, es necesario mostrar un mensaje de "sin resultados". Por eso uso Mutation Observer para ver si hay cambios en el contenedor de tarjetas.
-
-**Implementación**:
-
-```javascript
-let observer = new MutationObserver((mutations) => {
-  for (let mutation of mutations) {
-    if (mutation.type === 'childList' && contenedor.childElementCount === 0) {
-      contenedor.innerHTML =
-        '<p class="blog__mensaje-sin-resultados">No hay resultados para esta categoría</p>';
-    }
-  }
-});
-
-observer.observe(contenedor, { childList: true });
-```
-
-**Por qué MutationObserver es la solución correcta**:
-
-- Se dispara solo cuando hay cambios reales
-- Detecta que es lo qué cambió (childList) y cuándo
-
 ### IntersectionObserver
 
-**Ubicación**: `Code/src/render/ImagenRender.ts`
+**Ubicación**: `Code/src/shared/utils/OptimizeImage.ts`
 
 **Problema resuelto**:
 Las imágenes se cargan incluso fuera de la pantalla. Es necesario cargar imágenes solo cuando el usuario esta apunto de verlas.
@@ -161,24 +118,31 @@ Las imágenes se cargan incluso fuera de la pantalla. Es necesario cargar imáge
 **Implementación**:
 
 ```javascript
-export class ImagenRender {
-  render() {
+export class OptimizeImage {
+  optimize() {
     const observer = new IntersectionObserver(this.callback.bind(this), {
       threshold: 0.2,
     });
 
-    for (let imagen of document.querySelectorAll('img[data-src]')) {
-      observer.observe(imagen);
-    }
+    const images = document.querySelectorAll('img[data-src]');
+
+    images.forEach((image) => {
+      observer.observe(image);
+    });
   }
 
   callback(entries, observer) {
-    for (let entrie of entries) {
-      if (entrie.isIntersecting) {
-        entrie.target.src = entrie.target.getAttribute('data-src');
-        observer.unobserve(entrie.target);
-      }
-    }
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const target = entry.target;
+      const dataSrc = target.getAttribute('data-src');
+
+      if (!dataSrc) return;
+
+      target.src = dataSrc;
+      observer.unobserve(target);
+    });
   }
 }
 ```
@@ -190,34 +154,45 @@ export class ImagenRender {
 
 ### ResizeObserver
 
-**Ubicación**: `Code/src/render/EscalaRender.ts`
+**Ubicación**: `Code/src/shared/utils/ScaleElements.ts`
 
 **Problema resuelto**:
-Los elementos con atributo `data-escala` deben escalar cuando el usuario pasa el mouse, pero solo si el elemento ha sido renderizado. Sin esto, podría fallar en elementos con display:none.
+Los elementos con atributo `data-scale` deben escalar cuando el usuario pasa el mouse, pero solo si el elemento ha sido renderizado. Sin esto, podria fallar en elementos con display:none.
 
 **Implementación**:
 
 ```javascript
-export class EscalaRender {
-  render() {
+export class ScaleElements {
+  scale() {
     const observer = new ResizeObserver(this.callback.bind(this));
+    const elements = document.querySelectorAll('[data-scale]');
 
-    for (let elemento of document.querySelectorAll('[data-escala]')) {
-      observer.observe(elemento, { box: 'border-box' });
-    }
+    elements.forEach((element) => {
+      observer.observe(element, { box: 'border-box' });
+    });
   }
 
   callback(entries) {
-    for (let entrie of entries) {
-      if (entrie.contentRect.width === 0 || entrie.target.escalaRegistrada) {
-        continue;
-      }
+    entries.forEach((entry) => {
+      const target = entry.target;
 
-      entrie.target.escalaRegistrada = true;
-      entrie.target.addEventListener('mouseenter', () => {
-        entrie.target.style.transform = `scale(${entrie.target.getAttribute('data-escala')})`;
+      if (entry.contentRect.width === 0) return;
+      if (target.dataset.scaled === 'true') return;
+
+      target.dataset.scaled = 'true';
+
+      target.addEventListener('mouseenter', () => {
+        const scale = target.getAttribute('data-scale');
+
+        if (!scale) return;
+
+        target.style.transform = `scale(${scale})`;
       });
-    }
+
+      target.addEventListener('mouseleave', () => {
+        target.style.transform = '';
+      });
+    });
   }
 }
 ```
@@ -225,7 +200,7 @@ export class EscalaRender {
 **Por qué ResizeObserver es la solución correcta**:
 
 - Primero verifica que el elemento tiene dimensiones válidas antes de registrar listeners
-- Solo registra listeners una vez por elemento (usando `escalaRegistrada`)
+- Solo registra listeners una vez por elemento (usando `data-scaled`)
 - Funciona con elementos dinámicos o con animaciones CSS
 
 ## ¿Por qué se hace?
@@ -242,6 +217,7 @@ export class EscalaRender {
 # Plugins Adicionales
 
 Se implementaron dos plugins adicionales: `webpack-bundle-analyzer` y `image-minimizer-webpack-plugin`.
+Ambos están instalados como `devDependencies` y se ejecutan desde los scripts de `package.json`.
 
 ## Plugin 1: `image-minimizer-webpack-plugin`
 
@@ -284,183 +260,3 @@ npm run analyze
 # Genera: dist/bundle-report.html
 # Esto hay que abrirlo en el navegador
 ```
-
----
-
-# Prompts
-
-**Fuentes:**
-
-Se uso las skills contenidas en `Code/.agents/skills` con los siguientes modelos:
-
-- ChatGPT-5.3 Codex
-- Gemini 3.1 Pro
-- Claude Haiku 4.5
-- Claude Opus 4.6
-
-## Pregunta 1: Corrige el HTML actual para que haga HTML semántico, explícame luego por qué
-
-### Respuesta
-
-Se implementaron las siguientes mejoras semánticas:
-
-#### Etiqueta `<figure>` para imágenes
-
-**Por qué**: Envuelve imágenes dándoles contexto semántico como contenido ilustrativo relacionado. En el código, la foto de perfil, iconos de educación y hobbies utilizan esta etiqueta.
-
-#### Etiqueta `<time>` con atributo `datetime`
-
-**Por qué**: Permite que las fechas sean legibles tanto para humanos como para máquinas (buscadores, calendarios). Ejemplos en el código:
-
-```html
-<time datetime="2024">2024</time> - <time datetime="2025">2025</time>
-```
-
-#### Implementación de `<nav>` y listas (`<ul>`)
-
-**Por qué**: En lugar de simples `<a>` dentro de un div, usar `<nav>` indica explícitamente que es una sección de navegación. Agrupar los enlaces en una lista (`<ul>`) es una convención estándar que facilita la lectura a asistentes tecnológicos.
-
-```html
-<nav
-  aria-label="navegacion"
-  class="navegacion">
-  <ul class="navegacion__lista">
-    <li class="navegacion__elemento"><a href="#sobre-mi">Sobre mi</a></li>
-    <li class="navegacion__elemento"><a href="#proyectos">Proyectos</a></li>
-    <li class="navegacion__elemento"><a href="#blog">Blog</a></li>
-    <li class="navegacion__elemento"><a href="#contacto">Contacto</a></li>
-  </ul>
-</nav>
-```
-
-#### Accesibilidad (ARIA)
-
-**Por qué**: Se añadieron atributos como `aria-label` al `<nav>`, lo que ayuda a usuarios con discapacidad visual a identificar rápidamente el propósito de cada bloque de navegación.
-
-#### Etiquetas `<header>`, `<main>`, `<footer>`
-
-**Por qué**: Definen claramente la estructura principal del documento para motores de búsqueda y lectores de pantalla.
-
-#### Etiqueta `<address>` para contacto
-
-**Por qué**: Semánticamente correcta para información de contacto.
-
----
-
-## Pregunta 2: Explícame qué hace la etiqueta `<time>`
-
-### Respuesta
-
-**¿Qué hace?**
-Representa un punto específico en el tiempo o un rango temporal. El atributo `datetime` proporciona una representación legible por máquinas en formato ISO 8601.
-
-**Ejemplo en el código**:
-
-```html
-<time datetime="2024">2024</time> - <time datetime="2025">2025</time>
-```
-
-**Representación visual para usuarios**: 2024 - 2025
-**Representación semántica para máquinas**: Los motores de búsqueda, calendarios y aplicaciones de procesamiento de fechas entienden exactamente qué años se mencionan.
-
-**¿Por qué es útil?**
-
-- Mejora el SEO: Los buscadores indexan correctamente fechas y eventos
-- Accesibilidad: Los lectores de pantalla anuncian las fechas de manera clara
-- Interoperabilidad: Aplicaciones como Google Calendar pueden procesar estas fechas automáticamente
-
----
-
-## Pregunta 3: Cómo pongo sombra paralela de Figma: posicion x: 0, posicion y: 4, desenfoque: 6, propagación: -1, color: #000000, opacidad: 10% en CSS
-
-### Respuesta
-
-Los valores de sombra de Figma se convierten a CSS de la siguiente manera:
-
-**Parámetros de Figma:**
-
-- Posición X: 0
-- Posición Y: 4
-- Desenfoque: 6
-- Propagación: -1
-- Color: #000000
-- Opacidad: 10%
-
-**Sintaxis CSS**:
-
-```css
-.sombra-figma {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-```
-
-**Explicación**:
-
-- `0`: offset X (posición horizontal)
-- `4px`: offset Y (posición vertical)
-- `6px`: blur (desenfoque)
-- `-1px`: spread (propagación)
-- `rgba(0, 0, 0, 0.10)`: color con opacidad (10% = 0.10)
-
-**Implementación en el código**:
-Esta sombra ya está aplicada en las tarjetas de proyectos y blog:
-
-```css
-.proyectos__tarjeta {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.blog__tarjeta {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-```
-
----
-
-## Pregunta 4: Mejora el BEM y semántica HTML solamente de la sección educación
-
-### Respuesta
-
-**Estructura implementada en index.html**:
-
-```html
-<section
-  id="sobre-mi"
-  class="sobre-mi">
-  <section class="educacion__contenedor">
-    <h2 class="educacion__titulo--principal">Educación</h2>
-    <article class="educacion__tarjeta">
-      <figure class="educacion__figura">
-        <img
-          src="images/icon-education.svg"
-          alt="Icono educación"
-          class="educacion__imagen" />
-      </figure>
-      <h3 class="educacion__carrera">Ingeniería de Software</h3>
-      <h4 class="educacion__institucion">Universidad Católica Boliviana</h4>
-      <p class="educacion__fecha">
-        <time datetime="2024">2024</time> - Presente
-      </p>
-      <p class="educacion__descripcion">
-        Actualmente curso el quinto semestre...
-      </p>
-    </article>
-  </section>
-</section>
-```
-
-**Cambios realizados**:
-
-- Reemplacé `<div>` por `<section>` para mejor semántica
-- Utilicé `<article>` para cada tarjeta de educación
-- Añadí `<figure>` para envolver la imagen del icono
-- Implementé nomenclatura BEM clara: `educacion__titulo-principal`, `educacion__tarjeta`, `educacion__figura`, `educacion__imagen`, `educacion__carrera`, `educacion__institucion`, `educacion__fecha`, `educacion__descripcion`
-- Cambié de `sobre-mi__imagen` a `educacion__imagen` para coherencia
-- Utilicé `<time datetime="">` para fechas legibles por máquinas
-- Estructura jerárquica correcta de encabezados (h2 > h3 > h4)
-
-## Pregunta 5: Mejora la redacción de README.md y corrige la sintaxis markdown
-
-### Respuesta
-
-He mejorado la redacción del archivo README.md para que sea más clara, profesional y fluida, manteniendo el contenido técnico y los detalles actuales. Si necesitas más ajustes o tienes otra solicitud, no dudes en indicarlo.

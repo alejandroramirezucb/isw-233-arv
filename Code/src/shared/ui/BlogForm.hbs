@@ -1,0 +1,27 @@
+<form class="{{name}}__form" id="{{name}}-form">
+  <div class="{{name}}__group">
+    {{> label container=name name="category" label="Category"}}
+    <select
+      id="{{name}}__category"
+      name="category"
+      required
+      class="{{name}}__select">
+      <option value="" disabled selected>{{categoryPlaceholder}}</option>
+      {{#each categories}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+  <div class="{{name}}__group">
+    {{> date-field container=name name="date" label="Date"}}
+  </div>
+
+  <div class="{{name}}__group">
+    {{> text-field container=name name="title" type="text" label="Title" placeholder=titlePlaceholder}}
+  </div>
+
+  <div class="{{name}}__group">
+    {{> message-field container=name name="description" label="Description" placeholder=descriptionPlaceholder}}
+  </div>
+</form>

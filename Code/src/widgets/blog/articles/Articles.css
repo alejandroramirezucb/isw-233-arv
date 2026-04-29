@@ -1,0 +1,31 @@
+.articles {
+  width: 100%;
+}
+
+.articles__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 100%;
+
+  @media (width <= 900px) {
+    gap: 16px;
+  }
+}
+
+.blog__no-results {
+  color: #7a7a7a;
+  text-align: center;
+  margin: 32px auto;
+  padding: 24px 16px;
+  background: #fff;
+  border-radius: 10px;
+  max-width: 850px;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  min-width: 100%;
+}

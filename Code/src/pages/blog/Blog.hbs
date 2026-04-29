@@ -1,0 +1,29 @@
+<section id="blog" class="blog">
+  <div class="blog__header">
+    <h2 class="blog__title">Blog</h2>
+  </div>
+
+  <div class="blog__categories-wrapper">
+    <div class="blog__categories">
+      <button type="button" class="button blog__category-button" data-category="Todos">
+        Todos
+      </button>
+      <button type="button" class="button blog__category-button" data-category="Tecnología">
+        Tecnología
+      </button>
+      <button type="button" class="button blog__category-button" data-category="Inteligencia Artificial">
+        Inteligencia Artificial
+      </button>
+      <button type="button" class="button blog__category-button" data-category="Favoritos">
+        Favoritos
+      </button>
+      {{> button
+        type="button"
+        text="Agregar artículo"
+        classes="blog__add-button"
+      }}
+    </div>
+  </div>
+
+  <div class="blog__content" child="articles"></div>
+</section>

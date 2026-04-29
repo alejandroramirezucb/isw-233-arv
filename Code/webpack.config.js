@@ -27,7 +27,7 @@ export default (env, argv) => {
 
     mode: isProduction ? 'production' : 'development',
 
-    devtool: isProduction ? 'source-map' : 'eval-source-map',
+    devtool: isProduction ? false : 'eval-source-map',
 
     module: {
       rules: [
@@ -50,7 +50,21 @@ export default (env, argv) => {
         },
         {
           test: /\.hbs$/,
+          resourceQuery: /raw/,
+          type: 'asset/source',
+        },
+        {
+          test: /\.hbs$/,
+          resourceQuery: { not: [/raw/] },
           loader: 'handlebars-loader',
+          options: {
+            partialDirs: [
+              path.resolve(__dirname, 'src/shared/ui'),
+              path.resolve(__dirname, 'src/widgets'),
+              path.resolve(__dirname, 'src/entities'),
+            ],
+            knownHelpersOnly: false,
+          },
         },
         {
           test: /\.tsx?$/,
@@ -70,6 +84,7 @@ export default (env, argv) => {
       },
       alias: {
         handlebars: 'handlebars/dist/handlebars.js',
+        '@': path.resolve(__dirname, 'src'),
       },
     },
 
@@ -103,7 +118,7 @@ export default (env, argv) => {
                   plugins: [
                     ['gifsicle', { interlaced: true }],
                     ['jpegtran', { progressive: true }],
-                    ['optipng', { optimizationLevel: 5 }],
+                    ['optipng', { optimizationLevel: 2 }],
                     [
                       'svgo',
                       {
@@ -137,7 +152,8 @@ export default (env, argv) => {
 
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: './src/index.hbs',
+        scriptLoading: 'defer',
         minify: isProduction
           ? {
               removeComments: true,

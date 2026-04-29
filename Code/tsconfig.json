@@ -1,8 +1,14 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "allowArbitraryExtensions": true,
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,

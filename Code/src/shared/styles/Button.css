@@ -1,0 +1,22 @@
+.button {
+  font-family: inherit;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  width: fit-content;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.button--primary {
+  background-color: var(--color-fondo);
+  color: var(--color-primario);
+  border: 2px solid var(--color-primario);
+  margin-top: 12px;
+
+  &:hover {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+  }
+}

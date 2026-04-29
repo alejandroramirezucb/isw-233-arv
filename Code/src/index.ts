@@ -1,47 +1,41 @@
-import './index.css';
-import { Navegacion } from './navegacion/Navegacion.js';
-import { EscalaRender } from './render/EscalaRender.js';
-import { ImagenRender } from './render/ImagenRender.js';
-import { registrarBotonPartial } from './partials/BotonPartial.js';
-import { registrarCamposFormularioPartials } from './partials/FormularioCamposPartial.js';
-import { registrarEtiquetaPartial } from './partials/FormularioEtiquetaPartial.js';
-import { registrarFormularioBlogPartial } from './partials/FormularioBlogPartial.js';
-import { registrarImagenPartial } from './partials/ImagenPartial.js';
-import { registrarSeccionPartial } from './partials/SeccionPartial.js';
-import { registrarToastPartial } from './partials/ToastPartial.js';
-import './navegacion/HTMLItemNavegacion.js';
-import './navegacion/HTMLListaNavegacion.js';
-import './home/HTMLArticuloHome.js';
-import './home/HTMLListaRedesSociales.js';
-import './home/HTMLRedSocial.js';
-import './sobre-mi/HTMLGrupoSkills.js';
-import './sobre-mi/HTMLItemHobbie.js';
-import './sobre-mi/HTMLItemSkill.js';
-import './sobre-mi/HTMLListaHobbies.js';
-import './sobre-mi/HTMLListaSkills.js';
-import './sobre-mi/HTMLTarjetaInformacion.js';
-import './contacto/HTMLFormularioContacto.js';
-import './contacto/HTMLItemContacto.js';
-import './contacto/HTMLListaContacto.js';
-import './tarjetas/HTMLItemTarjeta.js';
-import './tarjetas/HTMLListaTarjetas.js';
-import './blog/HTMLItemCategoria.js';
-import './blog/HTMLListaCategorias.js';
-import './base/HTMLToast.js';
+import './app/config/Handlebars';
+import '@/index.css';
+import type { Pages } from '@/pages/Pages';
+import { Home } from '@/pages/home/Home';
+import { About } from '@/pages/about/About';
+import { Projects } from '@/pages/projects/Projects';
+import { Blog } from '@/pages/blog/Blog';
+import { Contact } from '@/pages/contact/Contact';
+import { Router } from '@/app/router/Router';
+import { Modal } from '@/widgets/blog/modal/Modal';
+import { Api } from '@/app/api/Api';
+import { OptimizeImage } from '@/shared/utils/OptimizeImage';
+import { ScaleElements } from '@/shared/utils/ScaleElements';
+import { Navbar } from '@/widgets/navbar/Navbar';
 
-registrarBotonPartial();
-registrarCamposFormularioPartials();
-registrarEtiquetaPartial();
-registrarFormularioBlogPartial();
-registrarImagenPartial();
-registrarSeccionPartial();
-registrarToastPartial();
+init();
 
-const navegacion = Navegacion.getInstancia()!;
-navegacion.renderizar();
+async function init() {
+  const nav = document.getElementById('navbar-container');
+  const app = document.getElementById('app');
 
-const escalaRender = new EscalaRender();
-escalaRender.render();
+  const optimizeImage = new OptimizeImage();
+  const scaleElements = new ScaleElements();
+  const projectCards = await Api.projects();
+  const articleCards = await Api.articles();
+  const modal = new Modal(app);
+  const navbar = new Navbar();
+  nav.appendChild(navbar.element);
 
-const imagenRender = new ImagenRender();
-imagenRender.render();
+  const pages: Pages = {
+    HOME: new Home(),
+    ABOUT: new About(),
+    PROJECTS: new Projects(projectCards),
+    BLOG: new Blog(articleCards),
+    CONTACT: new Contact(),
+  };
+
+  Router.init(pages, app);
+  optimizeImage.optimize();
+  scaleElements.scale();
+}

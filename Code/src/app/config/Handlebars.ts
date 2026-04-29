@@ -1,0 +1,37 @@
+import Handlebars from 'handlebars';
+
+import button from '@/shared/ui/Button.hbs?raw';
+import image from '@/shared/ui/Image.hbs?raw';
+import label from '@/shared/ui/Label.hbs?raw';
+import textField from '@/shared/ui/TextField.hbs?raw';
+import dateField from '@/shared/ui/DateField.hbs?raw';
+import messageField from '@/shared/ui/MessageField.hbs?raw';
+import blogForm from '@/shared/ui/BlogForm.hbs?raw';
+import section from '@/shared/ui/Section.hbs?raw';
+import toast from '@/shared/ui/Toast.hbs?raw';
+import navbar from '@/widgets/navbar/Navbar.hbs?raw';
+import skills from '@/shared/ui/Skills.hbs?raw';
+import hobbies from '@/shared/ui/Hobbies.hbs?raw';
+import education from '@/shared/ui/Education.hbs?raw';
+import experience from '@/shared/ui/Experience.hbs?raw';
+import contactItem from '@/shared/ui/ContactItem.hbs?raw';
+import footer from '@/shared/ui/Footer.hbs?raw';
+import noResults from '@/shared/ui/NoResults.hbs?raw';
+
+Handlebars.registerPartial('button', button);
+Handlebars.registerPartial('image', image);
+Handlebars.registerPartial('label', label);
+Handlebars.registerPartial('text-field', textField);
+Handlebars.registerPartial('date-field', dateField);
+Handlebars.registerPartial('message-field', messageField);
+Handlebars.registerPartial('blog-form', blogForm);
+Handlebars.registerPartial('section', section);
+Handlebars.registerPartial('toast', toast);
+Handlebars.registerPartial('navbar', navbar);
+Handlebars.registerPartial('skills', skills);
+Handlebars.registerPartial('hobbies', hobbies);
+Handlebars.registerPartial('education', education);
+Handlebars.registerPartial('experience', experience);
+Handlebars.registerPartial('contact-item', contactItem);
+Handlebars.registerPartial('Footer', footer);
+Handlebars.registerPartial('NoResults', noResults);

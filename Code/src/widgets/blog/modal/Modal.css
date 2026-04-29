@@ -1,0 +1,198 @@
+.blog-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 50%);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+}
+
+.blog-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  width: min(420px, 80%);
+  max-width: 420px;
+  min-height: 72vh;
+  max-height: 88vh;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 64px rgb(0 0 0 / 25%),
+    0 4px 16px rgb(0 0 0 / 10%);
+}
+
+@media (width <= 480px) {
+  .blog-modal {
+    width: 90%;
+    min-height: 60vh;
+    max-height: 95vh;
+  }
+}
+
+.blog-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 22px;
+  background: #fff;
+
+  @media (width <= 480px) {
+    padding: 14px 16px;
+  }
+}
+
+.blog-modal__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.blog-modal__form {
+  padding: 20px 24px;
+  overflow-y: auto;
+  background: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (width <= 480px) {
+    padding: 16px 18px;
+  }
+}
+
+.blog-modal__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.blog-modal__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+.blog-modal__input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-family: var(--fuente-principal);
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  background: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  outline: none;
+
+  &:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgb(47 113 229 / 12%);
+  }
+}
+
+.blog-modal__select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-family: var(--fuente-principal);
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  background: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+  cursor: pointer;
+
+  &:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgb(47 113 229 / 12%);
+  }
+}
+
+.blog-modal__textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-family: var(--fuente-principal);
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  background: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  outline: none;
+  resize: vertical;
+  min-height: 96px;
+  line-height: 1.5;
+
+  &:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgb(47 113 229 / 12%);
+  }
+}
+
+.blog-modal__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.blog-modal__action-button,
+.blog-modal__close-button {
+  padding: 10px 24px;
+  border-radius: 20px;
+  border: 1.5px solid var(--color-primario);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.blog-modal__action-button {
+  background-color: var(--color-primario);
+  color: #fff;
+
+  &:hover {
+    background-color: #1e5db8;
+    border-color: #1e5db8;
+    transform: translateY(-2px);
+  }
+}
+
+.blog-modal__close-button {
+  background-color: #fff;
+  color: var(--color-primario);
+
+  &:hover {
+    background-color: #fff;
+    color: var(--color-primario);
+    transform: scale(1.04);
+  }
+}

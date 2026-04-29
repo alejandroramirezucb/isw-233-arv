@@ -1,0 +1,41 @@
+<section id="contact" class="contact">
+  <h2 class="contact__title">Contáctame</h2>
+  <div class="contact__container">
+    <div class="contact__list">
+      <h3 id="contact__subtitle" class="contact__subtitle">Mi información</h3>
+      <ul class="contact__items" aria-labelledby="contact__subtitle">
+        {{> contact-item title="Icono de dirección" image="images/icon-contenedor-direccion.svg" text="Santa Cruz de la Sierra, Bolivia"}}
+        {{> contact-item title="Icono de teléfono" image="images/icon-contenedor-telefono.svg" text="+1235 2355 98"}}
+        {{> contact-item title="Icono de Email" image="images/icon-contenedor-email.svg" text="info@alejandroramirez.com"}}
+        {{> contact-item title="Icono de mi Web" image="images/icon-contenedor-web.svg" text="www.alejandroramirez.com"}}
+      </ul>
+    </div>
+
+    <form class="contact__form" id="contact-form">
+      {{> message-field
+        container="contact"
+        name="message"
+        label="Mensaje"
+        placeholder="Escribe tu mensaje"
+      }}
+
+      {{> text-field
+        container="contact"
+        name="name"
+        label="Nombre"
+        type="text"
+        placeholder="Tu nombre"
+      }}
+
+      {{> text-field
+        container="contact"
+        name="email"
+        label="Email"
+        type="email"
+        placeholder="tu@email.com"
+      }}
+
+      {{> button type="submit" text="Enviar" classes="contact__button"}}
+    </form>
+  </div>
+</section>

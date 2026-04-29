@@ -1,0 +1,130 @@
+.projects {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto 48px;
+  padding: 0 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (width <= 900px) {
+    padding: 0 20px;
+  }
+
+  @media (width <= 600px) {
+    padding: 0 16px;
+  }
+}
+
+.projects > .projects__title {
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.projects__container,
+.projects .cards__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-bottom: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 100%;
+
+  @media (width <= 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media (width <= 600px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (width <= 480px) {
+    min-height: auto;
+  }
+}
+
+.projects__card {
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 8px 16px -2px rgb(0 0 0 / 15%);
+  }
+
+  @media (width <= 480px) {
+    min-height: auto;
+  }
+}
+
+.projects__figure {
+  display: block;
+  width: 100%;
+  height: 200px;
+  margin: 0;
+  overflow: hidden;
+
+  @media (width <= 900px) {
+    height: 180px;
+  }
+
+  @media (width <= 600px) {
+    height: 200px;
+  }
+
+  @media (width <= 480px) {
+    height: 160px;
+  }
+}
+
+.projects__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.projects__body {
+  padding: 8px 24px 16px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+  justify-content: center;
+
+  > * {
+    margin: 0;
+  }
+}
+
+.projects__date {
+  font-size: 0.875rem;
+  color: var(--color-primario);
+  text-align: left;
+}
+
+.projects__card .projects__title {
+  font-size: 1.25rem;
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.projects__description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}

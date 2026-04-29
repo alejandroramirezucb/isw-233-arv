@@ -1,0 +1,15 @@
+<article class="blog__card">
+  <div class="blog__header">
+    <p class="blog__date">{{date}}</p>
+    <button type="button" class="button blog__favorite-button blog__like-button">
+      {{#if isFavorite}}
+        {{> image name="blog-favorite" image="images/star.svg" title="Favorito"}}
+      {{else}}
+        {{> image name="blog-favorite" image="images/star-line.svg" title="No favorito"}}
+      {{/if}}
+    </button>
+  </div>
+  <h3 class="blog__title">{{title}}</h3>
+  <p class="blog__category">{{category}}</p>
+  <p class="blog__description">{{description}}</p>
+</article>
