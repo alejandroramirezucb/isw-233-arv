@@ -13,4 +13,5 @@ Code/.DS_Store
 Code/Thumbs.db
 Code/.cache/
 Code/.parcel-cache/
+Code/.agents/
 Code/.webpack/
